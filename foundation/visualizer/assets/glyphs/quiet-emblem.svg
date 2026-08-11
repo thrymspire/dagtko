@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 240">
+<style>
+.ln { fill:none; stroke:#ffb86c; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.ln-thin { fill:none; stroke:#ffb86c; stroke-width:1.5; stroke-linecap:round; }
+.dot-open { fill:#0a0512; stroke:#ffb86c; stroke-width:2; }
+.dot-fill { fill:#ffb86c; stroke:none; }
+.dot-echo { fill:none; stroke:#ffb86c; stroke-width:2; stroke-dasharray:3 3; }
+.spine-reinforced { stroke:#9d5cff; stroke-width:3; stroke-linecap:round; }
+.spine-crack { stroke:#ff79c6; stroke-width:2.5; }
+.spine-faint { stroke:rgba(95,251,241,0.6); stroke-width:1.5; stroke-dasharray:2 2; }
+</style>
+<path class="ln" d="M14,52 Q50,30 86,52 Q50,74 14,52 Z"/>
+<circle class="dot-open" cx="50" cy="52" r="8"/>
+<line class="spine-faint" x1="50" x2="50" y1="64" y2="90"/>
+<path class="ln" d="M72.94,162.77 A40,40 0 1,1 72.94,97.23"/>
+<circle class="dot-fill" cx="80" cy="130" r="7"/>
+<line class="spine-faint" x1="50" x2="50" y1="170" y2="192"/>
+<polygon class="ln" points="20.00,170.00 80.00,170.00 50.00,236.00"/>
+<circle class="dot-echo" cx="50" cy="192" r="7"/>
+</svg>

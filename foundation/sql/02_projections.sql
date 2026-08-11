@@ -1,11 +1,13 @@
 -- Derived current-truth surfaces. Never authoritative history.
--- All consumers (MCP, Matlab, dashboards, future Contracts/Buckets) read only Projections.
+-- All consumers (MCP, Matlab, Dashboards, AutoGen, ADK) read only Projections.
+-- Symbol-centric projection: every phase-glyph and composite-emblem carries its SVG symbol.
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- ============================================================
 -- 1. Ledger Node Current State (Full Topology Projection)
 -- ============================================================
+DROP TABLE IF EXISTS ledger_node_state CASCADE;
 CREATE TABLE IF NOT EXISTS ledger_node_state (
     node_id             UUID PRIMARY KEY REFERENCES nodes(id),
     external_ref        TEXT,
@@ -16,6 +18,10 @@ CREATE TABLE IF NOT EXISTS ledger_node_state (
     in_degree           INTEGER NOT NULL DEFAULT 0,
     out_degree          INTEGER NOT NULL DEFAULT 0,
     critical_path_len   NUMERIC DEFAULT 0,
+    svg_symbol_id       TEXT,
+    svg_geometry        TEXT,
+    svg_data_uri        TEXT,
+    svg_standalone      TEXT,
     props               JSONB NOT NULL DEFAULT '{}'::jsonb,
     last_edge_id        UUID,
     last_event_id       UUID,
@@ -26,10 +32,12 @@ CREATE INDEX IF NOT EXISTS idx_ledger_node_type ON ledger_node_state (node_type)
 CREATE INDEX IF NOT EXISTS idx_ledger_node_layer ON ledger_node_state (layer);
 CREATE INDEX IF NOT EXISTS idx_ledger_node_status ON ledger_node_state (status);
 CREATE INDEX IF NOT EXISTS idx_ledger_node_ref ON ledger_node_state (external_ref);
+CREATE INDEX IF NOT EXISTS idx_ledger_node_sym ON ledger_node_state (svg_symbol_id) WHERE svg_symbol_id IS NOT NULL;
 
 -- ============================================================
 -- 2. 90-Matrix Entries Projection (Query & Reasoning Surface)
 -- ============================================================
+DROP TABLE IF EXISTS matrix_entry_state CASCADE;
 CREATE TABLE IF NOT EXISTS matrix_entry_state (
     entry_id            UUID PRIMARY KEY REFERENCES nodes(id),
     indexed_asset       TEXT NOT NULL,
@@ -43,6 +51,8 @@ CREATE TABLE IF NOT EXISTS matrix_entry_state (
     symbol_status       TEXT,
     svg_phase_symbol_id TEXT,
     svg_object_symbol_id TEXT,
+    svg_phase_data_uri  TEXT,
+    svg_object_data_uri TEXT,
     object_id           TEXT,
     props               JSONB NOT NULL DEFAULT '{}'::jsonb,
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -55,7 +65,7 @@ CREATE INDEX IF NOT EXISTS idx_matrix_rank ON matrix_entry_state (rank);
 CREATE INDEX IF NOT EXISTS idx_matrix_phase ON matrix_entry_state (phase);
 
 -- ============================================================
--- 3. WorkOrder current state (Compatibility Projection)
+-- 3. WorkOrder Current State (Legacy Compatibility Projection)
 -- ============================================================
 CREATE TABLE IF NOT EXISTS wo_current_state (
     work_order_id       UUID PRIMARY KEY REFERENCES nodes(id),
@@ -67,12 +77,11 @@ CREATE TABLE IF NOT EXISTS wo_current_state (
     props               JSONB NOT NULL DEFAULT '{}'::jsonb,
     last_edge_id        UUID,
     last_event_id       UUID,
-    critical_path_len   NUMERIC,                      -- derived; never mutable business state
+    critical_path_len   NUMERIC,
     updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE INDEX IF NOT EXISTS idx_wo_status ON wo_current_state (status);
-CREATE INDEX IF NOT EXISTS idx_wo_tech ON wo_current_state (assigned_technician) WHERE assigned_technician IS NOT NULL;
 
 -- ============================================================
 -- Reducer: apply one Event to Projections
@@ -98,7 +107,8 @@ BEGIN
 
             INSERT INTO ledger_node_state (
                 node_id, external_ref, node_type, layer, label, status,
-                in_degree, out_degree, props, last_edge_id, last_event_id, updated_at
+                in_degree, out_degree, svg_symbol_id, svg_geometry, svg_data_uri, svg_standalone,
+                props, last_edge_id, last_event_id, updated_at
             )
             VALUES (
                 n.id,
@@ -109,6 +119,10 @@ BEGIN
                 'Active',
                 in_deg,
                 out_deg,
+                n.props->>'svg_symbol_id',
+                n.props->>'svg_geometry',
+                n.props->>'svg_data_uri',
+                n.props->>'svg_standalone',
                 n.props,
                 e.edge_id,
                 e.event_id,
@@ -121,6 +135,10 @@ BEGIN
                 label = EXCLUDED.label,
                 in_degree = EXCLUDED.in_degree,
                 out_degree = EXCLUDED.out_degree,
+                svg_symbol_id = EXCLUDED.svg_symbol_id,
+                svg_geometry = EXCLUDED.svg_geometry,
+                svg_data_uri = EXCLUDED.svg_data_uri,
+                svg_standalone = EXCLUDED.svg_standalone,
                 props = EXCLUDED.props,
                 last_edge_id = EXCLUDED.last_edge_id,
                 last_event_id = EXCLUDED.last_event_id,
@@ -130,7 +148,8 @@ BEGIN
                 INSERT INTO matrix_entry_state (
                     entry_id, indexed_asset, function_tag, outcome_number, outcome_label,
                     outcome_behavior, rank, phase, actionable_statement, symbol_status,
-                    svg_phase_symbol_id, svg_object_symbol_id, object_id, props, updated_at
+                    svg_phase_symbol_id, svg_object_symbol_id, svg_phase_data_uri, svg_object_data_uri,
+                    object_id, props, updated_at
                 )
                 VALUES (
                     n.id,
@@ -145,6 +164,8 @@ BEGIN
                     n.props->>'symbol_status',
                     n.props->>'svg_phase_symbol_id',
                     n.props->>'svg_object_symbol_id',
+                    n.props->>'svg_phase_data_uri',
+                    n.props->>'svg_object_data_uri',
                     n.props->>'object_id',
                     n.props,
                     now()
@@ -161,6 +182,8 @@ BEGIN
                     symbol_status = EXCLUDED.symbol_status,
                     svg_phase_symbol_id = EXCLUDED.svg_phase_symbol_id,
                     svg_object_symbol_id = EXCLUDED.svg_object_symbol_id,
+                    svg_phase_data_uri = EXCLUDED.svg_phase_data_uri,
+                    svg_object_data_uri = EXCLUDED.svg_object_data_uri,
                     object_id = EXCLUDED.object_id,
                     props = EXCLUDED.props,
                     updated_at = now();
@@ -252,7 +275,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Full replay of Ledger Projections
+-- Full replay of Ledger Projections from Events
 CREATE OR REPLACE FUNCTION replay_ledger_projection()
 RETURNS INTEGER AS $$
 DECLARE
@@ -310,15 +333,9 @@ BEGIN
         updated_at = now()
     WHERE node_id = p_root_id;
 
-    UPDATE wo_current_state
-    SET critical_path_len = max_len,
-        updated_at = now()
-    WHERE work_order_id = p_root_id;
-
     RETURN max_len;
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON TABLE ledger_node_state IS 'Sole readable current truth for all Ledger Set DAG nodes.';
+COMMENT ON TABLE ledger_node_state IS 'Sole readable current truth for all Ledger Set DAG nodes, enriched with SVG symbols.';
 COMMENT ON TABLE matrix_entry_state IS 'Query and reasoning projection for all 90 matrix entries.';
-COMMENT ON TABLE wo_current_state IS 'Compatibility projection for WorkOrders.';

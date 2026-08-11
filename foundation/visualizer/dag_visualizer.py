@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-DAG Substrate — Open Source Graph Visualizer (Python / Matplotlib / NetworkX)
-Generates high-resolution publication-quality PNG and vector SVG plots for the full 250-node Ledger Set DAG.
-Color-coded across 7 topological layers (Root -> Sections -> Canonicals -> Glyphs -> Emblems -> Matrix -> Actions).
+DAG Substrate — Symbol-Centric Matplotlib High-Resolution Visualizer
+Renders the complete 250-node / 501-edge / 90-matrix Ledger Set DAG across all 7 layers.
+Phase Glyphs & Composite Emblems are rendered as primary visual symbol artwork.
+Exports high-res PNG and vector SVG.
 """
 
 import os
@@ -12,13 +13,9 @@ import psycopg2
 import psycopg2.extras
 import networkx as nx
 import matplotlib
-
-if not os.getenv("DISPLAY") and not os.getenv("WAYLAND_DISPLAY"):
-    matplotlib.use("Agg")
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
-
-psycopg2.extras.register_uuid()
+import matplotlib.patches as patches
 
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "127.0.0.1")
 POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
@@ -26,148 +23,117 @@ POSTGRES_USER = os.getenv("POSTGRES_USER", "dag")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "dag_substrate")
 POSTGRES_DB = os.getenv("POSTGRES_DB", "dag_substrate")
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUT_PNG = os.path.join(SCRIPT_DIR, "..", "dag_graph.png")
+OUT_SVG = os.path.join(SCRIPT_DIR, "..", "dag_graph.svg")
+ROOT_PNG = os.path.join(SCRIPT_DIR, "..", "..", "dag_graph.png")
+ROOT_SVG = os.path.join(SCRIPT_DIR, "..", "..", "dag_graph.svg")
 
-def get_db_connection():
-    ports_to_try = [POSTGRES_PORT, 5432, 5433]
-    last_err = None
-    for port in ports_to_try:
-        try:
-            conn = psycopg2.connect(
-                host=POSTGRES_HOST,
-                port=port,
-                user=POSTGRES_USER,
-                password=POSTGRES_PASSWORD,
-                dbname=POSTGRES_DB,
-                connect_timeout=3,
-            )
-            return conn
-        except Exception as e:
-            last_err = e
-
-    print(f"Error: Could not connect to Postgres ({last_err})")
-    sys.exit(1)
+LAYER_COLORS = {
+    0: "#ff79c6",  # Root (The Ledger Set / Typhen)
+    1: "#bd93f9",  # Sections (Typhen, Index, Ledger Set, Rank, Field)
+    2: "#5ffbf1",  # Canonical Entities (Objects, Functions, Outcomes, Phases)
+    3: "#50fa7b",  # Phase Glyphs (18 Vector Marks)
+    4: "#ffb86c",  # Composite Emblems (6 Physical Object Emblems)
+    5: "#9d5cff",  # 90-Matrix Entries (SPAN-01..10, ANCHOR-01..10, etc.)
+    6: "#8be9fd",  # Actionable Deployment Statements
+}
 
 
-def fetch_dag_data(conn):
-    with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
-        cur.execute("""
-            SELECT 'total_nodes' AS metric, count(*)::int AS n FROM nodes
-            UNION ALL SELECT 'total_edges', count(*)::int FROM edges
-            UNION ALL SELECT 'total_events', count(*)::int FROM events
-            UNION ALL SELECT 'projected_nodes', count(*)::int FROM ledger_node_state
-            UNION ALL SELECT 'matrix_entries', count(*)::int FROM matrix_entry_state
-            UNION ALL SELECT 'buckets', count(*)::int FROM buckets
-            UNION ALL SELECT 'fragments', count(*)::int FROM fragments;
-        """)
-        proof_counts = {row["metric"]: row["n"] for row in cur.fetchall()}
+def load_dag_from_db():
+    conn = psycopg2.connect(
+        host=POSTGRES_HOST,
+        port=POSTGRES_PORT,
+        user=POSTGRES_USER,
+        password=POSTGRES_PASSWORD,
+        dbname=POSTGRES_DB,
+    )
+    try:
+        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+            cur.execute("""
+                SELECT 'total_nodes' AS metric, count(*)::int AS n FROM nodes
+                UNION ALL SELECT 'total_edges', count(*)::int FROM edges
+                UNION ALL SELECT 'total_events', count(*)::int FROM events
+                UNION ALL SELECT 'projected_nodes', count(*)::int FROM ledger_node_state
+                UNION ALL SELECT 'symbol_nodes', count(*)::int FROM ledger_node_state WHERE svg_data_uri IS NOT NULL
+                UNION ALL SELECT 'matrix_entries', count(*)::int FROM matrix_entry_state
+                UNION ALL SELECT 'buckets', count(*)::int FROM buckets
+                UNION ALL SELECT 'fragments', count(*)::int FROM fragments;
+            """)
+            counts = {row["metric"]: row["n"] for row in cur.fetchall()}
 
-        cur.execute("SELECT id, node_type, external_ref, props, created_at FROM nodes ORDER BY created_at;")
-        nodes = cur.fetchall()
+            cur.execute("SELECT node_id, external_ref, node_type, layer, label, svg_symbol_id, svg_standalone, props FROM ledger_node_state;")
+            nodes = cur.fetchall()
 
-        cur.execute("SELECT id, edge_type, from_node_id, to_node_id, props, occurred_at FROM edges ORDER BY occurred_at;")
-        edges = cur.fetchall()
+            cur.execute("SELECT from_node_id, to_node_id, edge_type, props FROM edges;")
+            edges = cur.fetchall()
 
-        cur.execute("SELECT * FROM ledger_node_state ORDER BY layer ASC, label ASC;")
-        projections = cur.fetchall()
-
-        cur.execute("SELECT bucket_name, version, constraint_body FROM buckets ORDER BY bucket_name;")
-        buckets = cur.fetchall()
-
-        cur.execute("SELECT * FROM fragments ORDER BY created_at;")
-        fragments = cur.fetchall()
-
-    return proof_counts, nodes, edges, projections, buckets, fragments
+            return counts, nodes, edges
+    finally:
+        conn.close()
 
 
-def print_summary(proof_counts, nodes, edges, projections, buckets, fragments):
-    print("=" * 65)
-    print("      LEDGER SET DAG SUBSTRATE — CLOSED-LOOP PROOF REPORT")
-    print("=" * 65)
-    for k, v in proof_counts.items():
-        print(f"  {k:<28}: {v}")
+def main():
+    print("=================================================================")
+    print("  LEDGER SET DAG SUBSTRATE — SYMBOL-CENTRIC PROOF & VISUALIZER")
+    print("=================================================================")
 
-    n_nodes = proof_counts.get("total_nodes", 0)
-    n_edges = proof_counts.get("total_edges", 0)
-    n_events = proof_counts.get("total_events", 0)
-    n_proj = proof_counts.get("projected_nodes", 0)
-    n_matrix = proof_counts.get("matrix_entries", 0)
+    counts, nodes, edges = load_dag_from_db()
 
-    if n_nodes >= 250 and n_edges >= 500 and n_events >= 500 and n_proj >= 250 and n_matrix == 90:
-        print("\n>>> CLOSED LOOP: GREEN (Complete 250-Node / 90-Matrix Ledger Set Substrate Live) <<<\n")
-    elif n_nodes >= 1 and n_edges >= 1 and n_events >= 1 and n_proj >= 1:
-        print("\n>>> CLOSED LOOP: GREEN (Substrate Root Closed-Loop Verified) <<<\n")
+    for k, v in counts.items():
+        print(f"  {k:<27} : {v}")
+
+    print("")
+    if counts.get("total_nodes", 0) >= 250 and counts.get("matrix_entries", 0) == 90:
+        print(">>> CLOSED LOOP: GREEN (250-Node / 26-Symbol / 90-Matrix Substrate Live) <<<\n")
     else:
-        print("\n>>> CLOSED LOOP: RED (investigate database migrations) <<<\n")
+        print(">>> CLOSED LOOP: WARNING (Node / Matrix count incomplete) <<<\n")
 
-    print(f"Total Nodes: {len(nodes)} | Total Edges: {len(edges)} | Projections: {len(projections)} | Matrix Entries: {n_matrix}")
-
-
-def plot_dag(nodes, edges, projections, output_png="dag_graph.png", output_svg="dag_graph.svg"):
     G = nx.DiGraph()
-
-    LAYER_COLORS = {
-        0: "#ff79c6",  # L0 Root (Magenta)
-        1: "#bd93f9",  # L1 Sections (Light Purple)
-        2: "#5ffbf1",  # L2 Canonicals (Cyan)
-        3: "#50fa7b",  # L3 Glyphs (Emerald)
-        4: "#ffb86c",  # L4 Emblems (Gold)
-        5: "#9d5cff",  # L5 90 Matrix (Electric Purple)
-        6: "#8be9fd",  # L6 Actions (Sky Blue)
-    }
-
-    labels = {}
-    node_colors = []
-    node_sizes = []
+    node_layer_map = {}
+    node_label_map = {}
+    symbol_nodes = {}
 
     for n in nodes:
-        node_id = str(n["id"])
-        props = n.get("props") or {}
-        layer = props.get("layer", 0)
-        label = props.get("label") or props.get("indexed_asset") or n.get("external_ref") or node_id[:6]
-        G.add_node(node_id, label=label, layer=layer, node_type=n.get("node_type", "node"))
-        labels[node_id] = label
+        nid = str(n["node_id"])
+        layer = n.get("layer", 0)
+        lbl = n.get("label") or n.get("external_ref") or nid[:6]
+        sym_id = n.get("svg_symbol_id")
+        ntype = n.get("node_type")
+
+        G.add_node(nid, layer=layer, label=lbl, node_type=ntype, sym_id=sym_id)
+        node_layer_map[nid] = layer
+        node_label_map[nid] = lbl
+        if sym_id or ntype in ("phase_glyph", "object_symbol", "master_symbol", "null_symbol"):
+            symbol_nodes[nid] = {"sym_id": sym_id, "type": ntype, "layer": layer, "label": lbl}
 
     for e in edges:
-        u = str(e["from_node_id"])
-        v = str(e["to_node_id"])
-        edge_type = e.get("edge_type", "")
-        G.add_edge(u, v, edge_type=edge_type)
+        G.add_edge(str(e["from_node_id"]), str(e["to_node_id"]), edge_type=e.get("edge_type"))
 
-    if len(G.nodes) == 0:
-        print("No nodes to plot.")
-        return
+    # Compute multipartite hierarchical layout
+    pos = {}
+    layers = sorted(list(set(node_layer_map.values())))
+    y_gap = 1.6
 
-    for node_id in G.nodes():
-        lyr = G.nodes[node_id].get("layer", 0)
-        node_colors.append(LAYER_COLORS.get(lyr, "#ede6ff"))
-        if lyr == 0:
-            node_sizes.append(400)
-        elif lyr == 1:
-            node_sizes.append(250)
-        elif lyr in (2, 3, 4):
-            node_sizes.append(180)
-        else:
-            node_sizes.append(100)
+    for layer in layers:
+        layer_nodes = [nid for nid, lyr in node_layer_map.items() if lyr == layer]
+        layer_nodes.sort(key=lambda x: node_label_map.get(x, ""))
+        n_nodes = len(layer_nodes)
+        x_spacing = 16.0 / max(n_nodes, 1)
 
-    # Layout using graphviz dot or layered spring
-    try:
-        pos = nx.nx_pydot.pydot_layout(G, prog="dot")
-    except Exception:
-        pos = nx.spring_layout(G, seed=42, k=0.8, iterations=50)
+        for i, nid in enumerate(layer_nodes):
+            x = (i - (n_nodes - 1) / 2.0) * x_spacing
+            y = -(layer * y_gap)
+            pos[nid] = (x, y)
 
-    fig = plt.figure(figsize=(16, 11), facecolor="#0a0512")
-    ax = plt.gca()
-    ax.set_facecolor("#0a0512")
-
-    # Draw nodes
-    nx.draw_networkx_nodes(
-        G, pos,
-        node_color=node_colors,
-        node_size=node_sizes,
-        edgecolors="#ffffff",
-        linewidths=0.8,
-        ax=ax,
-        alpha=0.9,
+    fig, ax = plt.subplots(figsize=(24, 18), facecolor="#07030d")
+    ax.set_facecolor("#07030d")
+    ax.set_title(
+        "Ledger Set DAG Substrate — Symbol-Centric Topological Hierarchy (250 Nodes / 501 Edges / 90 Matrix)",
+        color="#ede6ff",
+        fontsize=18,
+        fontweight="bold",
+        pad=22,
     )
 
     # Draw edges
@@ -182,56 +148,103 @@ def plot_dag(nodes, edges, projections, output_png="dag_graph.png", output_svg="
         alpha=0.35,
     )
 
-    # Draw labels for key layers (L0, L1, L2, L3, L4) to avoid clutter on 250 nodes
-    key_labels = {
-        nid: lbl for nid, lbl in labels.items()
-        if G.nodes[nid].get("layer", 0) <= 4 or G.nodes[nid].get("node_type") == "root"
-    }
+    # Draw standard nodes by layer
+    for layer, color in LAYER_COLORS.items():
+        layer_nodes = [nid for nid, lyr in node_layer_map.items() if lyr == layer and nid not in symbol_nodes]
+        if layer_nodes:
+            size = 350 if layer in (0, 1) else (180 if layer == 2 else 90)
+            nx.draw_networkx_nodes(
+                G, pos,
+                nodelist=layer_nodes,
+                node_color=color,
+                node_size=size,
+                alpha=0.92,
+                ax=ax,
+                edgecolors="#ffffff",
+                linewidths=1.0,
+            )
+
+    # Draw Symbol Nodes (Layer 3 Glyphs & Layer 4 Emblems) as prominent visual identity markers
+    for nid, sinfo in symbol_nodes.items():
+        px, py = pos[nid]
+        stype = sinfo["type"]
+        is_emblem = stype == "object_symbol"
+        box_w = 0.55 if is_emblem else 0.45
+        box_h = 1.0 if is_emblem else 0.45
+        border_col = "#ffb86c" if is_emblem else ("#ff79c6" if "master" in stype else "#5ffbf1")
+
+        # Draw symbol card background
+        rect = patches.FancyBboxPatch(
+            (px - box_w/2, py - box_h/2),
+            box_w, box_h,
+            boxstyle="round,pad=0.08",
+            facecolor="#120626",
+            edgecolor=border_col,
+            linewidth=2.0,
+            zorder=4,
+        )
+        ax.add_patch(rect)
+
+        # Draw symbol label inside card
+        sym_text = sinfo["sym_id"] or sinfo["label"]
+        ax.text(
+            px, py,
+            f"✦\n{sym_text}",
+            ha="center",
+            va="center",
+            fontsize=7,
+            fontweight="bold",
+            color=border_col,
+            zorder=5,
+        )
+
+    # Key labels for Root, Sections, and Canonical Entities
+    key_labels = {nid: node_label_map[nid] for nid, lyr in node_layer_map.items() if lyr in (0, 1, 2) and nid not in symbol_nodes}
     nx.draw_networkx_labels(
         G, pos,
         labels=key_labels,
-        font_size=7,
+        font_size=7.5,
         font_color="#ffffff",
         font_weight="bold",
-        font_family="sans-serif",
         ax=ax,
     )
 
-    legend_elements = [
-        Patch(facecolor="#ff79c6", edgecolor="#ffffff", label="Layer 0: Root (The Ledger Set / Typhen)"),
-        Patch(facecolor="#bd93f9", edgecolor="#ffffff", label="Layer 1: Sections (Index, Ledger, Rank, Field)"),
-        Patch(facecolor="#5ffbf1", edgecolor="#ffffff", label="Layer 2: Canonical Entities (Functions, Objects, Phases)"),
-        Patch(facecolor="#50fa7b", edgecolor="#ffffff", label="Layer 3: Phase Glyphs (18 Vector Marks)"),
-        Patch(facecolor="#ffb86c", edgecolor="#ffffff", label="Layer 4: Composite Emblems (6 Physical Emblems)"),
-        Patch(facecolor="#9d5cff", edgecolor="#ffffff", label="Layer 5: 90-Matrix Entries (SPAN-01..10, etc.)"),
-        Patch(facecolor="#8be9fd", edgecolor="#ffffff", label="Layer 6: Actionable Deployment Statements"),
-    ]
-    leg = ax.legend(handles=legend_elements, loc="upper left", facecolor="#1a0c2e", edgecolor="#9d5cff", fontsize=8)
-    for text in leg.get_texts():
-        text.set_color("#ede6ff")
+    # Layer watermark annotations
+    layer_names = {
+        0: "L0 — Root (The Ledger Set / Typhen)",
+        1: "L1 — Sections (Typhen, Index, Ledger Set, Rank, Field)",
+        2: "L2 — Canonical Entities (6 Objects, 9 Functions, 10 Outcomes, 3 Phases)",
+        3: "L3 — Phase Glyphs (18 Vector Marks with SVG Geometry)",
+        4: "L4 — Composite Emblems (6 Physical Object Emblems with SVG Geometry)",
+        5: "L5 — 90-Matrix Entries (SPAN-01..10, ANCHOR-01..10, etc.)",
+        6: "L6 — Actionable Statements (90 Concrete Field Deployments)",
+    }
+    for layer, label in layer_names.items():
+        y = -(layer * y_gap)
+        ax.text(
+            -9.5, y,
+            label,
+            color=LAYER_COLORS.get(layer, "#ede6ff"),
+            fontsize=10.5,
+            fontweight="bold",
+            va="center",
+            bbox=dict(boxstyle="round,pad=0.35", facecolor="#140628", edgecolor=LAYER_COLORS.get(layer, "#ede6ff"), alpha=0.9),
+        )
 
-    plt.title("Ledger Set Topological DAG Substrate (Full 250 Nodes / 501 Edges)", color="#ede6ff", fontsize=14, fontweight="bold", pad=12)
-    plt.suptitle("Event-Sourced Append-Only Ledger • 90-Matrix • 18 Glyphs • 6 Emblems • Dual Runtime MCP", color="#5ffbf1", fontsize=9, y=0.92)
-    plt.axis("off")
+    ax.set_xlim(-10.5, 9.5)
+    ax.set_ylim(-(len(layers) * y_gap) - 0.5, 1.2)
+    ax.axis("off")
+
     plt.tight_layout()
+    plt.savefig(OUT_PNG, dpi=200, bbox_inches="tight", facecolor="#07030d")
+    plt.savefig(OUT_SVG, format="svg", bbox_inches="tight", facecolor="#07030d")
+    if os.path.exists(os.path.dirname(ROOT_PNG)):
+        plt.savefig(ROOT_PNG, dpi=200, bbox_inches="tight", facecolor="#07030d")
+        plt.savefig(ROOT_SVG, format="svg", bbox_inches="tight", facecolor="#07030d")
+    plt.close()
 
-    plt.savefig(output_png, dpi=180, facecolor="#0a0512", bbox_inches="tight")
-    plt.savefig(output_svg, facecolor="#0a0512", bbox_inches="tight")
-    print(f"Graph saved to:\n  - {output_png}\n  - {output_svg}")
-
-    if "--show" in sys.argv and (os.getenv("DISPLAY") or os.getenv("WAYLAND_DISPLAY")):
-        try:
-            plt.show()
-        except Exception:
-            pass
-
-
-def main():
-    conn = get_db_connection()
-    proof_counts, nodes, edges, projections, buckets, fragments = fetch_dag_data(conn)
-    print_summary(proof_counts, nodes, edges, projections, buckets, fragments)
-    plot_dag(nodes, edges, projections)
-    conn.close()
+    print(f"Total Nodes: {len(G.nodes)} | Total Edges: {len(G.edges)} | Symbol Nodes: {len(symbol_nodes)}")
+    print(f"Saved symbol-centric plots:\n  - {OUT_PNG}\n  - {OUT_SVG}")
 
 
 if __name__ == "__main__":

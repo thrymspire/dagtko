@@ -234,3 +234,36 @@ def test_llm_grounding_endpoint():
     assert res["ok"]
     assert res["projection_used"]["indexed_asset"] == "SPAN-01"
     assert len(res["grounded_response"]) > 0
+
+
+def test_symbol_centric_projection_integrity():
+    """Verify symbol-centric projection contains all 26 SVG symbols and reconstructs via replay."""
+    conn = get_test_db_conn()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+    # 1. Check phase glyphs
+    cur.execute("SELECT node_id, external_ref, svg_symbol_id, svg_data_uri, svg_geometry FROM ledger_node_state WHERE node_type = 'phase_glyph'")
+    glyphs = cur.fetchall()
+    assert len(glyphs) == 18
+    for g in glyphs:
+        assert g["svg_symbol_id"] is not None
+        assert g["svg_data_uri"].startswith("data:image/svg+xml;base64,")
+        assert len(g["svg_geometry"]) > 20
+
+    # 2. Check composite emblems
+    cur.execute("SELECT node_id, external_ref, svg_symbol_id, svg_data_uri, svg_geometry FROM ledger_node_state WHERE node_type = 'object_symbol'")
+    emblems = cur.fetchall()
+    assert len(emblems) == 6
+    for emb in emblems:
+        assert emb["svg_symbol_id"] is not None
+        assert emb["svg_data_uri"].startswith("data:image/svg+xml;base64,")
+        assert len(emb["svg_geometry"]) > 20
+
+    # 3. Test replay maintains symbol geometry
+    cur.execute("SELECT replay_ledger_projection()")
+    cur.execute("SELECT count(*) AS total_symbols FROM ledger_node_state WHERE svg_data_uri IS NOT NULL")
+    assert cur.fetchone()["total_symbols"] >= 26
+
+    conn.commit()
+    conn.close()
+

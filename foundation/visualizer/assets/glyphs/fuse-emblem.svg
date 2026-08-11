@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 240">
+<style>
+.ln { fill:none; stroke:#ffb86c; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.ln-thin { fill:none; stroke:#ffb86c; stroke-width:1.5; stroke-linecap:round; }
+.dot-open { fill:#0a0512; stroke:#ffb86c; stroke-width:2; }
+.dot-fill { fill:#ffb86c; stroke:none; }
+.dot-echo { fill:none; stroke:#ffb86c; stroke-width:2; stroke-dasharray:3 3; }
+.spine-reinforced { stroke:#9d5cff; stroke-width:3; stroke-linecap:round; }
+.spine-crack { stroke:#ff79c6; stroke-width:2.5; }
+.spine-faint { stroke:rgba(95,251,241,0.6); stroke-width:1.5; stroke-dasharray:2 2; }
+</style>
+<polygon class="ln" points="50.00,14.00 82.91,33.00 82.91,71.00 50.00,90.00 17.09,71.00 17.09,33.00"/>
+<circle class="dot-open" cx="50" cy="52" r="8"/>
+<line class="ln-thin" x1="41" x2="59" y1="84" y2="96"/><line class="ln-thin" x1="59" x2="41" y1="84" y2="96"/>
+<circle class="ln" cx="50" cy="130" r="40"/>
+<line class="ln-thin" x1="83.00" x2="90.00" y1="130.00" y2="130.00"/><line class="ln-thin" x1="73.33" x2="78.28" y1="153.33" y2="158.28"/><line class="ln-thin" x1="50.00" x2="50.00" y1="163.00" y2="170.00"/><line class="ln-thin" x1="26.67" x2="21.72" y1="153.33" y2="158.28"/><line class="ln-thin" x1="17.00" x2="10.00" y1="130.00" y2="130.00"/><line class="ln-thin" x1="26.67" x2="21.72" y1="106.67" y2="101.72"/><line class="ln-thin" x1="50.00" x2="50.00" y1="97.00" y2="90.00"/><line class="ln-thin" x1="73.33" x2="78.28" y1="106.67" y2="101.72"/>
+<circle class="dot-fill" cx="50" cy="130" r="9"/>
+<line class="ln-thin" x1="41" x2="59" y1="164" y2="176"/><line class="ln-thin" x1="59" x2="41" y1="164" y2="176"/>
+<circle class="ln" cx="50.00" cy="190.00" r="20"/>
+<circle class="ln" cx="62.99" cy="212.50" r="20"/>
+<circle class="ln" cx="37.01" cy="212.50" r="20"/>
+<circle class="dot-echo" cx="50" cy="205" r="5.5"/>
+</svg>

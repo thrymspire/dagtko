@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<style>
+.ln { fill:none; stroke:#5ffbf1; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.ln-thin { fill:none; stroke:#5ffbf1; stroke-width:1.5; stroke-linecap:round; }
+.dot-open { fill:#0a0512; stroke:#5ffbf1; stroke-width:2; }
+.dot-fill { fill:#5ffbf1; stroke:none; }
+.dot-echo { fill:none; stroke:#5ffbf1; stroke-width:2; stroke-dasharray:3 3; }
+.spine-reinforced { stroke:#9d5cff; stroke-width:3; stroke-linecap:round; }
+.spine-crack { stroke:#ff79c6; stroke-width:2.5; }
+.spine-faint { stroke:rgba(95,251,241,0.6); stroke-width:1.5; stroke-dasharray:2 2; }
+</style>
+<path class="ln" d="M63.77,69.66 A24,24 0 1,1 63.77,30.34"/>
+<circle class="dot-fill" cx="72" cy="50" r="7"/>
+</svg>
