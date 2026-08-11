@@ -1,0 +1,5828 @@
+{
+  "schema": "ledger-set-dag/v1",
+  "graph": {
+    "kind": "DAG",
+    "acyclic": true,
+    "direction": "source_to_derivative",
+    "topological_layers": {
+      "0": "root",
+      "1": "sections",
+      "2": "canonical entities (objects, function tags, outcome numbers, phases, field specs, special symbols)",
+      "3": "phase-specific physical glyphs",
+      "4": "composite physical object symbols/emblems",
+      "5": "complete 9×10 matrix entries",
+      "6": "actionable statements"
+    }
+  },
+  "integrity": {
+    "function_tag_count": 9,
+    "outcome_number_count": 10,
+    "matrix_entry_count": 90,
+    "physical_function_count": 6,
+    "index_only_function_count": 3,
+    "phase_count": 3,
+    "physical_phase_glyph_count": 18,
+    "physical_emblem_count": 6,
+    "special_symbol_count": 2,
+    "object_count": 6,
+    "field_spec_count": 6,
+    "deployment_kit_item_count": 4,
+    "node_count": 250,
+    "edge_count": 501
+  },
+  "semantics": {
+    "function_tags": {
+      "Vector": "Pushes momentum forward",
+      "Anchor": "Stabilizes, prevents drift",
+      "Relay": "Carries information between groups",
+      "Pivot": "Changes direction, reframes",
+      "Fuse": "Binds elements together",
+      "Break": "Disrupts or ends a pattern",
+      "Span": "Bridges gaps",
+      "Draft": "Pulls others along",
+      "Quiet": "Subtle, decisive influence"
+    },
+    "physical_function_tags": [
+      "Anchor",
+      "Break",
+      "Fuse",
+      "Quiet",
+      "Relay",
+      "Span"
+    ],
+    "index_only_function_tags": [
+      "Draft",
+      "Pivot",
+      "Vector"
+    ],
+    "object_function_mapping": {
+      "Anchor": "graphite_ledger",
+      "Break": "signal_baton",
+      "Fuse": "industrial_cloth",
+      "Quiet": "matte_coin",
+      "Relay": "relay_node",
+      "Span": "tri_key_clasp"
+    },
+    "outcomes": [
+      {
+        "number": "01",
+        "title": "Opening Gambit",
+        "behavior": "initiates",
+        "rank": "Prime",
+        "phase": "Initiation"
+      },
+      {
+        "number": "02",
+        "title": "Fortification",
+        "behavior": "reinforces",
+        "rank": "Prime",
+        "phase": "Initiation"
+      },
+      {
+        "number": "03",
+        "title": "Hard Reroute",
+        "behavior": "redirects",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "04",
+        "title": "Aggressive Escalation",
+        "behavior": "escalates",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "05",
+        "title": "Hold The Line",
+        "behavior": "stabilizes",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "06",
+        "title": "Clean Release",
+        "behavior": "dissolves",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "07",
+        "title": "Lockstep Timing",
+        "behavior": "synchronizes",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "08",
+        "title": "Signal Surge",
+        "behavior": "amplifies",
+        "rank": "Core",
+        "phase": "Stabilization"
+      },
+      {
+        "number": "09",
+        "title": "Ghost Protocol",
+        "behavior": "conceals",
+        "rank": "Echo",
+        "phase": "Resolution"
+      },
+      {
+        "number": "10",
+        "title": "Full Disclosure",
+        "behavior": "reveals",
+        "rank": "Echo",
+        "phase": "Resolution"
+      }
+    ],
+    "rank_logic": {
+      "Initiation": [
+        "Prime",
+        "Initiator — sets the motion",
+        "Sharp geometry, open circle",
+        "Command or origin mark"
+      ],
+      "Stabilization": [
+        "Core",
+        "Operator — maintains flow",
+        "Balanced geometry, filled circle",
+        "Active field use"
+      ],
+      "Resolution": [
+        "Echo",
+        "Observer — records outcomes",
+        "Minimal geometry, hollow circle",
+        "Documentation or passive mark"
+      ]
+    }
+  },
+  "svg_manifest": {
+    "source_files": {
+      "guide_html": {
+        "name": "ledger-set-guide.html",
+        "sha256": "4e44badd7db9d3a189df6affa192533af4317523b24be4ca647c19b0a44b44cd"
+      },
+      "system_svg": {
+        "name": "ledger-set-system.svg",
+        "sha256": "39d42cf6ccd75be50a83f264083225e8f73ae954be293004aa3575f1769c1345"
+      }
+    },
+    "svg_symbol_count": 26,
+    "svg_symbol_ids": [
+      "tri-span",
+      "span-initiation",
+      "span-stabilization",
+      "span-resolution",
+      "break-initiation",
+      "break-stabilization",
+      "break-resolution",
+      "fuse-initiation",
+      "fuse-stabilization",
+      "fuse-resolution",
+      "relay-initiation",
+      "relay-stabilization",
+      "relay-resolution",
+      "anchor-initiation",
+      "anchor-stabilization",
+      "anchor-resolution",
+      "quiet-initiation",
+      "quiet-stabilization",
+      "quiet-resolution",
+      "blank-coin",
+      "span-emblem",
+      "break-emblem",
+      "fuse-emblem",
+      "relay-emblem",
+      "anchor-emblem",
+      "quiet-emblem"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ledger_root",
+      "type": "root",
+      "label": "The Ledger Set / Typhen",
+      "layer": 0,
+      "description": "everything Typhen carries, indexes, and marks — one system, fully cross-referenced"
+    },
+    {
+      "id": "sec_typhen",
+      "type": "section",
+      "label": "Typhen",
+      "layer": 1
+    },
+    {
+      "id": "sec_index",
+      "type": "section",
+      "label": "The Ledger Index",
+      "layer": 1
+    },
+    {
+      "id": "sec_ledger_set",
+      "type": "section",
+      "label": "The Ledger Set",
+      "layer": 1
+    },
+    {
+      "id": "sec_rank",
+      "type": "section",
+      "label": "Rank & Phase",
+      "layer": 1
+    },
+    {
+      "id": "sec_field",
+      "type": "section",
+      "label": "Field Deployment",
+      "layer": 1
+    },
+    {
+      "id": "graphite_ledger",
+      "type": "object",
+      "label": "Graphite ledger",
+      "layer": 2,
+      "description": "Tracks outcomes, not people. Every page maps what happens when he steps into a situation.",
+      "function_tag": "Anchor",
+      "physical": true
+    },
+    {
+      "id": "tri_key_clasp",
+      "type": "object",
+      "label": "Tri-key clasp",
+      "layer": 2,
+      "description": "Opens nothing alone. Built to combine with keys held by others — he makes people choose to open doors.",
+      "function_tag": "Span",
+      "physical": true
+    },
+    {
+      "id": "signal_baton",
+      "type": "object",
+      "label": "Signal baton",
+      "layer": 2,
+      "description": "Carries no markings. Doesn’t command — synchronizes chaos into coordinated motion.",
+      "function_tag": "Break",
+      "physical": true
+    },
+    {
+      "id": "relay_node",
+      "type": "object",
+      "label": "Relay node",
+      "layer": 2,
+      "description": "Amplifies whoever stands near him. His power is never centered on himself.",
+      "function_tag": "Relay",
+      "physical": true
+    },
+    {
+      "id": "matte_coin",
+      "type": "object",
+      "label": "Matte coin",
+      "layer": 2,
+      "description": "No face, no value. Not currency — a reminder that he trades in commitments.",
+      "function_tag": "Quiet",
+      "physical": true
+    },
+    {
+      "id": "industrial_cloth",
+      "type": "object",
+      "label": "Industrial cloth",
+      "layer": 2,
+      "description": "Binds, reinforces, or repairs — whatever the moment demands.",
+      "function_tag": "Fuse",
+      "physical": true
+    },
+    {
+      "id": "fn_vector",
+      "type": "function_tag",
+      "label": "Vector",
+      "layer": 2,
+      "definition": "Pushes momentum forward",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_anchor",
+      "type": "function_tag",
+      "label": "Anchor",
+      "layer": 2,
+      "definition": "Stabilizes, prevents drift",
+      "physical_symbol": true,
+      "object_id": "graphite_ledger",
+      "svg_emblem_id": "anchor-emblem"
+    },
+    {
+      "id": "fn_relay",
+      "type": "function_tag",
+      "label": "Relay",
+      "layer": 2,
+      "definition": "Carries information between groups",
+      "physical_symbol": true,
+      "object_id": "relay_node",
+      "svg_emblem_id": "relay-emblem"
+    },
+    {
+      "id": "fn_pivot",
+      "type": "function_tag",
+      "label": "Pivot",
+      "layer": 2,
+      "definition": "Changes direction, reframes",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_fuse",
+      "type": "function_tag",
+      "label": "Fuse",
+      "layer": 2,
+      "definition": "Binds elements together",
+      "physical_symbol": true,
+      "object_id": "industrial_cloth",
+      "svg_emblem_id": "fuse-emblem"
+    },
+    {
+      "id": "fn_break",
+      "type": "function_tag",
+      "label": "Break",
+      "layer": 2,
+      "definition": "Disrupts or ends a pattern",
+      "physical_symbol": true,
+      "object_id": "signal_baton",
+      "svg_emblem_id": "break-emblem"
+    },
+    {
+      "id": "fn_span",
+      "type": "function_tag",
+      "label": "Span",
+      "layer": 2,
+      "definition": "Bridges gaps",
+      "physical_symbol": true,
+      "object_id": "tri_key_clasp",
+      "svg_emblem_id": "span-emblem"
+    },
+    {
+      "id": "fn_draft",
+      "type": "function_tag",
+      "label": "Draft",
+      "layer": 2,
+      "definition": "Pulls others along",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_quiet",
+      "type": "function_tag",
+      "label": "Quiet",
+      "layer": 2,
+      "definition": "Subtle, decisive influence",
+      "physical_symbol": true,
+      "object_id": "matte_coin",
+      "svg_emblem_id": "quiet-emblem"
+    },
+    {
+      "id": "out_01",
+      "type": "outcome_number",
+      "label": "01",
+      "layer": 2,
+      "title": "Opening Gambit",
+      "behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation"
+    },
+    {
+      "id": "out_02",
+      "type": "outcome_number",
+      "label": "02",
+      "layer": 2,
+      "title": "Fortification",
+      "behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation"
+    },
+    {
+      "id": "out_03",
+      "type": "outcome_number",
+      "label": "03",
+      "layer": 2,
+      "title": "Hard Reroute",
+      "behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_04",
+      "type": "outcome_number",
+      "label": "04",
+      "layer": 2,
+      "title": "Aggressive Escalation",
+      "behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_05",
+      "type": "outcome_number",
+      "label": "05",
+      "layer": 2,
+      "title": "Hold The Line",
+      "behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_06",
+      "type": "outcome_number",
+      "label": "06",
+      "layer": 2,
+      "title": "Clean Release",
+      "behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_07",
+      "type": "outcome_number",
+      "label": "07",
+      "layer": 2,
+      "title": "Lockstep Timing",
+      "behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_08",
+      "type": "outcome_number",
+      "label": "08",
+      "layer": 2,
+      "title": "Signal Surge",
+      "behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_09",
+      "type": "outcome_number",
+      "label": "09",
+      "layer": 2,
+      "title": "Ghost Protocol",
+      "behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution"
+    },
+    {
+      "id": "out_10",
+      "type": "outcome_number",
+      "label": "10",
+      "layer": 2,
+      "title": "Full Disclosure",
+      "behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution"
+    },
+    {
+      "id": "phase_initiation",
+      "type": "phase",
+      "label": "Initiation",
+      "layer": 2,
+      "rank": "Prime",
+      "role": "Initiator — sets the motion",
+      "symbol_trait": "Sharp geometry, open circle",
+      "field_use": "Command or origin mark"
+    },
+    {
+      "id": "phase_stabilization",
+      "type": "phase",
+      "label": "Stabilization",
+      "layer": 2,
+      "rank": "Core",
+      "role": "Operator — maintains flow",
+      "symbol_trait": "Balanced geometry, filled circle",
+      "field_use": "Active field use"
+    },
+    {
+      "id": "phase_resolution",
+      "type": "phase",
+      "label": "Resolution",
+      "layer": 2,
+      "rank": "Echo",
+      "role": "Observer — records outcomes",
+      "symbol_trait": "Minimal geometry, hollow circle",
+      "field_use": "Documentation or passive mark"
+    },
+    {
+      "id": "glyph_anchor_initiation",
+      "type": "phase_glyph",
+      "label": "Anchor Initiation mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "anchor-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-initiation\" viewBox=\"0 0 100 100\">\n<rect class=\"ln\" height=\"60\" width=\"40\" x=\"30\" y=\"18\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"18\" y2=\"78\"/>\n<polyline class=\"ln-thin\" points=\"24.00,22.00 24.00,14.00 32.00,14.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"37\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_anchor_stabilization",
+      "type": "phase_glyph",
+      "label": "Anchor Stabilization mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "anchor-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-stabilization\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M30,24 L70,24 L70,52 Q70,74 50,86 Q30,74 30,52 Z\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"48\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_anchor_resolution",
+      "type": "phase_glyph",
+      "label": "Anchor Resolution mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "anchor-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M50,80 Q20,71 14,32\"/>\n<path class=\"ln\" d=\"M50,80 Q80,71 86,32\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"75\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_initiation",
+      "type": "phase_glyph",
+      "label": "Break Initiation mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "break-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,14.00 61.00,29.00 57.00,36.00 82.00,50.00 61.00,59.00 67.00,68.00 50.00,86.00 37.00,68.00 43.00,59.00 18.00,50.00 43.00,36.00 39.00,29.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_stabilization",
+      "type": "phase_glyph",
+      "label": "Break Stabilization mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "break-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-stabilization\" viewBox=\"0 0 100 100\">\n<line class=\"ln\" x1=\"27\" x2=\"73\" y1=\"27\" y2=\"73\"/>\n<line class=\"ln\" x1=\"73\" x2=\"27\" y1=\"27\" y2=\"73\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_resolution",
+      "type": "phase_glyph",
+      "label": "Break Resolution mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "break-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M40.42,76.31 A28,28 0 0,1 40.42,23.69\"/>\n<path class=\"ln\" d=\"M59.58,23.69 A28,28 0 0,1 59.58,76.31\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_initiation",
+      "type": "phase_glyph",
+      "label": "Fuse Initiation mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "fuse-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,18.00 77.71,34.00 77.71,66.00 50.00,82.00 22.29,66.00 22.29,34.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"8\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_stabilization",
+      "type": "phase_glyph",
+      "label": "Fuse Stabilization mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "fuse-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-stabilization\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"27\"/>\n<line class=\"ln-thin\" x1=\"73.00\" x2=\"80.00\" y1=\"50.00\" y2=\"50.00\"/>\n<line class=\"ln-thin\" x1=\"66.26\" x2=\"71.21\" y1=\"66.26\" y2=\"71.21\"/>\n<line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"73.00\" y2=\"80.00\"/>\n<line class=\"ln-thin\" x1=\"33.74\" x2=\"28.79\" y1=\"66.26\" y2=\"71.21\"/>\n<line class=\"ln-thin\" x1=\"27.00\" x2=\"20.00\" y1=\"50.00\" y2=\"50.00\"/>\n<line class=\"ln-thin\" x1=\"33.74\" x2=\"28.79\" y1=\"33.74\" y2=\"28.79\"/>\n<line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"27.00\" y2=\"20.00\"/>\n<line class=\"ln-thin\" x1=\"66.26\" x2=\"71.21\" y1=\"33.74\" y2=\"28.79\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_resolution",
+      "type": "phase_glyph",
+      "label": "Fuse Resolution mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "fuse-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-resolution\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50.00\" cy=\"39.00\" r=\"15\"/>\n<circle class=\"ln\" cx=\"59.53\" cy=\"55.50\" r=\"15\"/>\n<circle class=\"ln\" cx=\"40.47\" cy=\"55.50\" r=\"15\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_initiation",
+      "type": "phase_glyph",
+      "label": "Quiet Initiation mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "quiet-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-initiation\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M14,50 Q50,25 86,50 Q50,75 14,50 Z\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"9\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_stabilization",
+      "type": "phase_glyph",
+      "label": "Quiet Stabilization mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "quiet-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-stabilization\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M63.77,69.66 A24,24 0 1,1 63.77,30.34\"/>\n<circle class=\"dot-fill\" cx=\"72\" cy=\"50\" r=\"7\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_resolution",
+      "type": "phase_glyph",
+      "label": "Quiet Resolution mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "quiet-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-resolution\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"20.00,26.00 80.00,26.00 50.00,84.00\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"42\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_initiation",
+      "type": "phase_glyph",
+      "label": "Relay Initiation mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "relay-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-initiation\" viewBox=\"0 0 100 100\">\n<polyline class=\"ln\" points=\"16.00,39.00 26.00,50.00 16.00,61.00\"/>\n<polyline class=\"ln\" points=\"32.00,39.00 42.00,50.00 32.00,61.00\"/>\n<polyline class=\"ln\" points=\"48.00,39.00 58.00,50.00 48.00,61.00\"/>\n<circle class=\"dot-open\" cx=\"79\" cy=\"50\" r=\"8.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_stabilization",
+      "type": "phase_glyph",
+      "label": "Relay Stabilization mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "relay-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-stabilization\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"32.00,32.00 68.00,32.00 68.00,68.00 32.00,68.00\"/>\n<line class=\"ln-thin\" x1=\"32\" x2=\"68\" y1=\"32\" y2=\"68\"/>\n<line class=\"ln-thin\" x1=\"68\" x2=\"32\" y1=\"32\" y2=\"68\"/>\n<circle class=\"ln-thin\" cx=\"32\" cy=\"32\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"68\" cy=\"32\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"68\" cy=\"68\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"32\" cy=\"68\" r=\"3\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"8\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_resolution",
+      "type": "phase_glyph",
+      "label": "Relay Resolution mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "relay-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-resolution\" viewBox=\"0 0 100 100\">\n<line class=\"ln-thin\" x1=\"21\" x2=\"79\" y1=\"50\" y2=\"50\"/>\n<circle class=\"dot-fill\" cx=\"21\" cy=\"50\" r=\"4.5\"/>\n<circle class=\"dot-fill\" cx=\"79\" cy=\"50\" r=\"4.5\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"7\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_initiation",
+      "type": "phase_glyph",
+      "label": "Span Initiation mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "span-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,16.00 19.00,82.00 81.00,82.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"60\" r=\"8.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_stabilization",
+      "type": "phase_glyph",
+      "label": "Span Stabilization mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "span-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-stabilization\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"26\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"19\" y2=\"30\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"70\" y2=\"81\"/>\n<line class=\"ln-thin\" x1=\"19\" x2=\"30\" y1=\"50\" y2=\"50\"/>\n<line class=\"ln-thin\" x1=\"70\" x2=\"81\" y1=\"50\" y2=\"50\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_resolution",
+      "type": "phase_glyph",
+      "label": "Span Resolution mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "span-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M26,84 L26,50 A24,24 0 0,1 74,50 L74,84\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"68\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "emblem_anchor",
+      "type": "object_symbol",
+      "label": "Anchor emblem",
+      "layer": 4,
+      "function_tag": "Anchor",
+      "object_id": "graphite_ledger",
+      "svg_symbol_id": "anchor-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-emblem\" viewBox=\"0 0 100 240\">\n<rect class=\"ln\" height=\"76\" width=\"40\" x=\"30\" y=\"14\"/>\n<polyline class=\"ln-thin\" points=\"24.00,18.00 24.00,10.00 32.00,10.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"34\" r=\"7\"/>\n<path class=\"ln\" d=\"M30,90 L70,90 L70,130 Q70,160 50,170 Q30,160 30,130 Z\"/>\n<line class=\"spine-reinforced\" x1=\"50\" x2=\"50\" y1=\"14\" y2=\"170\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"120\" r=\"8\"/>\n<path class=\"ln\" d=\"M50,170 Q22,198 15,232\"/>\n<path class=\"ln\" d=\"M50,170 Q78,198 85,232\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"179\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_break",
+      "type": "object_symbol",
+      "label": "Break emblem",
+      "layer": 4,
+      "function_tag": "Break",
+      "object_id": "signal_baton",
+      "svg_symbol_id": "break-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 60.00,28.00 56.00,35.00 80.00,50.00 60.00,60.00 66.00,70.00 50.00,90.00 37.00,70.00 43.00,60.00 20.00,50.00 43.00,35.00 39.00,28.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"7\"/>\n<line class=\"spine-crack\" x1=\"50\" x2=\"50\" y1=\"90\" y2=\"170\"/>\n<line class=\"ln\" x1=\"27\" x2=\"73\" y1=\"107\" y2=\"153\"/>\n<line class=\"ln\" x1=\"73\" x2=\"27\" y1=\"107\" y2=\"153\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<path class=\"ln\" d=\"M38.03,237.89 A35,35 0 0,1 38.03,172.11\"/>\n<path class=\"ln\" d=\"M61.97,172.11 A35,35 0 0,1 61.97,237.89\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"205\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_fuse",
+      "type": "object_symbol",
+      "label": "Fuse emblem",
+      "layer": 4,
+      "function_tag": "Fuse",
+      "object_id": "industrial_cloth",
+      "svg_symbol_id": "fuse-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 82.91,33.00 82.91,71.00 50.00,90.00 17.09,71.00 17.09,33.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"8\"/>\n<line class=\"ln-thin\" x1=\"41\" x2=\"59\" y1=\"84\" y2=\"96\"/><line class=\"ln-thin\" x1=\"59\" x2=\"41\" y1=\"84\" y2=\"96\"/>\n<circle class=\"ln\" cx=\"50\" cy=\"130\" r=\"40\"/>\n<line class=\"ln-thin\" x1=\"83.00\" x2=\"90.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"73.33\" x2=\"78.28\" y1=\"153.33\" y2=\"158.28\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"163.00\" y2=\"170.00\"/><line class=\"ln-thin\" x1=\"26.67\" x2=\"21.72\" y1=\"153.33\" y2=\"158.28\"/><line class=\"ln-thin\" x1=\"17.00\" x2=\"10.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"26.67\" x2=\"21.72\" y1=\"106.67\" y2=\"101.72\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"97.00\" y2=\"90.00\"/><line class=\"ln-thin\" x1=\"73.33\" x2=\"78.28\" y1=\"106.67\" y2=\"101.72\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<line class=\"ln-thin\" x1=\"41\" x2=\"59\" y1=\"164\" y2=\"176\"/><line class=\"ln-thin\" x1=\"59\" x2=\"41\" y1=\"164\" y2=\"176\"/>\n<circle class=\"ln\" cx=\"50.00\" cy=\"190.00\" r=\"20\"/>\n<circle class=\"ln\" cx=\"62.99\" cy=\"212.50\" r=\"20\"/>\n<circle class=\"ln\" cx=\"37.01\" cy=\"212.50\" r=\"20\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"205\" r=\"5.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_quiet",
+      "type": "object_symbol",
+      "label": "Quiet emblem",
+      "layer": 4,
+      "function_tag": "Quiet",
+      "object_id": "matte_coin",
+      "svg_symbol_id": "quiet-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-emblem\" viewBox=\"0 0 100 240\">\n<path class=\"ln\" d=\"M14,52 Q50,30 86,52 Q50,74 14,52 Z\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"8\"/>\n<line class=\"spine-faint\" x1=\"50\" x2=\"50\" y1=\"64\" y2=\"90\"/>\n<path class=\"ln\" d=\"M72.94,162.77 A40,40 0 1,1 72.94,97.23\"/>\n<circle class=\"dot-fill\" cx=\"80\" cy=\"130\" r=\"7\"/>\n<line class=\"spine-faint\" x1=\"50\" x2=\"50\" y1=\"170\" y2=\"192\"/>\n<polygon class=\"ln\" points=\"20.00,170.00 80.00,170.00 50.00,236.00\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"192\" r=\"7\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_relay",
+      "type": "object_symbol",
+      "label": "Relay emblem",
+      "layer": 4,
+      "function_tag": "Relay",
+      "object_id": "relay_node",
+      "svg_symbol_id": "relay-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-emblem\" viewBox=\"0 0 100 240\">\n<polyline class=\"ln\" points=\"42.00,27.20 50.00,36.80 58.00,27.20\"/><polyline class=\"ln\" points=\"42.00,45.20 50.00,54.80 58.00,45.20\"/><polyline class=\"ln\" points=\"42.00,63.20 50.00,72.80 58.00,63.20\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"86\" r=\"7.5\"/>\n<polyline class=\"ln\" points=\"44.00,95.40 50.00,102.60 56.00,95.40\"/>\n<polygon class=\"ln\" points=\"26.00,110.00 74.00,110.00 74.00,158.00 26.00,158.00\"/>\n<line class=\"ln-thin\" x1=\"26\" x2=\"74\" y1=\"110\" y2=\"158\"/>\n<line class=\"ln-thin\" x1=\"74\" x2=\"26\" y1=\"110\" y2=\"158\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"134\" r=\"9\"/>\n<polyline class=\"ln\" points=\"44.00,167.40 50.00,174.60 56.00,167.40\"/>\n<line class=\"ln-thin\" x1=\"26\" x2=\"74\" y1=\"207\" y2=\"207\"/>\n<circle class=\"dot-fill\" cx=\"26\" cy=\"207\" r=\"5\"/>\n<circle class=\"dot-fill\" cx=\"74\" cy=\"207\" r=\"5\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"207\" r=\"7.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_span",
+      "type": "object_symbol",
+      "label": "Span emblem",
+      "layer": 4,
+      "function_tag": "Span",
+      "object_id": "tri_key_clasp",
+      "svg_symbol_id": "span-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 26.00,90.00 74.00,90.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"66\" r=\"8\"/>\n<circle class=\"ln\" cx=\"50\" cy=\"130\" r=\"40\"/>\n<line class=\"ln-thin\" x1=\"83.00\" x2=\"90.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"163.00\" y2=\"170.00\"/><line class=\"ln-thin\" x1=\"17.00\" x2=\"10.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"97.00\" y2=\"90.00\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<path class=\"ln\" d=\"M26,240 L26,194 A24,24 0 0,1 74,194 L74,240\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"217\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "symbol_tri_span",
+      "type": "master_symbol",
+      "label": "Tri-Span master symbol",
+      "layer": 2,
+      "svg_symbol_id": "tri-span",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"tri-span\" viewBox=\"0 0 100 100\">\n<line class=\"ln\" x1=\"32\" x2=\"32\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"50\" x2=\"50\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"68\" x2=\"68\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"21\" x2=\"79\" y1=\"79\" y2=\"21\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"5.5\"/>\n</symbol>",
+      "description": "Three lines for shared access, one stroke for Typhen’s own alignment, one circle for the outcome recorded."
+    },
+    {
+      "id": "symbol_blank_coin",
+      "type": "null_symbol",
+      "label": "Blank Coin / null state",
+      "layer": 2,
+      "svg_symbol_id": "blank-coin",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"blank-coin\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"30\"/>\n</symbol>",
+      "description": "Plain, unmarked circle; no outcome recorded yet."
+    },
+    {
+      "id": "entry_span_01",
+      "type": "matrix_entry",
+      "label": "SPAN-01",
+      "layer": 5,
+      "indexed_asset": "SPAN-01",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to make first contact between two isolated parties who don't yet know they need each other. Span-01 is the cold introduction that becomes the only route through.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-initiation",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_01",
+      "type": "actionable_statement",
+      "label": "SPAN-01 action",
+      "layer": 6,
+      "text": "Deploy to make first contact between two isolated parties who don't yet know they need each other. Span-01 is the cold introduction that becomes the only route through.",
+      "entry_id": "entry_span_01"
+    },
+    {
+      "id": "entry_span_02",
+      "type": "matrix_entry",
+      "label": "SPAN-02",
+      "layer": 5,
+      "indexed_asset": "SPAN-02",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy when an existing channel is fraying under load. Span-02 adds redundancy to a bridge so a single point of failure can't sever the whole connection.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-initiation",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_02",
+      "type": "actionable_statement",
+      "label": "SPAN-02 action",
+      "layer": 6,
+      "text": "Deploy when an existing channel is fraying under load. Span-02 adds redundancy to a bridge so a single point of failure can't sever the whole connection.",
+      "entry_id": "entry_span_02"
+    },
+    {
+      "id": "entry_span_03",
+      "type": "matrix_entry",
+      "label": "SPAN-03",
+      "layer": 5,
+      "indexed_asset": "SPAN-03",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when the direct path is compromised or blocked. Span-03 finds the detour and makes it feel like the plan all along.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_03",
+      "type": "actionable_statement",
+      "label": "SPAN-03 action",
+      "layer": 6,
+      "text": "Deploy when the direct path is compromised or blocked. Span-03 finds the detour and makes it feel like the plan all along.",
+      "entry_id": "entry_span_03"
+    },
+    {
+      "id": "entry_span_04",
+      "type": "matrix_entry",
+      "label": "SPAN-04",
+      "layer": 5,
+      "indexed_asset": "SPAN-04",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to force two reluctant sides into the same room. Span-04 turns a soft ask into a connection neither party can afford to ignore.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_04",
+      "type": "actionable_statement",
+      "label": "SPAN-04 action",
+      "layer": 6,
+      "text": "Deploy to force two reluctant sides into the same room. Span-04 turns a soft ask into a connection neither party can afford to ignore.",
+      "entry_id": "entry_span_04"
+    },
+    {
+      "id": "entry_span_05",
+      "type": "matrix_entry",
+      "label": "SPAN-05",
+      "layer": 5,
+      "indexed_asset": "SPAN-05",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy mid-crossing, when movement across the gap risks stalling. Span-05 keeps throughput steady so nothing is stranded halfway.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_05",
+      "type": "actionable_statement",
+      "label": "SPAN-05 action",
+      "layer": 6,
+      "text": "Deploy mid-crossing, when movement across the gap risks stalling. Span-05 keeps throughput steady so nothing is stranded halfway.",
+      "entry_id": "entry_span_05"
+    },
+    {
+      "id": "entry_span_06",
+      "type": "matrix_entry",
+      "label": "SPAN-06",
+      "layer": 5,
+      "indexed_asset": "SPAN-06",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once the bridge has served its purpose and lingering ties would only create liability. Span-06 disconnects without leaving a trace of dependency behind.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_06",
+      "type": "actionable_statement",
+      "label": "SPAN-06 action",
+      "layer": 6,
+      "text": "Deploy once the bridge has served its purpose and lingering ties would only create liability. Span-06 disconnects without leaving a trace of dependency behind.",
+      "entry_id": "entry_span_06"
+    },
+    {
+      "id": "entry_span_07",
+      "type": "matrix_entry",
+      "label": "SPAN-07",
+      "layer": 5,
+      "indexed_asset": "SPAN-07",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when both sides must act on the same beat or the connection collapses. Span-07 is the handshake that synchronizes timing across the gap.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_07",
+      "type": "actionable_statement",
+      "label": "SPAN-07 action",
+      "layer": 6,
+      "text": "Deploy when both sides must act on the same beat or the connection collapses. Span-07 is the handshake that synchronizes timing across the gap.",
+      "entry_id": "entry_span_07"
+    },
+    {
+      "id": "entry_span_08",
+      "type": "matrix_entry",
+      "label": "SPAN-08",
+      "layer": 5,
+      "indexed_asset": "SPAN-08",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a working connection needs more capacity, not a new one. Span-08 widens existing throughput instead of building a second bridge.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-stabilization",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_08",
+      "type": "actionable_statement",
+      "label": "SPAN-08 action",
+      "layer": 6,
+      "text": "Deploy when a working connection needs more capacity, not a new one. Span-08 widens existing throughput instead of building a second bridge.",
+      "entry_id": "entry_span_08"
+    },
+    {
+      "id": "entry_span_09",
+      "type": "matrix_entry",
+      "label": "SPAN-09",
+      "layer": 5,
+      "indexed_asset": "SPAN-09",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when the crossing needs to exist for the few who know, and no one else. Span-09 builds a bridge that reads as empty space to anyone not carrying the key.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-resolution",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_09",
+      "type": "actionable_statement",
+      "label": "SPAN-09 action",
+      "layer": 6,
+      "text": "Deploy when the crossing needs to exist for the few who know, and no one else. Span-09 builds a bridge that reads as empty space to anyone not carrying the key.",
+      "entry_id": "entry_span_09"
+    },
+    {
+      "id": "entry_span_10",
+      "type": "matrix_entry",
+      "label": "SPAN-10",
+      "layer": 5,
+      "indexed_asset": "SPAN-10",
+      "function_tag": "Span",
+      "function_definition": "Span (Bridges gaps between separated points or parties)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy to make a hidden route common knowledge, on purpose. Span-10 turns a private crossing into public infrastructure once secrecy stops paying off.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "span-resolution",
+      "svg_object_symbol_id": "span-emblem",
+      "object_id": "tri_key_clasp"
+    },
+    {
+      "id": "action_span_10",
+      "type": "actionable_statement",
+      "label": "SPAN-10 action",
+      "layer": 6,
+      "text": "Deploy to make a hidden route common knowledge, on purpose. Span-10 turns a private crossing into public infrastructure once secrecy stops paying off.",
+      "entry_id": "entry_span_10"
+    },
+    {
+      "id": "entry_break_01",
+      "type": "matrix_entry",
+      "label": "BREAK-01",
+      "layer": 5,
+      "indexed_asset": "BREAK-01",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force — it needs the one flaw that makes everyone else start looking for more.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-initiation",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_01",
+      "type": "actionable_statement",
+      "label": "BREAK-01 action",
+      "layer": 6,
+      "text": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force — it needs the one flaw that makes everyone else start looking for more.",
+      "entry_id": "entry_break_01"
+    },
+    {
+      "id": "entry_break_02",
+      "type": "matrix_entry",
+      "label": "BREAK-02",
+      "layer": 5,
+      "indexed_asset": "BREAK-02",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself — it's making sure the disruption holds and doesn't get walked back.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-initiation",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_02",
+      "type": "actionable_statement",
+      "label": "BREAK-02 action",
+      "layer": 6,
+      "text": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself — it's making sure the disruption holds and doesn't get walked back.",
+      "entry_id": "entry_break_02"
+    },
+    {
+      "id": "entry_break_03",
+      "type": "matrix_entry",
+      "label": "BREAK-03",
+      "layer": 5,
+      "indexed_asset": "BREAK-03",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a fracture is already happening but heading somewhere worse. Break-03 steers the damage toward an outcome you can actually use.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_03",
+      "type": "actionable_statement",
+      "label": "BREAK-03 action",
+      "layer": 6,
+      "text": "Deploy when a fracture is already happening but heading somewhere worse. Break-03 steers the damage toward an outcome you can actually use.",
+      "entry_id": "entry_break_03"
+    },
+    {
+      "id": "entry_break_04",
+      "type": "matrix_entry",
+      "label": "BREAK-04",
+      "layer": 5,
+      "indexed_asset": "BREAK-04",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy for scorched-earth exits and the permanent, recursive dismantling of entrenched structures. Break-04 turns a small fissure into a compounding systemic collapse.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_04",
+      "type": "actionable_statement",
+      "label": "BREAK-04 action",
+      "layer": 6,
+      "text": "Deploy for scorched-earth exits and the permanent, recursive dismantling of entrenched structures. Break-04 turns a small fissure into a compounding systemic collapse.",
+      "entry_id": "entry_break_04"
+    },
+    {
+      "id": "entry_break_05",
+      "type": "matrix_entry",
+      "label": "BREAK-05",
+      "layer": 5,
+      "indexed_asset": "BREAK-05",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy immediately after the initial break, before drift turns a clean cut into an uncontrolled spiral. Break-05 locks the disruption at the size you intended.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_05",
+      "type": "actionable_statement",
+      "label": "BREAK-05 action",
+      "layer": 6,
+      "text": "Deploy immediately after the initial break, before drift turns a clean cut into an uncontrolled spiral. Break-05 locks the disruption at the size you intended.",
+      "entry_id": "entry_break_05"
+    },
+    {
+      "id": "entry_break_06",
+      "type": "matrix_entry",
+      "label": "BREAK-06",
+      "layer": 5,
+      "indexed_asset": "BREAK-06",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to finish a pattern completely, not just interrupt it. Break-06 clears the field so nothing is left to reassert itself later.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_06",
+      "type": "actionable_statement",
+      "label": "BREAK-06 action",
+      "layer": 6,
+      "text": "Deploy to finish a pattern completely, not just interrupt it. Break-06 clears the field so nothing is left to reassert itself later.",
+      "entry_id": "entry_break_06"
+    },
+    {
+      "id": "entry_break_07",
+      "type": "matrix_entry",
+      "label": "BREAK-07",
+      "layer": 5,
+      "indexed_asset": "BREAK-07",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a pattern spans multiple actors who all need to feel the break at once. Break-07 makes the reset simultaneous, so no one can quietly opt out of it.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_07",
+      "type": "actionable_statement",
+      "label": "BREAK-07 action",
+      "layer": 6,
+      "text": "Deploy when a pattern spans multiple actors who all need to feel the break at once. Break-07 makes the reset simultaneous, so no one can quietly opt out of it.",
+      "entry_id": "entry_break_07"
+    },
+    {
+      "id": "entry_break_08",
+      "type": "matrix_entry",
+      "label": "BREAK-08",
+      "layer": 5,
+      "indexed_asset": "BREAK-08",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to turn a quiet fracture into a visible one. Break-08 exposes the hairline cracks a system was hoping to keep off the record.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-stabilization",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_08",
+      "type": "actionable_statement",
+      "label": "BREAK-08 action",
+      "layer": 6,
+      "text": "Deploy to turn a quiet fracture into a visible one. Break-08 exposes the hairline cracks a system was hoping to keep off the record.",
+      "entry_id": "entry_break_08"
+    },
+    {
+      "id": "entry_break_09",
+      "type": "matrix_entry",
+      "label": "BREAK-09",
+      "layer": 5,
+      "indexed_asset": "BREAK-09",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when the break has to look like decay, not sabotage. Break-09 disrupts from inside the pattern so the shift reads as natural erosion.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-resolution",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_09",
+      "type": "actionable_statement",
+      "label": "BREAK-09 action",
+      "layer": 6,
+      "text": "Deploy when the break has to look like decay, not sabotage. Break-09 disrupts from inside the pattern so the shift reads as natural erosion.",
+      "entry_id": "entry_break_09"
+    },
+    {
+      "id": "entry_break_10",
+      "type": "matrix_entry",
+      "label": "BREAK-10",
+      "layer": 5,
+      "indexed_asset": "BREAK-10",
+      "function_tag": "Break",
+      "function_definition": "Break (Disrupts or ends an existing pattern)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when denial is the only thing keeping a broken system standing. Break-10 forces the room to acknowledge what already failed.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "break-resolution",
+      "svg_object_symbol_id": "break-emblem",
+      "object_id": "signal_baton"
+    },
+    {
+      "id": "action_break_10",
+      "type": "actionable_statement",
+      "label": "BREAK-10 action",
+      "layer": 6,
+      "text": "Deploy when denial is the only thing keeping a broken system standing. Break-10 forces the room to acknowledge what already failed.",
+      "entry_id": "entry_break_10"
+    },
+    {
+      "id": "entry_fuse_01",
+      "type": "matrix_entry",
+      "label": "FUSE-01",
+      "layer": 5,
+      "indexed_asset": "FUSE-01",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld — small, but it's what everything else gets built on.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-initiation",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_01",
+      "type": "actionable_statement",
+      "label": "FUSE-01 action",
+      "layer": 6,
+      "text": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld — small, but it's what everything else gets built on.",
+      "entry_id": "entry_fuse_01"
+    },
+    {
+      "id": "entry_fuse_02",
+      "type": "matrix_entry",
+      "label": "FUSE-02",
+      "layer": 5,
+      "indexed_asset": "FUSE-02",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy where a bond exists but hasn't been tested under real load yet. Fuse-02 reinforces the seam before pressure finds the weak point for you.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-initiation",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_02",
+      "type": "actionable_statement",
+      "label": "FUSE-02 action",
+      "layer": 6,
+      "text": "Deploy where a bond exists but hasn't been tested under real load yet. Fuse-02 reinforces the seam before pressure finds the weak point for you.",
+      "entry_id": "entry_fuse_02"
+    },
+    {
+      "id": "entry_fuse_03",
+      "type": "matrix_entry",
+      "label": "FUSE-03",
+      "layer": 5,
+      "indexed_asset": "FUSE-03",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it — it reconfigures what's on each end until the connection actually works.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_03",
+      "type": "actionable_statement",
+      "label": "FUSE-03 action",
+      "layer": 6,
+      "text": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it — it reconfigures what's on each end until the connection actually works.",
+      "entry_id": "entry_fuse_03"
+    },
+    {
+      "id": "entry_fuse_04",
+      "type": "matrix_entry",
+      "label": "FUSE-04",
+      "layer": 5,
+      "indexed_asset": "FUSE-04",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when partial buy-in isn't enough and the moment calls for total, forced unity. Fuse-04 collapses the space between components until there's no seam left to exploit.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_04",
+      "type": "actionable_statement",
+      "label": "FUSE-04 action",
+      "layer": 6,
+      "text": "Deploy when partial buy-in isn't enough and the moment calls for total, forced unity. Fuse-04 collapses the space between components until there's no seam left to exploit.",
+      "entry_id": "entry_fuse_04"
+    },
+    {
+      "id": "entry_fuse_05",
+      "type": "matrix_entry",
+      "label": "FUSE-05",
+      "layer": 5,
+      "indexed_asset": "FUSE-05",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a bonded system is under stress and threatening to shake apart. Fuse-05 keeps the whole assembly coherent through the turbulence.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_05",
+      "type": "actionable_statement",
+      "label": "FUSE-05 action",
+      "layer": 6,
+      "text": "Deploy when a bonded system is under stress and threatening to shake apart. Fuse-05 keeps the whole assembly coherent through the turbulence.",
+      "entry_id": "entry_fuse_05"
+    },
+    {
+      "id": "entry_fuse_06",
+      "type": "matrix_entry",
+      "label": "FUSE-06",
+      "layer": 5,
+      "indexed_asset": "FUSE-06",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when components need to separate without damaging each other on the way out. Fuse-06 dissolves the bond along its original seams, not a jagged tear.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_06",
+      "type": "actionable_statement",
+      "label": "FUSE-06 action",
+      "layer": 6,
+      "text": "Deploy when components need to separate without damaging each other on the way out. Fuse-06 dissolves the bond along its original seams, not a jagged tear.",
+      "entry_id": "entry_fuse_06"
+    },
+    {
+      "id": "entry_fuse_07",
+      "type": "matrix_entry",
+      "label": "FUSE-07",
+      "layer": 5,
+      "indexed_asset": "FUSE-07",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once separate parts are bonded and need to move as a single body. Fuse-07 is the shared rhythm that makes a joined system act like it was never two things.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_07",
+      "type": "actionable_statement",
+      "label": "FUSE-07 action",
+      "layer": 6,
+      "text": "Deploy once separate parts are bonded and need to move as a single body. Fuse-07 is the shared rhythm that makes a joined system act like it was never two things.",
+      "entry_id": "entry_fuse_07"
+    },
+    {
+      "id": "entry_fuse_08",
+      "type": "matrix_entry",
+      "label": "FUSE-08",
+      "layer": 5,
+      "indexed_asset": "FUSE-08",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to convert a merger into leverage. Fuse-08 takes a stable bond and pushes its combined output past what either side could produce alone.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-stabilization",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_08",
+      "type": "actionable_statement",
+      "label": "FUSE-08 action",
+      "layer": 6,
+      "text": "Deploy to convert a merger into leverage. Fuse-08 takes a stable bond and pushes its combined output past what either side could produce alone.",
+      "entry_id": "entry_fuse_08"
+    },
+    {
+      "id": "entry_fuse_09",
+      "type": "matrix_entry",
+      "label": "FUSE-09",
+      "layer": 5,
+      "indexed_asset": "FUSE-09",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when an alliance needs the benefits of unity without the appearance of one. Fuse-09 binds two parties so completely that the bond itself disappears from view.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-resolution",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_09",
+      "type": "actionable_statement",
+      "label": "FUSE-09 action",
+      "layer": 6,
+      "text": "Deploy when an alliance needs the benefits of unity without the appearance of one. Fuse-09 binds two parties so completely that the bond itself disappears from view.",
+      "entry_id": "entry_fuse_09"
+    },
+    {
+      "id": "entry_fuse_10",
+      "type": "matrix_entry",
+      "label": "FUSE-10",
+      "layer": 5,
+      "indexed_asset": "FUSE-10",
+      "function_tag": "Fuse",
+      "function_definition": "Fuse (Binds separate elements into one)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy to make an alliance official. Fuse-10 puts a bonded relationship on the record, on purpose, as proof of where loyalties now sit.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "fuse-resolution",
+      "svg_object_symbol_id": "fuse-emblem",
+      "object_id": "industrial_cloth"
+    },
+    {
+      "id": "action_fuse_10",
+      "type": "actionable_statement",
+      "label": "FUSE-10 action",
+      "layer": 6,
+      "text": "Deploy to make an alliance official. Fuse-10 puts a bonded relationship on the record, on purpose, as proof of where loyalties now sit.",
+      "entry_id": "entry_fuse_10"
+    },
+    {
+      "id": "entry_relay_01",
+      "type": "matrix_entry",
+      "label": "RELAY-01",
+      "layer": 5,
+      "indexed_asset": "RELAY-01",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to wake up a network that's gone dormant. Relay-01 is the first ping that gets everyone else moving again.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-initiation",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_01",
+      "type": "actionable_statement",
+      "label": "RELAY-01 action",
+      "layer": 6,
+      "text": "Deploy to wake up a network that's gone dormant. Relay-01 is the first ping that gets everyone else moving again.",
+      "entry_id": "entry_relay_01"
+    },
+    {
+      "id": "entry_relay_02",
+      "type": "matrix_entry",
+      "label": "RELAY-02",
+      "layer": 5,
+      "indexed_asset": "RELAY-02",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy on a message that can't afford to degrade in transit. Relay-02 armors the signal so distance and noise can't corrupt it.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-initiation",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_02",
+      "type": "actionable_statement",
+      "label": "RELAY-02 action",
+      "layer": 6,
+      "text": "Deploy on a message that can't afford to degrade in transit. Relay-02 armors the signal so distance and noise can't corrupt it.",
+      "entry_id": "entry_relay_02"
+    },
+    {
+      "id": "entry_relay_03",
+      "type": "matrix_entry",
+      "label": "RELAY-03",
+      "layer": 5,
+      "indexed_asset": "RELAY-03",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when the intended recipient isn't the right one anymore. Relay-03 reroutes the information before it lands somewhere it can be misused.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_03",
+      "type": "actionable_statement",
+      "label": "RELAY-03 action",
+      "layer": 6,
+      "text": "Deploy when the intended recipient isn't the right one anymore. Relay-03 reroutes the information before it lands somewhere it can be misused.",
+      "entry_id": "entry_relay_03"
+    },
+    {
+      "id": "entry_relay_04",
+      "type": "matrix_entry",
+      "label": "RELAY-04",
+      "layer": 5,
+      "indexed_asset": "RELAY-04",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when silence is being used as an excuse. Relay-04 turns a routine update into a demand that can't be left unread.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_04",
+      "type": "actionable_statement",
+      "label": "RELAY-04 action",
+      "layer": 6,
+      "text": "Deploy when silence is being used as an excuse. Relay-04 turns a routine update into a demand that can't be left unread.",
+      "entry_id": "entry_relay_04"
+    },
+    {
+      "id": "entry_relay_05",
+      "type": "matrix_entry",
+      "label": "RELAY-05",
+      "layer": 5,
+      "indexed_asset": "RELAY-05",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across a long or noisy channel where the signal risks drifting off message. Relay-05 keeps every hop aligned with the original intent.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_05",
+      "type": "actionable_statement",
+      "label": "RELAY-05 action",
+      "layer": 6,
+      "text": "Deploy across a long or noisy channel where the signal risks drifting off message. Relay-05 keeps every hop aligned with the original intent.",
+      "entry_id": "entry_relay_05"
+    },
+    {
+      "id": "entry_relay_06",
+      "type": "matrix_entry",
+      "label": "RELAY-06",
+      "layer": 5,
+      "indexed_asset": "RELAY-06",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to shut a channel down without leaving it half-open. Relay-06 lets a transmission system power all the way off, cleanly, once it's no longer needed.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_06",
+      "type": "actionable_statement",
+      "label": "RELAY-06 action",
+      "layer": 6,
+      "text": "Deploy to shut a channel down without leaving it half-open. Relay-06 lets a transmission system power all the way off, cleanly, once it's no longer needed.",
+      "entry_id": "entry_relay_06"
+    },
+    {
+      "id": "entry_relay_07",
+      "type": "matrix_entry",
+      "label": "RELAY-07",
+      "layer": 5,
+      "indexed_asset": "RELAY-07",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across multiple channels that need to deliver the same message at the same moment. Relay-07 is the master clock that keeps every relay point in time.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_07",
+      "type": "actionable_statement",
+      "label": "RELAY-07 action",
+      "layer": 6,
+      "text": "Deploy across multiple channels that need to deliver the same message at the same moment. Relay-07 is the master clock that keeps every relay point in time.",
+      "entry_id": "entry_relay_07"
+    },
+    {
+      "id": "entry_relay_08",
+      "type": "matrix_entry",
+      "label": "RELAY-08",
+      "layer": 5,
+      "indexed_asset": "RELAY-08",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach — the same signal, carried past the range it started with.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-stabilization",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_08",
+      "type": "actionable_statement",
+      "label": "RELAY-08 action",
+      "layer": 6,
+      "text": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach — the same signal, carried past the range it started with.",
+      "entry_id": "entry_relay_08"
+    },
+    {
+      "id": "entry_relay_09",
+      "type": "matrix_entry",
+      "label": "RELAY-09",
+      "layer": 5,
+      "indexed_asset": "RELAY-09",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy for information that has to move without leaving a readable trail. Relay-09 carries the message through channels that don't log what passed through them.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-resolution",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_09",
+      "type": "actionable_statement",
+      "label": "RELAY-09 action",
+      "layer": 6,
+      "text": "Deploy for information that has to move without leaving a readable trail. Relay-09 carries the message through channels that don't log what passed through them.",
+      "entry_id": "entry_relay_09"
+    },
+    {
+      "id": "entry_relay_10",
+      "type": "matrix_entry",
+      "label": "RELAY-10",
+      "layer": 5,
+      "indexed_asset": "RELAY-10",
+      "function_tag": "Relay",
+      "function_definition": "Relay (Carries information from one point to another)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy to settle a dispute over what was actually said. Relay-10 puts the unedited message back in front of everyone, source intact.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "relay-resolution",
+      "svg_object_symbol_id": "relay-emblem",
+      "object_id": "relay_node"
+    },
+    {
+      "id": "action_relay_10",
+      "type": "actionable_statement",
+      "label": "RELAY-10 action",
+      "layer": 6,
+      "text": "Deploy to settle a dispute over what was actually said. Relay-10 puts the unedited message back in front of everyone, source intact.",
+      "entry_id": "entry_relay_10"
+    },
+    {
+      "id": "entry_anchor_01",
+      "type": "matrix_entry",
+      "label": "ANCHOR-01",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-01",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy before anything else is built. Anchor-01 sets the one fixed point everything downstream will be measured against.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-initiation",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_01",
+      "type": "actionable_statement",
+      "label": "ANCHOR-01 action",
+      "layer": 6,
+      "text": "Deploy before anything else is built. Anchor-01 sets the one fixed point everything downstream will be measured against.",
+      "entry_id": "entry_anchor_01"
+    },
+    {
+      "id": "entry_anchor_02",
+      "type": "matrix_entry",
+      "label": "ANCHOR-02",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-02",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy when a stable structure is about to face pressure it wasn't originally built for. Anchor-02 reinforces the foundation before the stress test, not during it.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-initiation",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_02",
+      "type": "actionable_statement",
+      "label": "ANCHOR-02 action",
+      "layer": 6,
+      "text": "Deploy when a stable structure is about to face pressure it wasn't originally built for. Anchor-02 reinforces the foundation before the stress test, not during it.",
+      "entry_id": "entry_anchor_02"
+    },
+    {
+      "id": "entry_anchor_03",
+      "type": "matrix_entry",
+      "label": "ANCHOR-03",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-03",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when the current foundation is sound but poorly placed. Anchor-03 relocates the grounding point to where it can actually hold weight.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_03",
+      "type": "actionable_statement",
+      "label": "ANCHOR-03 action",
+      "layer": 6,
+      "text": "Deploy when the current foundation is sound but poorly placed. Anchor-03 relocates the grounding point to where it can actually hold weight.",
+      "entry_id": "entry_anchor_03"
+    },
+    {
+      "id": "entry_anchor_04",
+      "type": "matrix_entry",
+      "label": "ANCHOR-04",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-04",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when collapse is imminent and half-measures won't hold. Anchor-04 throws maximum resistance at the failure point, whatever the cost to flexibility.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_04",
+      "type": "actionable_statement",
+      "label": "ANCHOR-04 action",
+      "layer": 6,
+      "text": "Deploy when collapse is imminent and half-measures won't hold. Anchor-04 throws maximum resistance at the failure point, whatever the cost to flexibility.",
+      "entry_id": "entry_anchor_04"
+    },
+    {
+      "id": "entry_anchor_05",
+      "type": "matrix_entry",
+      "label": "ANCHOR-05",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-05",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy in the middle of active volatility. Anchor-05 is the structure staying upright while everything around it is still moving.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_05",
+      "type": "actionable_statement",
+      "label": "ANCHOR-05 action",
+      "layer": 6,
+      "text": "Deploy in the middle of active volatility. Anchor-05 is the structure staying upright while everything around it is still moving.",
+      "entry_id": "entry_anchor_05"
+    },
+    {
+      "id": "entry_anchor_06",
+      "type": "matrix_entry",
+      "label": "ANCHOR-06",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-06",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a structure has outlived its foundation and needs to be freed to reset. Anchor-06 releases support on purpose, not through failure.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_06",
+      "type": "actionable_statement",
+      "label": "ANCHOR-06 action",
+      "layer": 6,
+      "text": "Deploy when a structure has outlived its foundation and needs to be freed to reset. Anchor-06 releases support on purpose, not through failure.",
+      "entry_id": "entry_anchor_06"
+    },
+    {
+      "id": "entry_anchor_07",
+      "type": "matrix_entry",
+      "label": "ANCHOR-07",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-07",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across a system with more than one point of stability. Anchor-07 synchronizes every stabilizing force so none of them is fighting the others.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_07",
+      "type": "actionable_statement",
+      "label": "ANCHOR-07 action",
+      "layer": 6,
+      "text": "Deploy across a system with more than one point of stability. Anchor-07 synchronizes every stabilizing force so none of them is fighting the others.",
+      "entry_id": "entry_anchor_07"
+    },
+    {
+      "id": "entry_anchor_08",
+      "type": "matrix_entry",
+      "label": "ANCHOR-08",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-08",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once stability is no longer the ceiling but the floor. Anchor-08 uses a secure foundation to support more weight than the structure was originally rated for.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-stabilization",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_08",
+      "type": "actionable_statement",
+      "label": "ANCHOR-08 action",
+      "layer": 6,
+      "text": "Deploy once stability is no longer the ceiling but the floor. Anchor-08 uses a secure foundation to support more weight than the structure was originally rated for.",
+      "entry_id": "entry_anchor_08"
+    },
+    {
+      "id": "entry_anchor_09",
+      "type": "matrix_entry",
+      "label": "ANCHOR-09",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-09",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when visible support would invite a challenge to it. Anchor-09 keeps a structure grounded without advertising what's holding it up.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-resolution",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_09",
+      "type": "actionable_statement",
+      "label": "ANCHOR-09 action",
+      "layer": 6,
+      "text": "Deploy when visible support would invite a challenge to it. Anchor-09 keeps a structure grounded without advertising what's holding it up.",
+      "entry_id": "entry_anchor_09"
+    },
+    {
+      "id": "entry_anchor_10",
+      "type": "matrix_entry",
+      "label": "ANCHOR-10",
+      "layer": 5,
+      "indexed_asset": "ANCHOR-10",
+      "function_tag": "Anchor",
+      "function_definition": "Anchor (Stabilizes a structure against pressure)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy after a period of doubt about whether something would hold. Anchor-10 makes the stabilizing force visible again, on purpose, to rebuild confidence.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "anchor-resolution",
+      "svg_object_symbol_id": "anchor-emblem",
+      "object_id": "graphite_ledger"
+    },
+    {
+      "id": "action_anchor_10",
+      "type": "actionable_statement",
+      "label": "ANCHOR-10 action",
+      "layer": 6,
+      "text": "Deploy after a period of doubt about whether something would hold. Anchor-10 makes the stabilizing force visible again, on purpose, to rebuild confidence.",
+      "entry_id": "entry_anchor_10"
+    },
+    {
+      "id": "entry_quiet_01",
+      "type": "matrix_entry",
+      "label": "QUIET-01",
+      "layer": 5,
+      "indexed_asset": "QUIET-01",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy the first nudge no one will remember as the start of anything. Quiet-01 shifts direction before the room even knows a decision was being made.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-initiation",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_01",
+      "type": "actionable_statement",
+      "label": "QUIET-01 action",
+      "layer": 6,
+      "text": "Deploy the first nudge no one will remember as the start of anything. Quiet-01 shifts direction before the room even knows a decision was being made.",
+      "entry_id": "entry_quiet_01"
+    },
+    {
+      "id": "entry_quiet_02",
+      "type": "matrix_entry",
+      "label": "QUIET-02",
+      "layer": 5,
+      "indexed_asset": "QUIET-02",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to keep a quiet influence from being noticed and corrected. Quiet-02 reapplies just enough pressure to hold the course without drawing attention to it.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-initiation",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_02",
+      "type": "actionable_statement",
+      "label": "QUIET-02 action",
+      "layer": 6,
+      "text": "Deploy to keep a quiet influence from being noticed and corrected. Quiet-02 reapplies just enough pressure to hold the course without drawing attention to it.",
+      "entry_id": "entry_quiet_02"
+    },
+    {
+      "id": "entry_quiet_03",
+      "type": "matrix_entry",
+      "label": "QUIET-03",
+      "layer": 5,
+      "indexed_asset": "QUIET-03",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when an outcome needs to change without anyone pointing to the moment it changed. Quiet-03 redirects the result while leaving the process looking untouched.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_03",
+      "type": "actionable_statement",
+      "label": "QUIET-03 action",
+      "layer": 6,
+      "text": "Deploy when an outcome needs to change without anyone pointing to the moment it changed. Quiet-03 redirects the result while leaving the process looking untouched.",
+      "entry_id": "entry_quiet_03"
+    },
+    {
+      "id": "entry_quiet_04",
+      "type": "matrix_entry",
+      "label": "QUIET-04",
+      "layer": 5,
+      "indexed_asset": "QUIET-04",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when subtlety alone won't move an entrenched resistance. Quiet-04 raises the quiet pressure until it overrides opposition without ever becoming visible as pressure.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_04",
+      "type": "actionable_statement",
+      "label": "QUIET-04 action",
+      "layer": 6,
+      "text": "Deploy when subtlety alone won't move an entrenched resistance. Quiet-04 raises the quiet pressure until it overrides opposition without ever becoming visible as pressure.",
+      "entry_id": "entry_quiet_04"
+    },
+    {
+      "id": "entry_quiet_05",
+      "type": "matrix_entry",
+      "label": "QUIET-05",
+      "layer": 5,
+      "indexed_asset": "QUIET-05",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy in a volatile room that needs calming from a source no one can point to. Quiet-05 stabilizes the environment through guidance that never announces itself.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_05",
+      "type": "actionable_statement",
+      "label": "QUIET-05 action",
+      "layer": 6,
+      "text": "Deploy in a volatile room that needs calming from a source no one can point to. Quiet-05 stabilizes the environment through guidance that never announces itself.",
+      "entry_id": "entry_quiet_05"
+    },
+    {
+      "id": "entry_quiet_06",
+      "type": "matrix_entry",
+      "label": "QUIET-06",
+      "layer": 5,
+      "indexed_asset": "QUIET-06",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to withdraw influence completely, with nothing left to discover later. Quiet-06 dissolves the involvement so thoroughly there's no trace it was ever there.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_06",
+      "type": "actionable_statement",
+      "label": "QUIET-06 action",
+      "layer": 6,
+      "text": "Deploy to withdraw influence completely, with nothing left to discover later. Quiet-06 dissolves the involvement so thoroughly there's no trace it was ever there.",
+      "entry_id": "entry_quiet_06"
+    },
+    {
+      "id": "entry_quiet_07",
+      "type": "matrix_entry",
+      "label": "QUIET-07",
+      "layer": 5,
+      "indexed_asset": "QUIET-07",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across several quiet actors who all need to move together without any visible coordination. Quiet-07 is the unspoken cue that puts them all in motion on the same beat.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_07",
+      "type": "actionable_statement",
+      "label": "QUIET-07 action",
+      "layer": 6,
+      "text": "Deploy across several quiet actors who all need to move together without any visible coordination. Quiet-07 is the unspoken cue that puts them all in motion on the same beat.",
+      "entry_id": "entry_quiet_07"
+    },
+    {
+      "id": "entry_quiet_08",
+      "type": "matrix_entry",
+      "label": "QUIET-08",
+      "layer": 5,
+      "indexed_asset": "QUIET-08",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to make a hidden influence do more work than its size should allow. Quiet-08 is the whisper that reshapes outcomes far past where it was spoken.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-stabilization",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_08",
+      "type": "actionable_statement",
+      "label": "QUIET-08 action",
+      "layer": 6,
+      "text": "Deploy to make a hidden influence do more work than its size should allow. Quiet-08 is the whisper that reshapes outcomes far past where it was spoken.",
+      "entry_id": "entry_quiet_08"
+    },
+    {
+      "id": "entry_quiet_09",
+      "type": "matrix_entry",
+      "label": "QUIET-09",
+      "layer": 5,
+      "indexed_asset": "QUIET-09",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy for the action that has to happen and also has to never be attributed. Quiet-09 conceals decisive intervention behind a posture of complete neutrality.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-resolution",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_09",
+      "type": "actionable_statement",
+      "label": "QUIET-09 action",
+      "layer": 6,
+      "text": "Deploy for the action that has to happen and also has to never be attributed. Quiet-09 conceals decisive intervention behind a posture of complete neutrality.",
+      "entry_id": "entry_quiet_09"
+    },
+    {
+      "id": "entry_quiet_10",
+      "type": "matrix_entry",
+      "label": "QUIET-10",
+      "layer": 5,
+      "indexed_asset": "QUIET-10",
+      "function_tag": "Quiet",
+      "function_definition": "Quiet (Exerts subtle, decisive influence)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy at the single moment when staying hidden costs more than being seen. Quiet-10 reveals the subtle hand only when it will land hardest.",
+      "symbol_status": "physical",
+      "svg_phase_symbol_id": "quiet-resolution",
+      "svg_object_symbol_id": "quiet-emblem",
+      "object_id": "matte_coin"
+    },
+    {
+      "id": "action_quiet_10",
+      "type": "actionable_statement",
+      "label": "QUIET-10 action",
+      "layer": 6,
+      "text": "Deploy at the single moment when staying hidden costs more than being seen. Quiet-10 reveals the subtle hand only when it will land hardest.",
+      "entry_id": "entry_quiet_10"
+    },
+    {
+      "id": "entry_vector_01",
+      "type": "matrix_entry",
+      "label": "VECTOR-01",
+      "layer": 5,
+      "indexed_asset": "VECTOR-01",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition — the first push before there's any momentum to build on.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_01",
+      "type": "actionable_statement",
+      "label": "VECTOR-01 action",
+      "layer": 6,
+      "text": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition — the first push before there's any momentum to build on.",
+      "entry_id": "entry_vector_01"
+    },
+    {
+      "id": "entry_vector_02",
+      "type": "matrix_entry",
+      "label": "VECTOR-02",
+      "layer": 5,
+      "indexed_asset": "VECTOR-02",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy when early momentum is real but fragile. Vector-02 protects the forward motion from the friction trying to slow it back down.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_02",
+      "type": "actionable_statement",
+      "label": "VECTOR-02 action",
+      "layer": 6,
+      "text": "Deploy when early momentum is real but fragile. Vector-02 protects the forward motion from the friction trying to slow it back down.",
+      "entry_id": "entry_vector_02"
+    },
+    {
+      "id": "entry_vector_03",
+      "type": "matrix_entry",
+      "label": "VECTOR-03",
+      "layer": 5,
+      "indexed_asset": "VECTOR-03",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when momentum is strong but pointed at the wrong target. Vector-03 redirects existing drive without losing the speed already built up.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_03",
+      "type": "actionable_statement",
+      "label": "VECTOR-03 action",
+      "layer": 6,
+      "text": "Deploy when momentum is strong but pointed at the wrong target. Vector-03 redirects existing drive without losing the speed already built up.",
+      "entry_id": "entry_vector_03"
+    },
+    {
+      "id": "entry_vector_04",
+      "type": "matrix_entry",
+      "label": "VECTOR-04",
+      "layer": 5,
+      "indexed_asset": "VECTOR-04",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy against resistance a normal push won't clear. Vector-04 forces a breakthrough by adding more force than the obstacle was built to survive.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_04",
+      "type": "actionable_statement",
+      "label": "VECTOR-04 action",
+      "layer": 6,
+      "text": "Deploy against resistance a normal push won't clear. Vector-04 forces a breakthrough by adding more force than the obstacle was built to survive.",
+      "entry_id": "entry_vector_04"
+    },
+    {
+      "id": "entry_vector_05",
+      "type": "matrix_entry",
+      "label": "VECTOR-05",
+      "layer": 5,
+      "indexed_asset": "VECTOR-05",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once momentum is established and needs to be maintained, not increased. Vector-05 keeps the pace sustainable over distance instead of burning out early.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_05",
+      "type": "actionable_statement",
+      "label": "VECTOR-05 action",
+      "layer": 6,
+      "text": "Deploy once momentum is established and needs to be maintained, not increased. Vector-05 keeps the pace sustainable over distance instead of burning out early.",
+      "entry_id": "entry_vector_05"
+    },
+    {
+      "id": "entry_vector_06",
+      "type": "matrix_entry",
+      "label": "VECTOR-06",
+      "layer": 5,
+      "indexed_asset": "VECTOR-06",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to bring motion to a controlled stop instead of an abrupt one. Vector-06 lets momentum wind down on schedule, without a collision.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_06",
+      "type": "actionable_statement",
+      "label": "VECTOR-06 action",
+      "layer": 6,
+      "text": "Deploy to bring motion to a controlled stop instead of an abrupt one. Vector-06 lets momentum wind down on schedule, without a collision.",
+      "entry_id": "entry_vector_06"
+    },
+    {
+      "id": "entry_vector_07",
+      "type": "matrix_entry",
+      "label": "VECTOR-07",
+      "layer": 5,
+      "indexed_asset": "VECTOR-07",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across multiple moving parts that need to arrive together. Vector-07 synchronizes independent momentum into one coordinated advance.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_07",
+      "type": "actionable_statement",
+      "label": "VECTOR-07 action",
+      "layer": 6,
+      "text": "Deploy across multiple moving parts that need to arrive together. Vector-07 synchronizes independent momentum into one coordinated advance.",
+      "entry_id": "entry_vector_07"
+    },
+    {
+      "id": "entry_vector_08",
+      "type": "matrix_entry",
+      "label": "VECTOR-08",
+      "layer": 5,
+      "indexed_asset": "VECTOR-08",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when good momentum needs to become decisive momentum. Vector-08 accelerates an existing push until the outcome is no longer in question.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_08",
+      "type": "actionable_statement",
+      "label": "VECTOR-08 action",
+      "layer": 6,
+      "text": "Deploy when good momentum needs to become decisive momentum. Vector-08 accelerates an existing push until the outcome is no longer in question.",
+      "entry_id": "entry_vector_08"
+    },
+    {
+      "id": "entry_vector_09",
+      "type": "matrix_entry",
+      "label": "VECTOR-09",
+      "layer": 5,
+      "indexed_asset": "VECTOR-09",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when forward pressure needs to be applied without anyone identifying where it's coming from. Vector-09 keeps the push behind a neutral, uninvolved front.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_09",
+      "type": "actionable_statement",
+      "label": "VECTOR-09 action",
+      "layer": 6,
+      "text": "Deploy when forward pressure needs to be applied without anyone identifying where it's coming from. Vector-09 keeps the push behind a neutral, uninvolved front.",
+      "entry_id": "entry_vector_09"
+    },
+    {
+      "id": "entry_vector_10",
+      "type": "matrix_entry",
+      "label": "VECTOR-10",
+      "layer": 5,
+      "indexed_asset": "VECTOR-10",
+      "function_tag": "Vector",
+      "function_definition": "Vector (Pushes momentum forward)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy to make momentum impossible to ignore or downplay. Vector-10 puts visible speed on display as a signal that the decision has already been made.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_vector_10",
+      "type": "actionable_statement",
+      "label": "VECTOR-10 action",
+      "layer": 6,
+      "text": "Deploy to make momentum impossible to ignore or downplay. Vector-10 puts visible speed on display as a signal that the decision has already been made.",
+      "entry_id": "entry_vector_10"
+    },
+    {
+      "id": "entry_pivot_01",
+      "type": "matrix_entry",
+      "label": "PIVOT-01",
+      "layer": 5,
+      "indexed_asset": "PIVOT-01",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy at the first sign that the current direction won't hold. Pivot-01 is the earliest possible turn, before the cost of changing course goes up.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_01",
+      "type": "actionable_statement",
+      "label": "PIVOT-01 action",
+      "layer": 6,
+      "text": "Deploy at the first sign that the current direction won't hold. Pivot-01 is the earliest possible turn, before the cost of changing course goes up.",
+      "entry_id": "entry_pivot_01"
+    },
+    {
+      "id": "entry_pivot_02",
+      "type": "matrix_entry",
+      "label": "PIVOT-02",
+      "layer": 5,
+      "indexed_asset": "PIVOT-02",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy right after a turn, while the new direction is still vulnerable to being walked back. Pivot-02 locks in the angle before old momentum can reclaim it.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_02",
+      "type": "actionable_statement",
+      "label": "PIVOT-02 action",
+      "layer": 6,
+      "text": "Deploy right after a turn, while the new direction is still vulnerable to being walked back. Pivot-02 locks in the angle before old momentum can reclaim it.",
+      "entry_id": "entry_pivot_02"
+    },
+    {
+      "id": "entry_pivot_03",
+      "type": "matrix_entry",
+      "label": "PIVOT-03",
+      "layer": 5,
+      "indexed_asset": "PIVOT-03",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when the first pivot wasn't quite right. Pivot-03 is the correction that gets the turn onto its actual best line.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_03",
+      "type": "actionable_statement",
+      "label": "PIVOT-03 action",
+      "layer": 6,
+      "text": "Deploy when the first pivot wasn't quite right. Pivot-03 is the correction that gets the turn onto its actual best line.",
+      "entry_id": "entry_pivot_03"
+    },
+    {
+      "id": "entry_pivot_04",
+      "type": "matrix_entry",
+      "label": "PIVOT-04",
+      "layer": 5,
+      "indexed_asset": "PIVOT-04",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when a partial pivot won't force the adaptation the moment requires. Pivot-04 makes the turn sharp enough that no one can pretend nothing changed.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_04",
+      "type": "actionable_statement",
+      "label": "PIVOT-04 action",
+      "layer": 6,
+      "text": "Deploy when a partial pivot won't force the adaptation the moment requires. Pivot-04 makes the turn sharp enough that no one can pretend nothing changed.",
+      "entry_id": "entry_pivot_04"
+    },
+    {
+      "id": "entry_pivot_05",
+      "type": "matrix_entry",
+      "label": "PIVOT-05",
+      "layer": 5,
+      "indexed_asset": "PIVOT-05",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once the new direction is set and needs to become the default, not a detour. Pivot-05 stabilizes the turn until it's just the direction things go now.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_05",
+      "type": "actionable_statement",
+      "label": "PIVOT-05 action",
+      "layer": 6,
+      "text": "Deploy once the new direction is set and needs to become the default, not a detour. Pivot-05 stabilizes the turn until it's just the direction things go now.",
+      "entry_id": "entry_pivot_05"
+    },
+    {
+      "id": "entry_pivot_06",
+      "type": "matrix_entry",
+      "label": "PIVOT-06",
+      "layer": 5,
+      "indexed_asset": "PIVOT-06",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to fully retire the old direction so it can't quietly resurface. Pivot-06 dissolves the previous course completely rather than leaving it as a fallback.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_06",
+      "type": "actionable_statement",
+      "label": "PIVOT-06 action",
+      "layer": 6,
+      "text": "Deploy to fully retire the old direction so it can't quietly resurface. Pivot-06 dissolves the previous course completely rather than leaving it as a fallback.",
+      "entry_id": "entry_pivot_06"
+    },
+    {
+      "id": "entry_pivot_07",
+      "type": "matrix_entry",
+      "label": "PIVOT-07",
+      "layer": 5,
+      "indexed_asset": "PIVOT-07",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across a group that all needs to turn at once or risk scattering. Pivot-07 synchronizes the change of direction so no one turns early or late.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_07",
+      "type": "actionable_statement",
+      "label": "PIVOT-07 action",
+      "layer": 6,
+      "text": "Deploy across a group that all needs to turn at once or risk scattering. Pivot-07 synchronizes the change of direction so no one turns early or late.",
+      "entry_id": "entry_pivot_07"
+    },
+    {
+      "id": "entry_pivot_08",
+      "type": "matrix_entry",
+      "label": "PIVOT-08",
+      "layer": 5,
+      "indexed_asset": "PIVOT-08",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to make a turn happen faster than the situation would normally allow. Pivot-08 accelerates the transition once the direction is already decided.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_08",
+      "type": "actionable_statement",
+      "label": "PIVOT-08 action",
+      "layer": 6,
+      "text": "Deploy to make a turn happen faster than the situation would normally allow. Pivot-08 accelerates the transition once the direction is already decided.",
+      "entry_id": "entry_pivot_08"
+    },
+    {
+      "id": "entry_pivot_09",
+      "type": "matrix_entry",
+      "label": "PIVOT-09",
+      "layer": 5,
+      "indexed_asset": "PIVOT-09",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when a shift needs to be prepared quietly before it's executed. Pivot-09 conceals the coming turn until the timing is exactly right.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_09",
+      "type": "actionable_statement",
+      "label": "PIVOT-09 action",
+      "layer": 6,
+      "text": "Deploy when a shift needs to be prepared quietly before it's executed. Pivot-09 conceals the coming turn until the timing is exactly right.",
+      "entry_id": "entry_pivot_09"
+    },
+    {
+      "id": "entry_pivot_10",
+      "type": "matrix_entry",
+      "label": "PIVOT-10",
+      "layer": 5,
+      "indexed_asset": "PIVOT-10",
+      "function_tag": "Pivot",
+      "function_definition": "Pivot (Changes the direction of an outcome)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy to make a change of direction unmistakable to everyone downstream. Pivot-10 reveals the shift as the new definition of the situation, not a temporary detour.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_pivot_10",
+      "type": "actionable_statement",
+      "label": "PIVOT-10 action",
+      "layer": 6,
+      "text": "Deploy to make a change of direction unmistakable to everyone downstream. Pivot-10 reveals the shift as the new definition of the situation, not a temporary detour.",
+      "entry_id": "entry_pivot_10"
+    },
+    {
+      "id": "entry_draft_01",
+      "type": "matrix_entry",
+      "label": "DRAFT-01",
+      "layer": 5,
+      "indexed_asset": "DRAFT-01",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "01",
+      "outcome_label": "Opening Gambit",
+      "outcome_behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy to get a group moving that hasn't committed to moving yet. Draft-01 is the first pull that turns bystanders into followers before they've decided to be either.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_01",
+      "type": "actionable_statement",
+      "label": "DRAFT-01 action",
+      "layer": 6,
+      "text": "Deploy to get a group moving that hasn't committed to moving yet. Draft-01 is the first pull that turns bystanders into followers before they've decided to be either.",
+      "entry_id": "entry_draft_01"
+    },
+    {
+      "id": "entry_draft_02",
+      "type": "matrix_entry",
+      "label": "DRAFT-02",
+      "layer": 5,
+      "indexed_asset": "DRAFT-02",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "02",
+      "outcome_label": "Fortification",
+      "outcome_behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation",
+      "actionable_statement": "Deploy when a group is following but might peel off under strain. Draft-02 reinforces the pull so momentum doesn't scatter the moment it gets difficult.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_02",
+      "type": "actionable_statement",
+      "label": "DRAFT-02 action",
+      "layer": 6,
+      "text": "Deploy when a group is following but might peel off under strain. Draft-02 reinforces the pull so momentum doesn't scatter the moment it gets difficult.",
+      "entry_id": "entry_draft_02"
+    },
+    {
+      "id": "entry_draft_03",
+      "type": "matrix_entry",
+      "label": "DRAFT-03",
+      "layer": 5,
+      "indexed_asset": "DRAFT-03",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "03",
+      "outcome_label": "Hard Reroute",
+      "outcome_behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy when the group is moving, but toward the wrong outcome. Draft-03 redirects collective momentum without breaking the formation carrying it.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_03",
+      "type": "actionable_statement",
+      "label": "DRAFT-03 action",
+      "layer": 6,
+      "text": "Deploy when the group is moving, but toward the wrong outcome. Draft-03 redirects collective momentum without breaking the formation carrying it.",
+      "entry_id": "entry_draft_03"
+    },
+    {
+      "id": "entry_draft_04",
+      "type": "matrix_entry",
+      "label": "DRAFT-04",
+      "layer": 5,
+      "indexed_asset": "DRAFT-04",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "04",
+      "outcome_label": "Aggressive Escalation",
+      "outcome_behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy against real resistance to being led. Draft-04 pulls hard enough that reluctance stops being a viable option for the group.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_04",
+      "type": "actionable_statement",
+      "label": "DRAFT-04 action",
+      "layer": 6,
+      "text": "Deploy against real resistance to being led. Draft-04 pulls hard enough that reluctance stops being a viable option for the group.",
+      "entry_id": "entry_draft_04"
+    },
+    {
+      "id": "entry_draft_05",
+      "type": "matrix_entry",
+      "label": "DRAFT-05",
+      "layer": 5,
+      "indexed_asset": "DRAFT-05",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "05",
+      "outcome_label": "Hold The Line",
+      "outcome_behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to keep a group moving as one body instead of drifting apart mid-effort. Draft-05 stabilizes formation behind the lead when the group's own cohesion starts to slip.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_05",
+      "type": "actionable_statement",
+      "label": "DRAFT-05 action",
+      "layer": 6,
+      "text": "Deploy to keep a group moving as one body instead of drifting apart mid-effort. Draft-05 stabilizes formation behind the lead when the group's own cohesion starts to slip.",
+      "entry_id": "entry_draft_05"
+    },
+    {
+      "id": "entry_draft_06",
+      "type": "matrix_entry",
+      "label": "DRAFT-06",
+      "layer": 5,
+      "indexed_asset": "DRAFT-06",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "06",
+      "outcome_label": "Clean Release",
+      "outcome_behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy once a group is ready to operate without being pulled anymore. Draft-06 releases them to move independently, on purpose, rather than staying dependent.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_06",
+      "type": "actionable_statement",
+      "label": "DRAFT-06 action",
+      "layer": 6,
+      "text": "Deploy once a group is ready to operate without being pulled anymore. Draft-06 releases them to move independently, on purpose, rather than staying dependent.",
+      "entry_id": "entry_draft_06"
+    },
+    {
+      "id": "entry_draft_07",
+      "type": "matrix_entry",
+      "label": "DRAFT-07",
+      "layer": 5,
+      "indexed_asset": "DRAFT-07",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "07",
+      "outcome_label": "Lockstep Timing",
+      "outcome_behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy across a group that needs to move as a single unit, not a loose crowd. Draft-07 synchronizes everyone's motion into one unified flow behind the lead.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_07",
+      "type": "actionable_statement",
+      "label": "DRAFT-07 action",
+      "layer": 6,
+      "text": "Deploy across a group that needs to move as a single unit, not a loose crowd. Draft-07 synchronizes everyone's motion into one unified flow behind the lead.",
+      "entry_id": "entry_draft_07"
+    },
+    {
+      "id": "entry_draft_08",
+      "type": "matrix_entry",
+      "label": "DRAFT-08",
+      "layer": 5,
+      "indexed_asset": "DRAFT-08",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "08",
+      "outcome_label": "Signal Surge",
+      "outcome_behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization",
+      "actionable_statement": "Deploy to convert steady following into accelerated collective progress. Draft-08 amplifies the pull so the whole group moves faster than any one of them would alone.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_08",
+      "type": "actionable_statement",
+      "label": "DRAFT-08 action",
+      "layer": 6,
+      "text": "Deploy to convert steady following into accelerated collective progress. Draft-08 amplifies the pull so the whole group moves faster than any one of them would alone.",
+      "entry_id": "entry_draft_08"
+    },
+    {
+      "id": "entry_draft_09",
+      "type": "matrix_entry",
+      "label": "DRAFT-09",
+      "layer": 5,
+      "indexed_asset": "DRAFT-09",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "09",
+      "outcome_label": "Ghost Protocol",
+      "outcome_behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when a group needs to be led without feeling led. Draft-09 conceals the pull so completely that the group believes the direction was their own idea.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_09",
+      "type": "actionable_statement",
+      "label": "DRAFT-09 action",
+      "layer": 6,
+      "text": "Deploy when a group needs to be led without feeling led. Draft-09 conceals the pull so completely that the group believes the direction was their own idea.",
+      "entry_id": "entry_draft_09"
+    },
+    {
+      "id": "entry_draft_10",
+      "type": "matrix_entry",
+      "label": "DRAFT-10",
+      "layer": 5,
+      "indexed_asset": "DRAFT-10",
+      "function_tag": "Draft",
+      "function_definition": "Draft (Pulls others along in its wake)",
+      "outcome_number": "10",
+      "outcome_label": "Full Disclosure",
+      "outcome_behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution",
+      "actionable_statement": "Deploy when it's time for the group to know who's actually been guiding them. Draft-10 reveals the pull openly, establishing leadership on the record instead of behind it.",
+      "symbol_status": "index-only",
+      "svg_phase_symbol_id": null,
+      "svg_object_symbol_id": null,
+      "object_id": null
+    },
+    {
+      "id": "action_draft_10",
+      "type": "actionable_statement",
+      "label": "DRAFT-10 action",
+      "layer": 6,
+      "text": "Deploy when it's time for the group to know who's actually been guiding them. Draft-10 reveals the pull openly, establishing leadership on the record instead of behind it.",
+      "entry_id": "entry_draft_10"
+    },
+    {
+      "id": "field_material",
+      "type": "field_spec",
+      "label": "Material",
+      "layer": 2,
+      "value": "Matte polymer composite or anodized aluminum"
+    },
+    {
+      "id": "field_finish",
+      "type": "field_spec",
+      "label": "Finish",
+      "layer": 2,
+      "value": "Non-reflective, abrasion-resistant"
+    },
+    {
+      "id": "field_cut_depth",
+      "type": "field_spec",
+      "label": "Cut Depth",
+      "layer": 2,
+      "value": "1.5 mm, ±0.2 mm tolerance"
+    },
+    {
+      "id": "field_plate",
+      "type": "field_spec",
+      "label": "Plate",
+      "layer": 2,
+      "value": "120 mm × 120 mm, mark centered in an 80 mm circle"
+    },
+    {
+      "id": "field_orientation",
+      "type": "field_spec",
+      "label": "Orientation",
+      "layer": 2,
+      "value": "Notch at top-left corner for consistent alignment"
+    },
+    {
+      "id": "field_ledger_circle",
+      "type": "field_spec",
+      "label": "Ledger Circle",
+      "layer": 2,
+      "value": "Always cut clean through, so ink bleed forms the halo"
+    },
+    {
+      "id": "kit_1",
+      "type": "deployment_kit",
+      "label": "Kit item 1",
+      "layer": 2,
+      "value": "Six stencil plates, one per function"
+    },
+    {
+      "id": "kit_2",
+      "type": "deployment_kit",
+      "label": "Kit item 2",
+      "layer": 2,
+      "value": "One Blank Coin plate"
+    },
+    {
+      "id": "kit_3",
+      "type": "deployment_kit",
+      "label": "Kit item 3",
+      "layer": 2,
+      "value": "One alignment grid, for multi-mark compositions"
+    },
+    {
+      "id": "kit_4",
+      "type": "deployment_kit",
+      "label": "Kit item 4",
+      "layer": 2,
+      "value": "One carry sleeve, industrial cloth"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ledger_root",
+      "target": "sec_typhen",
+      "relation": "contains"
+    },
+    {
+      "source": "ledger_root",
+      "target": "sec_index",
+      "relation": "contains"
+    },
+    {
+      "source": "ledger_root",
+      "target": "sec_ledger_set",
+      "relation": "contains"
+    },
+    {
+      "source": "ledger_root",
+      "target": "sec_rank",
+      "relation": "contains"
+    },
+    {
+      "source": "ledger_root",
+      "target": "sec_field",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "graphite_ledger",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "tri_key_clasp",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "signal_baton",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "relay_node",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "matte_coin",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_typhen",
+      "target": "industrial_cloth",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_vector",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_anchor",
+      "relation": "defines"
+    },
+    {
+      "source": "graphite_ledger",
+      "target": "fn_anchor",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_relay",
+      "relation": "defines"
+    },
+    {
+      "source": "relay_node",
+      "target": "fn_relay",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_pivot",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_fuse",
+      "relation": "defines"
+    },
+    {
+      "source": "industrial_cloth",
+      "target": "fn_fuse",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_break",
+      "relation": "defines"
+    },
+    {
+      "source": "signal_baton",
+      "target": "fn_break",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_span",
+      "relation": "defines"
+    },
+    {
+      "source": "tri_key_clasp",
+      "target": "fn_span",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_draft",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "fn_quiet",
+      "relation": "defines"
+    },
+    {
+      "source": "matte_coin",
+      "target": "fn_quiet",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_01",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_02",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_03",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_04",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_05",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_06",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_07",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_08",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_09",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_index",
+      "target": "out_10",
+      "relation": "defines"
+    },
+    {
+      "source": "sec_rank",
+      "target": "phase_initiation",
+      "relation": "defines_phase"
+    },
+    {
+      "source": "sec_rank",
+      "target": "phase_stabilization",
+      "relation": "defines_phase"
+    },
+    {
+      "source": "sec_rank",
+      "target": "phase_resolution",
+      "relation": "defines_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_anchor_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_anchor_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_anchor_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_break_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_break_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_break_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_fuse_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_fuse_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_fuse_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_quiet_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_quiet_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_quiet_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_relay_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_relay_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_relay_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_span_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_span_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_span_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "emblem_anchor",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_initiation",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_anchor_resolution",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_break",
+      "target": "emblem_break",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_break_initiation",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_break_resolution",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "emblem_fuse",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_initiation",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_fuse_resolution",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "emblem_quiet",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_initiation",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_quiet_resolution",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_relay",
+      "target": "emblem_relay",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_relay_initiation",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_relay_resolution",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_span",
+      "target": "emblem_span",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_span_initiation",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_span_resolution",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "sec_ledger_set",
+      "target": "symbol_tri_span",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_ledger_set",
+      "target": "symbol_blank_coin",
+      "relation": "contains"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_span_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_initiation",
+      "target": "entry_span_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_01",
+      "target": "action_span_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_span_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_initiation",
+      "target": "entry_span_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_02",
+      "target": "action_span_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_span_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_03",
+      "target": "action_span_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_span_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_04",
+      "target": "action_span_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_span_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_05",
+      "target": "action_span_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_span_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_06",
+      "target": "action_span_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_span_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_07",
+      "target": "action_span_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_span_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "entry_span_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_08",
+      "target": "action_span_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_span_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_resolution",
+      "target": "entry_span_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_09",
+      "target": "action_span_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_span",
+      "target": "entry_span_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_span_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_span",
+      "target": "entry_span_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_span_resolution",
+      "target": "entry_span_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_span_10",
+      "target": "action_span_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_break_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_initiation",
+      "target": "entry_break_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_01",
+      "target": "action_break_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_break_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_initiation",
+      "target": "entry_break_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_02",
+      "target": "action_break_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_break_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_03",
+      "target": "action_break_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_break_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_04",
+      "target": "action_break_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_break_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_05",
+      "target": "action_break_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_break_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_06",
+      "target": "action_break_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_break_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_07",
+      "target": "action_break_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_break_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "entry_break_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_08",
+      "target": "action_break_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_break_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_resolution",
+      "target": "entry_break_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_09",
+      "target": "action_break_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_break",
+      "target": "entry_break_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_break_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_break",
+      "target": "entry_break_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_break_resolution",
+      "target": "entry_break_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_break_10",
+      "target": "action_break_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_fuse_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_initiation",
+      "target": "entry_fuse_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_01",
+      "target": "action_fuse_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_fuse_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_initiation",
+      "target": "entry_fuse_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_02",
+      "target": "action_fuse_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_fuse_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_03",
+      "target": "action_fuse_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_fuse_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_04",
+      "target": "action_fuse_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_fuse_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_05",
+      "target": "action_fuse_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_fuse_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_06",
+      "target": "action_fuse_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_fuse_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_07",
+      "target": "action_fuse_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_fuse_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "entry_fuse_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_08",
+      "target": "action_fuse_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_fuse_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_resolution",
+      "target": "entry_fuse_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_09",
+      "target": "action_fuse_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "entry_fuse_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_fuse_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_fuse",
+      "target": "entry_fuse_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_resolution",
+      "target": "entry_fuse_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_fuse_10",
+      "target": "action_fuse_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_relay_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_initiation",
+      "target": "entry_relay_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_01",
+      "target": "action_relay_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_relay_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_initiation",
+      "target": "entry_relay_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_02",
+      "target": "action_relay_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_relay_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_03",
+      "target": "action_relay_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_relay_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_04",
+      "target": "action_relay_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_relay_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_05",
+      "target": "action_relay_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_relay_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_06",
+      "target": "action_relay_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_relay_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_07",
+      "target": "action_relay_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_relay_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "entry_relay_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_08",
+      "target": "action_relay_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_relay_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_resolution",
+      "target": "entry_relay_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_09",
+      "target": "action_relay_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_relay",
+      "target": "entry_relay_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_relay_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_relay",
+      "target": "entry_relay_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_relay_resolution",
+      "target": "entry_relay_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_relay_10",
+      "target": "action_relay_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_anchor_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_initiation",
+      "target": "entry_anchor_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_01",
+      "target": "action_anchor_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_anchor_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_initiation",
+      "target": "entry_anchor_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_02",
+      "target": "action_anchor_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_anchor_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_03",
+      "target": "action_anchor_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_anchor_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_04",
+      "target": "action_anchor_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_anchor_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_05",
+      "target": "action_anchor_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_anchor_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_06",
+      "target": "action_anchor_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_anchor_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_07",
+      "target": "action_anchor_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_anchor_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "entry_anchor_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_08",
+      "target": "action_anchor_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_anchor_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_resolution",
+      "target": "entry_anchor_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_09",
+      "target": "action_anchor_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "entry_anchor_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_anchor_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_anchor",
+      "target": "entry_anchor_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_resolution",
+      "target": "entry_anchor_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_anchor_10",
+      "target": "action_anchor_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_quiet_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_01",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_initiation",
+      "target": "entry_quiet_01",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_01",
+      "target": "action_quiet_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_quiet_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_02",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_initiation",
+      "target": "entry_quiet_02",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_02",
+      "target": "action_quiet_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_quiet_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_03",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_03",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_03",
+      "target": "action_quiet_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_quiet_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_04",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_04",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_04",
+      "target": "action_quiet_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_quiet_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_05",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_05",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_05",
+      "target": "action_quiet_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_quiet_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_06",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_06",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_06",
+      "target": "action_quiet_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_quiet_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_07",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_07",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_07",
+      "target": "action_quiet_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_quiet_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_08",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "entry_quiet_08",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_08",
+      "target": "action_quiet_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_quiet_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_09",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_resolution",
+      "target": "entry_quiet_09",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_09",
+      "target": "action_quiet_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "entry_quiet_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_quiet_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "emblem_quiet",
+      "target": "entry_quiet_10",
+      "relation": "binds_to_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_resolution",
+      "target": "entry_quiet_10",
+      "relation": "uses_phase_mark"
+    },
+    {
+      "source": "entry_quiet_10",
+      "target": "action_quiet_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_vector_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_01",
+      "target": "action_vector_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_vector_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_02",
+      "target": "action_vector_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_vector_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_03",
+      "target": "action_vector_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_vector_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_04",
+      "target": "action_vector_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_vector_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_05",
+      "target": "action_vector_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_vector_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_06",
+      "target": "action_vector_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_vector_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_07",
+      "target": "action_vector_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_vector_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_08",
+      "target": "action_vector_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_vector_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_09",
+      "target": "action_vector_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_vector",
+      "target": "entry_vector_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_vector_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_vector_10",
+      "target": "action_vector_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_pivot_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_01",
+      "target": "action_pivot_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_pivot_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_02",
+      "target": "action_pivot_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_pivot_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_03",
+      "target": "action_pivot_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_pivot_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_04",
+      "target": "action_pivot_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_pivot_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_05",
+      "target": "action_pivot_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_pivot_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_06",
+      "target": "action_pivot_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_pivot_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_07",
+      "target": "action_pivot_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_pivot_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_08",
+      "target": "action_pivot_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_pivot_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_09",
+      "target": "action_pivot_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_pivot",
+      "target": "entry_pivot_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_pivot_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_pivot_10",
+      "target": "action_pivot_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_01",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_01",
+      "target": "entry_draft_01",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_01",
+      "target": "action_draft_01",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_02",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_02",
+      "target": "entry_draft_02",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_02",
+      "target": "action_draft_02",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_03",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_03",
+      "target": "entry_draft_03",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_03",
+      "target": "action_draft_03",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_04",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_04",
+      "target": "entry_draft_04",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_04",
+      "target": "action_draft_04",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_05",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_05",
+      "target": "entry_draft_05",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_05",
+      "target": "action_draft_05",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_06",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_06",
+      "target": "entry_draft_06",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_06",
+      "target": "action_draft_06",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_07",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_07",
+      "target": "entry_draft_07",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_07",
+      "target": "action_draft_07",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_08",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_08",
+      "target": "entry_draft_08",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_08",
+      "target": "action_draft_08",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_09",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_09",
+      "target": "entry_draft_09",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_09",
+      "target": "action_draft_09",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "fn_draft",
+      "target": "entry_draft_10",
+      "relation": "classifies"
+    },
+    {
+      "source": "out_10",
+      "target": "entry_draft_10",
+      "relation": "instantiates_outcome"
+    },
+    {
+      "source": "entry_draft_10",
+      "target": "action_draft_10",
+      "relation": "specifies_action"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_material",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_finish",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_cut_depth",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_plate",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_orientation",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "field_ledger_circle",
+      "relation": "specifies"
+    },
+    {
+      "source": "sec_field",
+      "target": "kit_1",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_field",
+      "target": "kit_2",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_field",
+      "target": "kit_3",
+      "relation": "contains"
+    },
+    {
+      "source": "sec_field",
+      "target": "kit_4",
+      "relation": "contains"
+    }
+  ]
+}

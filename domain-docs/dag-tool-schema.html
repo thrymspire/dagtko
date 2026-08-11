@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAG Domain-Language Tool Schema — Capability Companion</title>
+<style>
+:root {
+  --void: #0a0512;
+  --panel: rgba(34, 16, 60, 0.55);
+  --panel-border: rgba(157, 92, 255, 0.35);
+  --ink: #ede6ff;
+  --ink-dim: #a996d6;
+  --signal: #9d5cff;
+  --signal-bright: #c084fc;
+  --spore: #d8c6ff;
+  --bio: #5ffbf1;
+  --warn: #ff6b81;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, Consolas, "SFMono-Regular", monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--void); color: var(--ink); font-family: var(--font-body);
+  line-height: 1.55; min-height: 100vh; position: relative; overflow-x: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(157,92,255,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 85% 110%, rgba(95,251,241,0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(157,92,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+.blob { position: fixed; border-radius: 50%; filter: blur(60px); opacity: 0.28; z-index: -1; pointer-events: none; }
+.blob-purple { width: 320px; height: 320px; background: #9d5cff; top: 15%; left: -80px; animation: driftA 28s ease-in-out infinite; }
+.blob-cyan { width: 260px; height: 260px; background: #5ffbf1; bottom: 10%; right: -60px; animation: driftB 32s ease-in-out infinite; }
+@keyframes driftA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(36px,28px)} }
+@keyframes driftB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-32px,-24px)} }
+@media (prefers-reduced-motion: reduce) { .blob, .pulse-edge { animation: none !important; } }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; font-size: clamp(1.6rem, 4vw, 2.1rem);
+  background: linear-gradient(90deg, var(--signal-bright), var(--bio));
+  -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.35rem;
+}
+.subtitle { font-family: var(--font-mono); color: var(--ink-dim); font-size: 0.85rem; margin-bottom: 2rem; }
+h2 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.07em; font-size: 1.05rem; color: var(--signal-bright);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  margin-bottom: 1rem; flex-wrap: wrap;
+}
+h2 .badge { font-family: var(--font-mono); font-weight: 400; font-size: 0.75rem; letter-spacing: 0; color: var(--ink-dim); text-transform: none; white-space: nowrap; }
+h2.warn-head { color: var(--warn); }
+h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.92rem; color: var(--signal-bright); margin: 1.2rem 0 0.5rem; }
+
+.panel {
+  background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--panel-border);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  padding: 1.35rem 1.4rem; margin-bottom: 1.75rem;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+.panel.priority { border-left: 3px solid var(--warn); }
+.panel.dimmed { opacity: 0.42; filter: saturate(0.55); }
+.panel.focused { opacity: 1; filter: none; box-shadow: 0 0 24px rgba(157,92,255,0.18); }
+
+.meter-block { margin-bottom: 1.5rem; }
+.meter-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-dim); margin-bottom: 0.45rem; display: flex; justify-content: space-between; }
+.meter-pct { font-weight: 700; color: var(--bio); text-shadow: 0 0 10px rgba(95,251,241,0.55); }
+.track { height: 14px; border-radius: 999px; background: rgba(0,0,0,0.55); border: 1px solid var(--panel-border); overflow: hidden; position: relative; }
+.fill { height: 100%; width: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--signal), var(--bio)); box-shadow: 0 0 16px rgba(157,92,255,0.7); position: relative; }
+.pulse-edge { position: absolute; right: 0; top: 0; bottom: 0; width: 16px; background: rgba(255,255,255,0.7); filter: blur(5px); animation: pulse 1.8s ease-in-out infinite; opacity: 0.5; }
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.85} }
+
+p, li { font-size: 0.92rem; }
+ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+li { margin-bottom: 0.35rem; color: var(--ink-dim); }
+.lead { color: var(--ink); margin-bottom: 1rem; }
+.brief { color: var(--ink-dim); font-size: 0.88rem; }
+.layer-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.nav-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.75rem; }
+.nav-pills a { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-dim); border: 1px solid var(--panel-border); padding: 4px 10px; text-decoration: none; transition: all 0.15s; }
+.nav-pills a:hover { border-color: var(--signal); color: var(--signal-bright); }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0; font-family: var(--font-mono); font-size: 0.76rem; }
+.chain-node { padding: 7px 10px; border: 1px solid var(--panel-border); background: rgba(157,92,255,0.06); white-space: nowrap; transition: all 0.25s; }
+.chain-node.active { border-color: var(--bio); color: var(--bio); box-shadow: 0 0 12px rgba(95,251,241,0.35); }
+.chain-arrow { color: var(--ink-dim); }
+
+.slider-block { margin-bottom: 1.75rem; }
+.slider-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px; }
+.slider-head span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-dim); }
+.slider-focus { font-family: var(--font-mono); font-size: 0.85rem; color: var(--bio); text-shadow: 0 0 8px rgba(95,251,241,0.4); font-weight: 700; }
+.slider-track-wrap { position: relative; padding: 8px 0 28px; }
+input[type=range].completeness {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 10px; border-radius: 999px;
+  background: rgba(0,0,0,0.55); border: 1px solid var(--panel-border); outline: none; cursor: pointer;
+}
+input[type=range].completeness::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--signal), var(--bio)); border: 2px solid var(--void);
+  box-shadow: 0 0 12px rgba(157,92,255,0.7); cursor: grab;
+}
+input[type=range].completeness::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--signal), var(--bio)); border: 2px solid var(--void);
+  box-shadow: 0 0 12px rgba(157,92,255,0.7); cursor: grab;
+}
+.slider-ticks { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.03em; }
+.slider-ticks span { max-width: 56px; text-align: center; line-height: 1.2; }
+
+.heat-grid { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 12px; font-family: var(--font-mono); font-size: 0.78rem; margin: 12px 0 4px; align-items: center; }
+.heat-grid .h-head { color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; border-bottom: 1px solid var(--panel-border); padding-bottom: 4px; }
+.heat-topic { color: var(--ink); }
+.heat-bar-wrap { width: 72px; height: 8px; background: rgba(0,0,0,0.55); border: 1px solid var(--panel-border); border-radius: 999px; overflow: hidden; }
+.heat-bar { height: 100%; border-radius: 999px; }
+.heat-hot { background: linear-gradient(90deg, var(--signal), var(--bio)); width: 92%; box-shadow: 0 0 8px rgba(95,251,241,0.45); }
+.heat-warm { background: linear-gradient(90deg, var(--signal), var(--signal-bright)); width: 68%; }
+.heat-cool { background: var(--signal); width: 38%; opacity: 0.7; }
+.heat-cold { background: var(--panel-border); width: 14%; }
+.heat-label { color: var(--ink-dim); font-size: 0.72rem; white-space: nowrap; }
+.heat-note { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-dim); margin-top: 10px; }
+
+.schema {
+  background: #050208; border: 1px solid var(--panel-border); border-left: 3px solid var(--bio);
+  padding: 12px 14px; margin: 10px 0; font-family: var(--font-mono); font-size: 0.76rem; color: var(--spore); line-height: 1.45;
+}
+.schema .s-row { display: grid; grid-template-columns: 120px 1fr; gap: 6px; margin-bottom: 5px; }
+.schema .s-row:last-child { margin-bottom: 0; }
+.schema .s-key { color: var(--signal-bright); text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.66rem; padding-top: 1px; }
+.schema .s-val { color: var(--spore); }
+.depth-tree { margin: 8px 0 0; padding-left: 0; list-style: none; font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-dim); }
+.depth-tree li { margin-bottom: 3px; padding-left: 12px; position: relative; }
+.depth-tree li::before { content: "↳"; position: absolute; left: 0; color: var(--bio); }
+.depth-tree .d0 { color: var(--bio); font-weight: 700; }
+.depth-tree .d1 { color: var(--signal-bright); }
+.depth-tree .d2 { color: var(--spore); }
+.depth-tree .d3 { color: var(--ink-dim); }
+.depth-tree .d4 { color: var(--ink-dim); opacity: 0.75; }
+
+.plane-tag {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.66rem;
+  padding: 2px 7px; border: 1px solid var(--panel-border); margin: 2px 4px 2px 0;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+.plane-tag.domain { border-color: var(--bio); color: var(--bio); }
+.plane-tag.cap { border-color: var(--signal); color: var(--signal-bright); }
+.plane-tag.impl { border-color: var(--panel-border); color: var(--ink-dim); }
+
+.cap-rank { margin: 8px 0 0; padding-left: 0; list-style: none; }
+.cap-rank li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 5px; font-size: 0.8rem; color: var(--ink-dim); }
+.cap-rank .rank { font-family: var(--font-mono); font-size: 0.68rem; color: var(--bio); min-width: 36px; padding-top: 1px; }
+
+.detail-full { display: block; }
+.detail-brief { display: none; }
+.panel.dimmed .detail-full { display: none; }
+.panel.dimmed .detail-brief { display: block; }
+.panel.focused .detail-full { display: block; }
+.panel.focused .detail-brief { display: none; }
+
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.btn {
+  background: transparent; border: 1px solid var(--signal); color: var(--signal);
+  font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+  padding: 0.45rem 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s;
+}
+.btn:hover { background: var(--signal); color: var(--void); }
+
+table.matrix { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 10px 0; }
+table.matrix th, table.matrix td { border: 1px solid var(--panel-border); padding: 6px 8px; text-align: left; vertical-align: top; }
+table.matrix th { background: rgba(157,92,255,0.12); font-family: var(--font-mono); font-size: 0.66rem; color: var(--signal-bright); text-transform: uppercase; letter-spacing: 0.03em; }
+table.matrix td { color: var(--ink); }
+table.matrix td.mono { font-family: var(--font-mono); font-size: 0.72rem; color: var(--spore); }
+</style>
+</head>
+<body>
+<div class="blob blob-purple"></div>
+<div class="blob blob-cyan"></div>
+
+<div class="wrap">
+  <h1>Domain-Language Tool Schema</h1>
+  <p class="subtitle">// capability companion · hierarchical depth · pairs with master domain path</p>
+
+  <nav class="nav-pills">
+    <a href="#status">Status</a>
+    <a href="#slider">Slider</a>
+    <a href="#planes">Planes</a>
+    <a href="#heat">Heat</a>
+    <a href="#antenna">L5</a>
+    <a href="#compose">L4</a>
+    <a href="#bucket">L3</a>
+    <a href="#contract">L2</a>
+    <a href="#fragment">L1</a>
+    <a href="#substrate">L0</a>
+    <a href="#matrix">Matrix</a>
+    <a href="#verify">Verify</a>
+  </nav>
+
+  <div class="meter-block" id="status">
+    <div class="meter-label">
+      <span>Schema Observability</span>
+      <span class="meter-pct">Companion Ready</span>
+    </div>
+    <div class="track"><div class="fill"><div class="pulse-edge"></div></div></div>
+  </div>
+
+  <!-- EXECUTIVE -->
+  <div class="panel">
+    <h2>Governing Contract <span class="badge">// three planes</span></h2>
+    <p class="lead">This schema is the executable capability companion to the Master Domain Path. Domain language remains pure. Software names appear only in the Implementation plane. Existing major substrates are available; every additional substrate is free and non-subscription. The same completeness slider topology lets the two documents sit side-by-side during work.</p>
+    <div class="chain" id="pathChain">
+      <span class="chain-node" data-layer="0">Substrate</span><span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="1">Fragment</span><span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="2">Contract</span><span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="3">Bucket</span><span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="4">Composition</span><span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="5">Antenna</span>
+    </div>
+    <p class="layer-label" style="margin-top:12px">Architectural planes</p>
+    <p>
+      <span class="plane-tag domain">Domain</span> Node · Edge · Event · Projection · Fragment · Contract · Bucket · Composition · Antenna<br>
+      <span class="plane-tag cap">Capability</span> establish · record · derive · declare · publish · evaluate · permit · match · join · align · orchestrate<br>
+      <span class="plane-tag impl">Implementation</span> existing major substrates + free local tooling (bindings only)
+    </p>
+  </div>
+
+  <!-- SLIDER -->
+  <div class="panel slider-block" id="slider">
+    <h2>Completeness Slider <span class="badge">// free position · matches master</span></h2>
+    <div class="slider-head">
+      <span>Drag to focus any layer</span>
+      <span class="slider-focus" id="focusLabel">Contract</span>
+    </div>
+    <div class="slider-track-wrap">
+      <input type="range" class="completeness" id="completeness" min="0" max="5" step="1" value="2">
+      <div class="slider-ticks">
+        <span>Substrate</span><span>Fragment</span><span>Contract</span><span>Bucket</span><span>Compose</span><span>Antenna</span>
+      </div>
+    </div>
+    <p class="brief">Focused layer expands to full action schema with hierarchical depth (0 semantic → 4 substrate primitive). Other layers collapse to brief capability summaries. Place beside the Master for paired mental burn-in.</p>
+  </div>
+
+  <!-- PLANES RULE -->
+  <div class="panel" id="planes">
+    <h2>Separation Rule <span class="badge">// never contaminate</span></h2>
+    <p class="lead">Domain actions never contain software names. Implementation bindings never redefine domain semantics. A successful process exit is never accepted as domain evidence. Derived state is never allowed to become historical truth.</p>
+    <ul>
+      <li>Domain plane answers <em>what must be possible</em>.</li>
+      <li>Capability plane answers <em>what must be provided</em>.</li>
+      <li>Implementation plane answers <em>by what physical means</em>.</li>
+      <li>Verification proves the means satisfy the domain.</li>
+      <li>Evidence closes the loop back to the ontology.</li>
+    </ul>
+  </div>
+
+  <!-- HEAT -->
+  <div class="panel" id="heat">
+    <h2>Coverage Heat <span class="badge">// schema density</span></h2>
+    <div class="heat-grid">
+      <span class="h-head">Layer</span><span class="h-head">Heat</span><span class="h-head">Schema</span>
+      <span class="heat-topic">L0 Substrate</span><div class="heat-bar-wrap"><div class="heat-bar heat-hot"></div></div><span class="heat-label">full depth</span>
+      <span class="heat-topic">L1 Fragment</span><div class="heat-bar-wrap"><div class="heat-bar heat-hot"></div></div><span class="heat-label">full depth</span>
+      <span class="heat-topic">L2 Contract</span><div class="heat-bar-wrap"><div class="heat-bar heat-warm"></div></div><span class="heat-label">full depth</span>
+      <span class="heat-topic">L3 Bucket</span><div class="heat-bar-wrap"><div class="heat-bar heat-warm"></div></div><span class="heat-label">full depth</span>
+      <span class="heat-topic">L4 Composition</span><div class="heat-bar-wrap"><div class="heat-bar heat-cool"></div></div><span class="heat-label">emerging</span>
+      <span class="heat-topic">L5 Antenna</span><div class="heat-bar-wrap"><div class="heat-bar heat-cold"></div></div><span class="heat-label">deferred</span>
+    </div>
+    <p class="heat-note">// schema coverage tracks master heat · higher layers remain thinner until lower evidence is solid</p>
+  </div>
+
+  <!-- ===================== L5 ANTENNA ===================== -->
+  <div class="panel layer-panel" data-layer="5" id="antenna">
+    <h2>L5 Antenna Tool Language <span class="badge">// federation</span></h2>
+    <p class="layer-label">discover · align · federate · orchestrate</p>
+    <div class="detail-brief"><p class="brief">Federated discovery and orchestration across independently projected substrates. Depends on stable Composition and measurable joined critical path.</p></div>
+    <div class="detail-full">
+      <p class="lead">Antenna capabilities become actionable only after Composition yields a measurable joined critical path. All federation remains derived; no new historical-truth mechanism is introduced.</p>
+      <div class="schema">
+        <div class="s-row"><span class="s-key">Domain action</span><span class="s-val">discover federated Contracts · align Projections · federate · orchestrate · measure federated critical path</span></div>
+        <div class="s-row"><span class="s-key">Historical effect</span><span class="s-val">READ_ONLY / DERIVED_ONLY</span></div>
+        <div class="s-row"><span class="s-key">Evidence</span><span class="s-val">Joined path measurable across federated boundaries; alignment observable without mutation</span></div>
+        <div class="s-row"><span class="s-key">Refusal</span><span class="s-val">Alignment failure does not rewrite source Events or Edges</span></div>
+      </div>
+      <p class="layer-label">Hierarchical depth example — align Projections</p>
+      <ul class="depth-tree">
+        <li class="d0">0 align Projections</li>
+        <li class="d1">1 compare independently produced current states</li>
+        <li class="d2">2 load Projection facts from each substrate</li>
+        <li class="d3">3 retrieve ordered Event slices · apply deterministic reducers</li>
+        <li class="d4">4 local ordered persistence + deterministic transform substrate</li>
+      </ul>
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Durable discovery of published Contract identities across substrates</li>
+        <li><span class="rank">R2 0.9</span> Projection alignment without rewriting historical Events</li>
+        <li><span class="rank">R3 0.85</span> Orchestration that respects Contract crossing rules and Bucket gates</li>
+        <li><span class="rank">R4 0.8</span> Independent inspection of federated critical-path length</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== L4 COMPOSITION ===================== -->
+  <div class="panel layer-panel" data-layer="4" id="compose">
+    <h2>L4 Composition Tool Language <span class="badge">// join</span></h2>
+    <p class="layer-label">identify · match · verify · attach · project · measure</p>
+    <div class="detail-brief"><p class="brief">Join independently complete Fragments through matching Contract identities. Produce larger Projection over existing Edges. Preserve history and acyclicity.</p></div>
+    <div class="detail-full">
+      <p class="lead">Composition never invents pair-wise Contracts at runtime and never rewrites source history. Compatibility is evaluated against static declarations; the joined critical path is derived.</p>
+      <div class="schema">
+        <div class="s-row"><span class="s-key">Domain actions</span><span class="s-val">identify candidates · match identity · verify compatibility · attach · verify acyclicity · establish joined Projection · derive critical path</span></div>
+        <div class="s-row"><span class="s-key">Historical effect</span><span class="s-val">DERIVED_ONLY (joined Projection) · VALIDATION_ONLY (acyclicity)</span></div>
+        <div class="s-row"><span class="s-key">Evidence</span><span class="s-val">Valid attachment · no cycle · measurable critical path · source histories untouched</span></div>
+        <div class="s-row"><span class="s-key">Refusal</span><span class="s-val">Incompatible Contract / cycle / shape mismatch → no join, no mutation</span></div>
+      </div>
+      <p class="layer-label">Hierarchical depth — derive critical path</p>
+      <ul class="depth-tree">
+        <li class="d0">0 derive critical-path length</li>
+        <li class="d1">1 compute longest directed path under domain path-length semantics</li>
+        <li class="d2">2 traverse joined Edge set · accumulate path costs</li>
+        <li class="d3">3 load directed relations · apply path algorithm · emit length</li>
+        <li class="d4">4 graph traversal substrate + deterministic numeric reduction</li>
+      </ul>
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Compatibility evaluation against static Contract declarations</li>
+        <li><span class="rank">R2 0.95</span> Acyclicity verification on the joined graph</li>
+        <li><span class="rank">R3 0.9</span> Derivation of joined Projection without mutation of source history</li>
+        <li><span class="rank">R4 0.85</span> Path-length analysis yielding a single critical-path measure</li>
+        <li><span class="rank">R5 0.8</span> Reproducible inspection of the joined structure</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== L3 BUCKET ===================== -->
+  <div class="panel layer-panel" data-layer="3" id="bucket">
+    <h2>L3 Bucket Tool Language <span class="badge">// constraint gate</span></h2>
+    <p class="layer-label">name · version · bind · evaluate · refuse · permit</p>
+    <div class="detail-brief"><p class="brief">Versioned constraint domain. Evaluate proposed Edge before it becomes historical fact. Refuse = no mutation. Permit = atomic Event + Edge + Projection.</p></div>
+    <div class="detail-full">
+      <p class="lead">Bucket evaluation is deterministic given the same constraint version, proposed Edge, and current Projection. Decision traces are themselves historical facts; they never alter prior Events.</p>
+      <div class="schema">
+        <div class="s-row"><span class="s-key">Domain actions</span><span class="s-val">name domain · version constraint · bind proposed Edge · evaluate · refuse · permit · record decision trace</span></div>
+        <div class="s-row"><span class="s-key">Historical effect</span><span class="s-val">REFUSAL_NO_MUTATION | AUTHORIZED_MUTATION (atomic triple on permit)</span></div>
+        <div class="s-row"><span class="s-key">Evidence</span><span class="s-val">Reproducible permit/refuse · governing version inspectable · prior versions preserved</span></div>
+        <div class="s-row"><span class="s-key">Failure classes</span><span class="s-val">Domain refusal ≠ execution failure ≠ evidence failure</span></div>
+      </div>
+      <p class="layer-label">Hierarchical depth — evaluate proposed Edge</p>
+      <ul class="depth-tree">
+        <li class="d0">0 evaluate proposed Edge</li>
+        <li class="d1">1 apply constraint domain against Edge properties and current Projection</li>
+        <li class="d2">2 load governing constraint version · load participating Projection · run decision function</li>
+        <li class="d3">3 retrieve versioned constraint fact · retrieve Node Projection rows · emit permit or refuse</li>
+        <li class="d4">4 ordered local persistence + deterministic evaluation substrate</li>
+      </ul>
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Versioned constraint representation that remains historical fact</li>
+        <li><span class="rank">R2 0.95</span> Deterministic evaluation against proposed Edge and current Projection</li>
+        <li><span class="rank">R3 0.95</span> Atomic authorization boundary (permit = triple; refuse = nothing)</li>
+        <li><span class="rank">R4 0.85</span> Decision traceability without alteration of prior Events</li>
+        <li><span class="rank">R5 0.8</span> Independent inspection of governing constraint version</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== L2 CONTRACT (default focus) ===================== -->
+  <div class="panel layer-panel priority focused" data-layer="2" id="contract">
+    <h2 class="warn-head">L2 Contract Tool Language <span class="badge">// boundary · current focus</span></h2>
+    <p class="layer-label">declare · bind · publish · crossing · shape · discover · refuse</p>
+    <div class="detail-brief"><p class="brief">Declared, owned, published interface. Static Projection shape. Discoverable before any join. Runtime verification only enforces the declaration.</p></div>
+    <div class="detail-full">
+      <p class="lead">Every Contract action from the master sequence is mapped. Publication makes the Contract independently discoverable. Incompatible composition is refused without historical mutation.</p>
+
+      <div class="schema">
+        <div class="s-row"><span class="s-key">id</span><span class="s-val">contract.declare-identity</span></div>
+        <div class="s-row"><span class="s-key">domain_layer</span><span class="s-val">L2</span></div>
+        <div class="s-row"><span class="s-key">object</span><span class="s-val">Published Contract identity</span></div>
+        <div class="s-row"><span class="s-key">required_state</span><span class="s-val">Owned, identifiable, discoverable, boundary-bound</span></div>
+        <div class="s-row"><span class="s-key">preconditions</span><span class="s-val">Complete Fragment (root, creation Edge, Event slice, Projection)</span></div>
+        <div class="s-row"><span class="s-key">operation</span><span class="s-val">Declare identity · bind boundary · publish · declare crossing rules · declare static shape · enforce · refuse</span></div>
+        <div class="s-row"><span class="s-key">historical_effect</span><span class="s-val">APPEND_HISTORY (declaration facts) · REFUSAL_NO_MUTATION (incompatible join)</span></div>
+        <div class="s-row"><span class="s-key">evidence</span><span class="s-val">Second Fragment can discover and evaluate compatibility without creating a join</span></div>
+        <div class="s-row"><span class="s-key">forbidden</span><span class="s-val">Pair-wise agreement invented at join time · shape redefined by runtime observation · history rewritten on mismatch</span></div>
+      </div>
+
+      <p class="layer-label">Hierarchical depth — publish Contract</p>
+      <ul class="depth-tree">
+        <li class="d0">0 publish Contract</li>
+        <li class="d1">1 make declared interface independently discoverable</li>
+        <li class="d2">2 persist identity + ownership + boundary + crossing rules + static shape as domain facts</li>
+        <li class="d3">3 write declaration records · index by identity · expose inspection surface</li>
+        <li class="d4">4 durable local structured persistence + deterministic lookup substrate</li>
+      </ul>
+
+      <p class="layer-label" style="margin-top:10px">Full action set (master sequence)</p>
+      <ul>
+        <li>declare identity owned by Fragment</li>
+        <li>bind boundary Nodes / Node types</li>
+        <li>publish as discoverable fact</li>
+        <li>declare permitted crossing Edge types and direction</li>
+        <li>prevent internal Node exposure</li>
+        <li>statically declare required Projection shape</li>
+        <li>treat runtime verification as enforcement only</li>
+        <li>refuse incompatible composition without altering history</li>
+        <li>declare ready for discovery and matching</li>
+      </ul>
+
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Durable declaration of identity and ownership separate from runtime observation</li>
+        <li><span class="rank">R2 0.95</span> Typed boundary representation distinguishing public from private Nodes</li>
+        <li><span class="rank">R3 0.95</span> Static constraint representation for Edge types and Projection shape</li>
+        <li><span class="rank">R4 0.9</span> Discoverability before any composition attempt</li>
+        <li><span class="rank">R5 0.9</span> Compatibility evaluation producing non-destructive refusal</li>
+        <li><span class="rank">R6 0.85</span> Independent inspection of published declarations</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== L1 FRAGMENT ===================== -->
+  <div class="panel layer-panel" data-layer="1" id="fragment">
+    <h2>L1 Fragment Tool Language <span class="badge">// unit of scale</span></h2>
+    <p class="layer-label">root · birth · scope · boundary · dag · projection · critical path</p>
+    <div class="detail-brief"><p class="brief">Bounded purposeful DAG with root, attributable Event history, independent Projection. Birth only by creation Edge + Event.</p></div>
+    <div class="detail-full">
+      <p class="lead">Fragment capabilities rest on substrate closed-loop proof. Critical-path length remains derived graph knowledge, never mutable business state.</p>
+      <div class="schema">
+        <div class="s-row"><span class="s-key">Domain actions</span><span class="s-val">designate root · emit creation Edge · bind Event scope · keep internal Edges private · validate DAG · derive Fragment Projection · measure Fragment critical path</span></div>
+        <div class="s-row"><span class="s-key">Historical effect</span><span class="s-val">APPEND_HISTORY (creation) · DERIVED_ONLY (Projection, critical path) · VALIDATION_ONLY (acyclicity)</span></div>
+        <div class="s-row"><span class="s-key">Evidence</span><span class="s-val">Independently identified · bounded · acyclic · projected · replayable</span></div>
+      </div>
+      <p class="layer-label">Hierarchical depth — emit creation Edge</p>
+      <ul class="depth-tree">
+        <li class="d0">0 emit creation Edge</li>
+        <li class="d1">1 establish Fragment birth as typed directed contact + matching Event</li>
+        <li class="d2">2 construct creation relation · append occurrence · update root-keyed Projection</li>
+        <li class="d3">3 write Edge record · write Event record · reduce Projection</li>
+        <li class="d4">4 append-only persistence + deterministic reducer substrate</li>
+      </ul>
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Graph identity and root designation</li>
+        <li><span class="rank">R2 0.95</span> Directed relation construction with historical attribution</li>
+        <li><span class="rank">R3 0.9</span> Historical partitioning (Event slice attributable to Fragment)</li>
+        <li><span class="rank">R4 0.9</span> Current-state derivation keyed by root</li>
+        <li><span class="rank">R5 0.85</span> Acyclicity verification and reproducible reconstruction</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== L0 SUBSTRATE ===================== -->
+  <div class="panel layer-panel" data-layer="0" id="substrate">
+    <h2>L0 Substrate Tool Language <span class="badge">// four relations</span></h2>
+    <p class="layer-label">identity · directed contact · occurrence · current truth · closed loop</p>
+    <div class="detail-brief"><p class="brief">Node · Edge · Event · Projection. Append-only history. Joint observability of one complete unit before concurrent birth.</p></div>
+    <div class="detail-full">
+      <p class="lead">All higher languages depend on these capabilities. Replay regenerating Projection is the operational proof of append-only character.</p>
+
+      <div class="schema">
+        <div class="s-row"><span class="s-key">Domain actions</span><span class="s-val">establish identity · establish directed contact · record occurrence · derive current truth · prove closed loop · replay history · inspect four relations</span></div>
+        <div class="s-row"><span class="s-key">Historical effect</span><span class="s-val">APPEND_HISTORY (Edge, Event) · DERIVED_ONLY (Projection) · READ_ONLY (inspect, replay)</span></div>
+        <div class="s-row"><span class="s-key">Evidence</span><span class="s-val">Seed unit jointly queryable as Node+Edge+Event+Projection · replay yields identical Projection</span></div>
+        <div class="s-row"><span class="s-key">Forbidden</span><span class="s-val">Mutation of historical Events or Edges · Projection treated as independent historical source</span></div>
+      </div>
+
+      <p class="layer-label">Hierarchical depth — derive current truth</p>
+      <ul class="depth-tree">
+        <li class="d0">0 derive current truth</li>
+        <li class="d1">1 reconstruct Projection from Event history</li>
+        <li class="d2">2 replay ordered Event sequence through deterministic reducer</li>
+        <li class="d3">3 load ordered Events · apply state transitions · emit derived state · compare with materialized Projection</li>
+        <li class="d4">4 ordered append-only store + deterministic transform substrate</li>
+      </ul>
+
+      <p class="layer-label" style="margin-top:10px">Ranked capability → weight</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1 1.0</span> Durable identity representation and deterministic lookup</li>
+        <li><span class="rank">R2 1.0</span> Directed typed relation creation with historical origin</li>
+        <li><span class="rank">R3 1.0</span> Append-only occurrence recording with ordering and retrieval</li>
+        <li><span class="rank">R4 0.95</span> Deterministic derivation of current truth from Event history</li>
+        <li><span class="rank">R5 0.95</span> Joint observability of the four relations for one complete unit</li>
+        <li><span class="rank">R6 0.9</span> Reconstruction of Projection by replay alone</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMPLETENESS MATRIX -->
+  <div class="panel" id="matrix">
+    <h2>Completeness Matrix <span class="badge">// master → evidence</span></h2>
+    <p class="layer-label">trace every domain item through capability to evidence</p>
+    <table class="matrix">
+      <thead>
+        <tr><th>Layer</th><th>Domain action</th><th>Capability</th><th>Historical effect</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>L0</td><td class="mono">establish identity</td><td>durable id + lookup</td><td>APPEND / READ</td><td>deterministic locate & distinguish</td></tr>
+        <tr><td>L0</td><td class="mono">establish directed contact</td><td>typed directed relation</td><td>APPEND_HISTORY</td><td>source·dest·type·origin inspectable</td></tr>
+        <tr><td>L0</td><td class="mono">record occurrence</td><td>append-only ordered event</td><td>APPEND_HISTORY</td><td>retrievable · ordered · replayable</td></tr>
+        <tr><td>L0</td><td class="mono">derive current truth</td><td>deterministic reduction</td><td>DERIVED_ONLY</td><td>replay ≡ materialized Projection</td></tr>
+        <tr><td>L0</td><td class="mono">prove closed loop</td><td>joint observability</td><td>VALIDATION_ONLY</td><td>Node+Edge+Event+Projection together</td></tr>
+        <tr><td>L1</td><td class="mono">designate root</td><td>root identity</td><td>APPEND / READ</td><td>root retrievable · membership valid</td></tr>
+        <tr><td>L1</td><td class="mono">emit creation Edge</td><td>birth relation + Event</td><td>APPEND_HISTORY</td><td>creation Edge + matching Event exist</td></tr>
+        <tr><td>L1</td><td class="mono">validate DAG</td><td>acyclicity check</td><td>VALIDATION_ONLY</td><td>machine-observable no-cycle result</td></tr>
+        <tr><td>L2</td><td class="mono">publish Contract</td><td>discoverable declaration</td><td>APPEND_HISTORY</td><td>second Fragment can discover without join</td></tr>
+        <tr><td>L2</td><td class="mono">refuse incompatible</td><td>non-destructive refusal</td><td>REFUSAL_NO_MUTATION</td><td>no new Edge/Event/Projection change</td></tr>
+        <tr><td>L3</td><td class="mono">evaluate proposed Edge</td><td>deterministic constraint</td><td>REFUSAL or AUTHORIZED</td><td>reproducible permit/refuse + version</td></tr>
+        <tr><td>L4</td><td class="mono">derive critical path</td><td>longest-path measure</td><td>DERIVED_ONLY</td><td>reproducible length on same graph</td></tr>
+        <tr><td>L5</td><td class="mono">align Projections</td><td>cross-substrate compare</td><td>READ_ONLY / DERIVED</td><td>alignment observable, history intact</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VERIFICATION & FAILURE -->
+  <div class="panel" id="verify">
+    <h2>Verification & Refusal Model <span class="badge">// never conflate</span></h2>
+    <p class="lead">Four distinct outcome classes must remain separate in every capability:</p>
+    <ul>
+      <li><strong style="color:var(--bio)">Execution failure</strong> — implementation could not perform the operation</li>
+      <li><strong style="color:var(--signal-bright)">Domain refusal</strong> — domain deliberately rejects the proposed transition (Bucket refuse, Contract mismatch)</li>
+      <li><strong style="color:var(--spore)">Validation failure</strong> — operation completed but resulting state violates invariant</li>
+      <li><strong style="color:var(--ink-dim)">Evidence failure</strong> — state may exist but cannot be proven</li>
+    </ul>
+    <p class="brief">Bucket refusal is never an execution failure. Contract mismatch is never an implementation crash. Cycle detection is never evidence failure. A process exit code is never domain evidence.</p>
+    <p class="layer-label" style="margin-top:12px">Reproducibility contracts</p>
+    <ul>
+      <li>same Event sequence → same Projection</li>
+      <li>same graph → same acyclicity result and critical-path measure</li>
+      <li>same Bucket version + proposed Edge + Projection → same permit/refuse</li>
+    </ul>
+  </div>
+
+  <!-- IMPLEMENTATION BINDING NOTE -->
+  <div class="panel">
+    <h2>Implementation Binding Plane <span class="badge">// separate · replaceable</span></h2>
+    <p class="lead">Bindings are not domain language. Existing major substrates supply identity, editing, analysis, and local execution surfaces. Additional free substrates fill ordered persistence, deterministic transform, graph traversal, visualization, and inspection. Any binding may be substituted if the capability contract is preserved.</p>
+    <p class="brief">Capability classes mapped (no software names in domain): durable structured persistence · ordered append · deterministic reduction · directed graph traversal · path analysis · declaration storage · constraint evaluation · discoverable fact index · visualization of derived structure · textual structural inspection · local process orchestration.</p>
+    <p class="layer-label" style="margin-top:10px">Substitution rule</p>
+    <p class="brief">primary_binding · alternative_binding · capability_equivalence · substitution_constraints. Changing a binding must not require changing Node, Edge, Event, Projection, Fragment, Contract, Bucket, Composition, or Antenna semantics.</p>
+  </div>
+
+  <!-- GLOBAL LAWS -->
+  <div class="panel">
+    <h2>Schema-Level Invariants <span class="badge">// enforced globally</span></h2>
+    <ul>
+      <li>Every business action becomes a typed Edge.</li>
+      <li>Projection is the sole current-truth surface.</li>
+      <li>Events remain append-only; historical Edges are never rewritten.</li>
+      <li>Fragment birth occurs through creation Edge + Event only.</li>
+      <li>Contracts are the sole legal Fragment crossing points.</li>
+      <li>Buckets gate Edge emission and never rewrite history.</li>
+      <li>Composition is Projection over existing Edges; it creates no new mutation language.</li>
+      <li>Any Projection can be rebuilt from its Event stream.</li>
+      <li>Higher languages may compose lower facts; they may not invent historical truth that bypasses the substrate.</li>
+    </ul>
+  </div>
+
+  <!-- FINAL TEST -->
+  <div class="panel">
+    <h2>Architectural Test <span class="badge">// mechanical answers</span></h2>
+    <ul>
+      <li><strong>Substrate</strong> — one complete Fragment representable as Node+Edge+Event+Projection and reconstructible by Event replay?</li>
+      <li><strong>Fragment</strong> — independently identified, bounded, acyclic, projected, replayable?</li>
+      <li><strong>Contract</strong> — another Fragment can discover, inspect, and evaluate before attempting composition?</li>
+      <li><strong>Bucket</strong> — proposed Edge evaluated deterministically, permitted atomically, or refused without mutation?</li>
+      <li><strong>Composition</strong> — two valid Fragments match Contracts, verify compatibility, join, remain acyclic, produce Projection and measurable critical path without rewriting history?</li>
+      <li><strong>Antenna</strong> — independently projected substrates discoverable, alignable, federatable, and orchestratable without a new historical-truth mechanism?</li>
+    </ul>
+    <p class="brief">Any “no” identifies a missing capability that must be traced downward until the missing primitive is found.</p>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn" id="btnResetFocus">Reset Focus to Contract</button>
+  </div>
+
+  <footer style="margin-top:2.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-dim);text-align:center">
+    // forged under alien purple protocol · tool schema companion · domain pure · implementation replaceable
+  </footer>
+</div>
+
+<script>
+(function () {
+  const slider = document.getElementById('completeness');
+  const focusLabel = document.getElementById('focusLabel');
+  const layers = ['Substrate', 'Fragment', 'Contract', 'Bucket', 'Composition', 'Antenna'];
+  const panels = document.querySelectorAll('.layer-panel');
+  const chainNodes = document.querySelectorAll('#pathChain .chain-node');
+
+  function applyFocus(val) {
+    const v = parseInt(val, 10);
+    focusLabel.textContent = layers[v];
+    panels.forEach(p => {
+      const L = parseInt(p.dataset.layer, 10);
+      p.classList.remove('focused', 'dimmed', 'priority');
+      if (L === v) {
+        p.classList.add('focused');
+        if (v === 2) p.classList.add('priority');
+      } else {
+        p.classList.add('dimmed');
+      }
+    });
+    chainNodes.forEach(n => {
+      n.classList.remove('active');
+      if (parseInt(n.dataset.layer, 10) === v) n.classList.add('active');
+    });
+  }
+
+  slider.addEventListener('input', () => applyFocus(slider.value));
+  document.getElementById('btnResetFocus').addEventListener('click', () => {
+    slider.value = 2;
+    applyFocus(2);
+  });
+  applyFocus(slider.value);
+})();
+</script>
+</body>
+</html>

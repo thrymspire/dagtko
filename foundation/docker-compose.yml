@@ -1,0 +1,126 @@
+# DAG Substrate — Turnkey Foundation
+# Single command: docker compose up -d --build
+# Proves Node · Edge · Event · Projection closed loop + Bucket gate + MCP surface.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dag-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dag}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dag_substrate}
+      POSTGRES_DB: ${POSTGRES_DB:-dag_substrate}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./sql/02_projections.sql:/docker-entrypoint-initdb.d/02_projections.sql:ro
+      - ./sql/03_constraints.sql:/docker-entrypoint-initdb.d/03_constraints.sql:ro
+      - ./sql/04_fragments_contracts.sql:/docker-entrypoint-initdb.d/04_fragments_contracts.sql:ro
+      - ./sql/05_seed.sql:/docker-entrypoint-initdb.d/05_seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dag} -d ${POSTGRES_DB:-dag_substrate}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    networks:
+      - dag-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: dag-redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    command: redis-server --appendonly yes --save 60 1
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    networks:
+      - dag-net
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: dag-api
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-dag}:${POSTGRES_PASSWORD:-dag_substrate}@postgres:5432/${POSTGRES_DB:-dag_substrate}
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 20s
+    networks:
+      - dag-net
+    restart: unless-stopped
+
+  mcp:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile
+    container_name: dag-mcp
+    environment:
+      INGEST_URL: http://api:8000
+    ports:
+      - "${MCP_PORT:-8001}:8001"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 15s
+    networks:
+      - dag-net
+    restart: unless-stopped
+
+  # Optional long-running Approval SLA consumer
+  # Start with: docker compose --profile approval up -d
+  approval:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: dag-approval
+    profiles: ["approval"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-dag}:${POSTGRES_PASSWORD:-dag_substrate}@postgres:5432/${POSTGRES_DB:-dag_substrate}
+      REDIS_URL: redis://redis:6379/0
+      INGEST_URL: http://api:8000
+    working_dir: /scripts
+    command: ["python", "approval_consumer.py"]
+    volumes:
+      - ./scripts/approval_consumer.py:/scripts/approval_consumer.py:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - dag-net
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+
+networks:
+  dag-net:
+    driver: bridge

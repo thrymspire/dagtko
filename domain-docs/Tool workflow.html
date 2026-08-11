@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Scope — Foundation → Edge · Bucket · MCP · LLM</title>
+<style>
+:root {
+  --void: #0a0512;
+  --panel: rgba(34, 16, 60, 0.55);
+  --panel-border: rgba(157, 92, 255, 0.35);
+  --ink: #ede6ff;
+  --ink-dim: #a996d6;
+  --signal: #9d5cff;
+  --signal-bright: #c084fc;
+  --spore: #d8c6ff;
+  --bio: #5ffbf1;
+  --warn: #ff6b81;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, Consolas, "SFMono-Regular", monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  position: relative;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(157,92,255,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 85% 110%, rgba(95,251,241,0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(157,92,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+.blob { position: fixed; width: 420px; height: 420px; border-radius: 50%; filter: blur(60px); opacity: 0.28; z-index: -1; pointer-events: none; animation: drift 28s ease-in-out infinite; }
+.blob-a { background: rgba(157,92,255,0.7); top: -80px; left: -100px; animation-duration: 30s; }
+.blob-b { background: rgba(95,251,241,0.55); bottom: -120px; right: -80px; animation-duration: 26s; animation-direction: reverse; }
+@keyframes drift { 0%,100% { transform: translate(0,0); } 33% { transform: translate(35px,25px); } 66% { transform: translate(-30px,15px); } }
+@media (prefers-reduced-motion: reduce) { .blob { animation: none !important; } }
+.shell { max-width: 760px; margin: 0 auto; padding: 48px 20px 100px; }
+h1,h2,h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+h1 { font-size: clamp(1.5rem,5vw,2rem); background: linear-gradient(90deg, var(--signal-bright), var(--bio)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; }
+.sub { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-dim); margin-bottom: 36px; }
+.sub::before { content: "// "; }
+.panel { background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--panel-border); clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px); padding: 24px 22px; margin-bottom: 28px; }
+.panel.warn-panel { border-left: 3px solid var(--warn); }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+.section-head h2 { font-size: 1rem; color: var(--signal-bright); }
+.warn-panel .section-head h2 { color: var(--warn); }
+.badge { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-dim); white-space: nowrap; }
+p { margin-bottom: 0.7em; }
+p:last-child { margin-bottom: 0; }
+ul.plain { list-style: none; padding: 0; margin: 10px 0; }
+ul.plain li { padding-left: 18px; position: relative; margin-bottom: 8px; }
+ul.plain li::before { content: "—"; position: absolute; left: 0; color: var(--bio); }
+.mono { font-family: var(--font-mono); color: var(--spore); font-size: 0.88em; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; padding: 2px 8px; border: 1px solid var(--panel-border); color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.03em; margin: 2px 4px 2px 0; }
+.tag.live { border-color: var(--bio); color: var(--bio); }
+.tag.next { border-color: var(--signal); color: var(--signal-bright); }
+.tag.warn { border-color: var(--warn); color: var(--warn); }
+.layer-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 10px 0 4px; }
+.layer-table th, .layer-table td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--panel-border); vertical-align: top; }
+.layer-table th { font-family: var(--font-mono); text-transform: uppercase; font-size: 0.66rem; color: var(--ink-dim); letter-spacing: 0.04em; }
+.layer-table td.mono { font-family: var(--font-mono); font-size: 0.76rem; color: var(--spore); }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0; font-family: var(--font-mono); font-size: 0.76rem; }
+.chain-node { padding: 7px 10px; border: 1px solid var(--panel-border); background: rgba(157,92,255,0.06); white-space: nowrap; }
+.chain-node.live { border-color: var(--bio); color: var(--bio); }
+.chain-node.next { border-color: var(--signal); color: var(--signal-bright); }
+.chain-arrow { color: var(--ink-dim); }
+.trend-item { display: flex; gap: 12px; margin: 14px 0; align-items: flex-start; }
+.trend-mark { font-family: var(--font-mono); color: var(--bio); flex-shrink: 0; font-size: 0.85rem; padding-top: 1px; }
+.subhead { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.05em; margin: 18px 0 6px; }
+.subhead:first-child { margin-top: 0; }
+footer { margin-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-dim); text-align: center; }
+</style>
+</head>
+<body>
+<div class="blob blob-a"></div>
+<div class="blob blob-b"></div>
+<div class="shell">
+
+  <header>
+    <h1>Current Scope — What’s Live</h1>
+    <p class="sub">foundation → edge · bucket · mcp · llm</p>
+  </header>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>Executive Read</h2>
+      <span class="badge">// one paragraph</span>
+    </div>
+    <p>You already own a working local substrate: WSL2 + Docker Compose + Visual Studio Enterprise + VS Code, all talking to the same containers. The three prior artifacts define a conceptual model (Node-Edge-Bucket), a minimal event-sourced DAG foundation (Postgres + Redis + projections), and a fuller EDA target (JanusGraph / RabbitMQ / MinIO / Temporal / Grafana). The foundation is the only thing that needs to be green before you can grow real Edges, real Buckets, an MCP surface, and an LLM that answers from the graph.</p>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>What Is Actually Here</h2>
+      <span class="badge">// three layers of paper</span>
+    </div>
+
+    <p class="subhead">1. Conceptual diagnosis (workflow.html)</p>
+    <p>Node-Edge-Bucket is the diagnostic language. Nodes = entities (WorkOrder, Technician, ApprovalGate, Status, Customer). Edges = transitions and actions (Creates, Approves, Assigns, Consumes, Updates, Notifies). Buckets = constraints that gate those edges (SLA, Budget, Permissions, API limits, Location). Four of five pain points already sit on Edges — that is the signal that event-driven + async wait is the right next move, not more node schema polishing.</p>
+
+    <p class="subhead">2. Runnable foundation (dag-node-graph-foundation.html)</p>
+    <p>This is the concrete substrate you said is already wired:</p>
+    <ul class="plain">
+      <li><span class="mono">docker-compose.yml</span> — Postgres 16 + Redis 7, health-checked, schema + seed applied on first boot</li>
+      <li>Tables: <span class="mono">nodes</span>, <span class="mono">edges</span>, <span class="mono">events</span>, first projection <span class="mono">wo_current_state</span></li>
+      <li>Event-sourced character: history is append-only; projections are derived; Matlab is read-only</li>
+      <li>Matlab R2026a script already selects from the projection</li>
+      <li>VS Code tasks + VS Enterprise Container Tools attach to the same stack</li>
+      <li>Everything under WSL2 filesystem — no <span class="mono">/mnt/c</span> path tax</li>
+    </ul>
+    <p>One command brings the whole foundation up. That is the only “live” runtime surface right now.</p>
+
+    <p class="subhead">3. Target EDA schema (workorder-eda-schema.html)</p>
+    <p>The full target stack is designed but not required for the next step. It maps the same Node-Edge-Bucket model onto:</p>
+    <table class="layer-table">
+      <tr><th>Concept</th><th>Target tool</th><th>Status</th></tr>
+      <tr><td>Nodes + Edges</td><td class="mono">JanusGraph (Gremlin)</td><td>planned (L3)</td></tr>
+      <tr><td>Buckets</td><td class="mono">MinIO object store</td><td>planned (L4)</td></tr>
+      <tr><td>Edge transport</td><td class="mono">RabbitMQ topic + ordered queues</td><td>planned (L2)</td></tr>
+      <tr><td>Long-running edge handlers</td><td class="mono">Temporal + .NET workers</td><td>planned (L5)</td></tr>
+      <tr><td>Critical-path / trends</td><td class="mono">MATLAB on snapshots</td><td>planned (L6)</td></tr>
+      <tr><td>Dashboard</td><td class="mono">Prometheus + Grafana</td><td>planned (L7)</td></tr>
+    </table>
+    <p>The Approval → Execution edge is already identified as the single human-gated bottleneck and given a Temporal <span class="mono">WaitConditionAsync</span> + SLA-timeout race design. That design stays valid whether the graph lives in Postgres today or JanusGraph later.</p>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>How the Foundation Supports the Next Four Goals</h2>
+      <span class="badge">// edge · bucket · mcp · llm</span>
+    </div>
+
+    <div class="trend-item">
+      <span class="trend-mark">01</span>
+      <div>
+        <p><b>Actual Edges</b></p>
+        <p>Today an edge is a row in <span class="mono">edges</span> (type, from_id, to_id, props, correlation_id, occurred_at) plus a matching append to <span class="mono">events</span>. That is already enough to emit “WorkOrderCreated”, “ApprovalRequested”, “TechnicianAssigned”, etc. The next concrete step is a thin ingest API (C# isolated worker or minimal Node) that accepts JSON, writes the event + edge, and updates the projection. Redis is already present and reserved for the first async edge queues — no new product required. Ordering-critical edges (Approval) can stay on a single-consumer queue pattern until throughput forces a consistent-hash or Kafka move.</p>
+        <p><span class="tag live">Postgres edges live</span> <span class="tag next">ingest API next</span> <span class="tag next">Redis streams next</span></p>
+      </div>
+    </div>
+
+    <div class="trend-item">
+      <span class="trend-mark">02</span>
+      <div>
+        <p><b>Actual Buckets</b></p>
+        <p>Buckets are constraints that gate edges. The foundation already has a JSONB <span class="mono">props</span> column on nodes and edges; the target schema adds a first-class <span class="mono">constraints</span> store (MinIO or a Postgres table). Either way the pattern is identical: before an edge is allowed, evaluate the relevant bucket values (SLA hours, budget remaining, permission set, location). The Temporal Approval workflow already expects <span class="mono">slaHours</span> to be read from the constraints source rather than hard-coded. You can implement the first real Bucket as a Postgres table or a JSON file today and move it to MinIO when the object-store path is needed for raw-event archival.</p>
+        <p><span class="tag live">JSONB props ready</span> <span class="tag next">constraints table / bucket</span> <span class="tag next">SLA timer wired to Temporal</span></p>
+      </div>
+    </div>
+
+    <div class="trend-item">
+      <span class="trend-mark">03</span>
+      <div>
+        <p><b>MCP surface</b></p>
+        <p>MCP (Model Context Protocol) is the clean way to expose the graph and its projections to an LLM or any other tool-using agent. Because the foundation already exposes a stable, queryable projection (<span class="mono">wo_current_state</span>) plus the raw event log, an MCP server can offer a small set of tools:</p>
+        <ul class="plain">
+          <li><span class="mono">list_open_work_orders</span></li>
+          <li><span class="mono">get_work_order_state</span></li>
+          <li><span class="mono">get_critical_path</span> (once the second projection exists)</li>
+          <li><span class="mono">list_pending_approvals</span></li>
+          <li><span class="mono">emit_edge</span> (write path, guarded by buckets)</li>
+        </ul>
+        <p>No graph product change is required — the MCP server is just another process on the same Docker network that speaks SQL (or later Gremlin) and returns structured results. The existing VS Code / VS tooling already lets you run and debug that process next to the compose stack.</p>
+        <p><span class="tag next">MCP server process</span> <span class="tag next">tool schemas over projections</span></p>
+      </div>
+    </div>
+
+    <div class="trend-item">
+      <span class="trend-mark">04</span>
+      <div>
+        <p><b>LLM that answers</b></p>
+        <p>Once MCP tools exist, any LLM (local or remote) that speaks MCP can answer questions against live state instead of hallucinated schema. The same projections that Matlab already reads become the ground truth the model is allowed to see. Critical-path and betweenness numbers can be pre-computed by the scheduled MATLAB job (or a pure SQL recursive CTE) and exposed as another tool, so the model never has to invent graph theory. The event log gives the model an audit trail when it needs to explain “why is this still PendingApproval?”</p>
+        <p><span class="tag next">MCP-capable LLM client</span> <span class="tag next">answers grounded in projections</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel warn-panel">
+    <div class="section-head">
+      <h2>Critical Path From Here</h2>
+      <span class="badge">// sequential</span>
+    </div>
+    <p>Do not expand the graph product yet. Grow capability on the existing Postgres + Redis foundation until the first real answers appear.</p>
+    <div class="chain">
+      <span class="chain-node live">Foundation up</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Ingest API (emit edge + event)</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Constraints / first Bucket</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Approval edge with wait + SLA</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">MCP tool server</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">LLM answers from tools</span>
+    </div>
+    <p>JanusGraph, full MinIO lake, Prometheus/Grafana, and the custom alien-purple dashboard remain valid later phases. They are not on the path to the first grounded answer.</p>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>What You Deliberately Do Not Need Yet</h2>
+      <span class="badge">// postpone</span>
+    </div>
+    <ul class="plain">
+      <li>JanusGraph / Cassandra / Elasticsearch — recursive CTEs + the existing edges table are enough for the first critical-path calculation</li>
+      <li>Full MinIO + lifecycle rules — a Postgres constraints table or a local JSON file is a valid first Bucket</li>
+      <li>Kafka / Redpanda — Redis Streams or a dedicated RabbitMQ queue (when you add it) covers the first ordered edge</li>
+      <li>Custom dashboard — Grafana or even a simple query against the projection is enough until the MCP/LLM path is producing answers</li>
+      <li>Any paid observability or workflow SaaS — Temporal (when you add it) and the existing compose stack stay self-hosted</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <div class="section-head">
+      <h2>System Character Already Set</h2>
+      <span class="badge">// does not change</span>
+    </div>
+    <ul class="plain">
+      <li>Every business action becomes a typed edge (append-only)</li>
+      <li>Projections are the only thing dashboards, Matlab, MCP, and the LLM are allowed to read for “current truth”</li>
+      <li>Buckets gate edges before they are written</li>
+      <li>Matlab stays analytics-only — never on the write path</li>
+      <li>One compose file, one network, one place for VS Code and Visual Studio to attach</li>
+      <li>Replay is free: re-project from the event log</li>
+    </ul>
+    <p>That character is already present in the foundation you have running. Scaling to real Edges, Buckets, MCP, and LLM is additive work on top of it — not a redesign.</p>
+  </div>
+
+  <footer>
+    // forged under alien purple protocol · scope only · foundation is the substrate
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAG Fragment Workload Path — Domain Implementation</title>
+<style>
+:root {
+  --void: #0a0512;
+  --panel: rgba(34, 16, 60, 0.55);
+  --panel-border: rgba(157, 92, 255, 0.35);
+  --ink: #ede6ff;
+  --ink-dim: #a996d6;
+  --signal: #9d5cff;
+  --signal-bright: #c084fc;
+  --spore: #d8c6ff;
+  --bio: #5ffbf1;
+  --warn: #ff6b81;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, Consolas, "SFMono-Regular", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(157,92,255,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 85% 110%, rgba(95,251,241,0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(157,92,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
+}
+.blob-purple {
+  width: 320px; height: 320px;
+  background: #9d5cff;
+  top: 15%; left: -80px;
+  animation: driftA 28s ease-in-out infinite;
+}
+.blob-cyan {
+  width: 260px; height: 260px;
+  background: #5ffbf1;
+  bottom: 10%; right: -60px;
+  animation: driftB 32s ease-in-out infinite;
+}
+
+@keyframes driftA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(36px, 28px); }
+}
+@keyframes driftB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-32px, -24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob, .pulse-edge, .check-mark { animation: none !important; }
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  background: linear-gradient(90deg, var(--signal-bright), var(--bio));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.35rem;
+}
+.subtitle {
+  font-family: var(--font-mono);
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 1.05rem;
+  color: var(--signal-bright);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+h2 .badge {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  color: var(--ink-dim);
+  text-transform: none;
+  white-space: nowrap;
+}
+h2.warn-head { color: var(--warn); }
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.92rem;
+  color: var(--signal-bright);
+  margin: 1.35rem 0 0.6rem;
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--panel-border);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  padding: 1.35rem 1.4rem;
+  margin-bottom: 1.75rem;
+}
+.panel.priority {
+  border-left: 3px solid var(--warn);
+}
+
+.meter-block { margin-bottom: 2.25rem; }
+.meter-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  margin-bottom: 0.45rem;
+  display: flex;
+  justify-content: space-between;
+}
+.meter-pct {
+  font-weight: 700;
+  color: var(--bio);
+  text-shadow: 0 0 10px rgba(95,251,241,0.55);
+}
+.track {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+  position: relative;
+}
+.fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--signal), var(--bio));
+  box-shadow: 0 0 16px rgba(157,92,255,0.7);
+  position: relative;
+  transition: width 0.45s ease;
+}
+.pulse-edge {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 16px;
+  background: rgba(255,255,255,0.7);
+  filter: blur(5px);
+  animation: pulse 1.8s ease-in-out infinite;
+  opacity: 0.5;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+}
+
+.item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(157,92,255,0.12);
+}
+.item:last-child { border-bottom: none; }
+
+.pod-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  margin-top: 2px;
+}
+.pod-wrap input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%; height: 100%;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
+}
+.pod {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--signal);
+  background: rgba(157,92,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.pod-wrap input:checked + .pod {
+  background: var(--signal);
+  border-color: var(--bio);
+  box-shadow: 0 0 12px rgba(157,92,255,0.8);
+}
+.check-mark {
+  font-size: 13px;
+  color: var(--void);
+  opacity: 0;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+.pod-wrap input:checked + .pod .check-mark { opacity: 1; }
+
+.item-body { flex: 1; min-width: 0; }
+.item-title {
+  font-size: 0.95rem;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.item.done .item-title {
+  color: var(--ink-dim);
+  text-decoration: line-through;
+  text-decoration-color: var(--signal);
+}
+.item-desc {
+  font-size: 0.82rem;
+  color: var(--ink-dim);
+  margin-top: 0.2rem;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+.btn {
+  background: transparent;
+  border: 1px solid var(--signal);
+  color: var(--signal);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s;
+}
+.btn:hover {
+  background: var(--signal);
+  color: var(--void);
+}
+.btn.warn {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+.btn.warn:hover {
+  background: var(--warn);
+  color: var(--void);
+}
+
+.save-ind {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  padding: 0.3rem 0.7rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 50;
+}
+.save-ind.show { opacity: 1; }
+
+p, li { font-size: 0.92rem; }
+ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+li { margin-bottom: 0.35rem; color: var(--ink-dim); }
+.lead { color: var(--ink); margin-bottom: 1rem; }
+.mono { font-family: var(--font-mono); color: var(--spore); font-size: 0.85em; }
+.nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.75rem;
+}
+.nav-pills a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  border: 1px solid var(--panel-border);
+  padding: 4px 10px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.nav-pills a:hover {
+  border-color: var(--signal);
+  color: var(--signal-bright);
+}
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+.chain-node {
+  padding: 7px 10px;
+  border: 1px solid var(--panel-border);
+  background: rgba(157,92,255,0.06);
+  white-space: nowrap;
+}
+.chain-node.now { border-color: var(--warn); color: var(--warn); box-shadow: 0 0 10px rgba(255,107,129,0.35); }
+.chain-node.next { border-color: var(--signal); color: var(--signal-bright); }
+.chain-node.far { border-color: var(--panel-border); color: var(--ink-dim); }
+.chain-arrow { color: var(--ink-dim); }
+.layer-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+.brief { color: var(--ink-dim); font-size: 0.88rem; }
+.phase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin: 1.1rem 0 0.45rem;
+}
+.phase-head h3 {
+  margin: 0;
+  font-size: 0.88rem;
+}
+.phase-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<div class="blob blob-purple"></div>
+<div class="blob blob-cyan"></div>
+
+<div class="wrap">
+  <h1>DAG Fragment Workload Path</h1>
+  <p class="subtitle">// task-driven domain language · pairs with critical path ontology · actionable workloads only</p>
+
+  <nav class="nav-pills">
+    <a href="#status">Status</a>
+    <a href="#antenna">Antenna</a>
+    <a href="#compose">Composition</a>
+    <a href="#bucket">Bucket</a>
+    <a href="#contract">Contract</a>
+    <a href="#fragment">Fragment</a>
+    <a href="#substrate">Substrate</a>
+  </nav>
+
+  <!-- METER -->
+  <div class="meter-block" id="status">
+    <div class="meter-label">
+      <span id="statusLabel">System Critical</span>
+      <span class="meter-pct" id="pctLabel">0%</span>
+    </div>
+    <div class="track">
+      <div class="fill" id="fillBar">
+        <div class="pulse-edge"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE -->
+  <div class="panel">
+    <h2>Executive Read <span class="badge">// workload pairing</span></h2>
+    <p class="lead">This path converts the domain languages of the Critical Path ontology into ordered, markable workloads. Every workload is stated only in domain terms. Completing a lower layer unlocks the next language. No workload may introduce mutation of history or bypass Projection as the sole readable surface.</p>
+    <div class="chain">
+      <span class="chain-node now">Substrate Workloads</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Fragment Workloads</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Contract Workloads</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node next">Bucket Workloads</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node far">Composition</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node far">Antenna</span>
+    </div>
+  </div>
+
+  <!-- ANTENNA — least detail -->
+  <div class="panel" id="antenna">
+    <h2>Antenna Workloads <span class="badge">// federation readiness</span></h2>
+    <p class="layer-label">highest language · least description</p>
+    <p class="brief">Confirm that composition yields a single measurable critical-path length across joined Fragments. Only then open federation of independently projected substrates.</p>
+  </div>
+
+  <!-- COMPOSITION -->
+  <div class="panel" id="compose">
+    <h2>Composition Workloads <span class="badge">// join readiness</span></h2>
+    <p class="layer-label">fragment assembly · brief</p>
+    <p class="brief">Declare the Projection shape that results when two Fragments attach at matching Contracts. Verify the joined graph remains acyclic and that critical-path length is the longest path across the attachment. No new mutation language is introduced; composition is read-only over existing Edges.</p>
+  </div>
+
+  <!-- BUCKET -->
+  <div class="panel" id="bucket">
+    <h2>Bucket Workloads <span class="badge" id="badge-bucket">(0/4)</span></h2>
+    <p class="layer-label">constraint domains that gate emission</p>
+    <p class="lead">Buckets are versioned constraint facts. A workload is complete when the named domain exists, can be evaluated against a proposed Edge, and either refuses or permits emission without ever rewriting prior Events.</p>
+
+    <div class="item" data-id="b1">
+      <div class="pod-wrap"><input type="checkbox" id="b1"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Name the first constraint domains</div>
+        <div class="item-desc">Declare at least SLA horizon, residual capacity, and permission set as distinct Bucket identities. Each Bucket is a fact, not a process step.</div>
+      </div>
+    </div>
+    <div class="item" data-id="b2">
+      <div class="pod-wrap"><input type="checkbox" id="b2"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Bind evaluation to Edge emission</div>
+        <div class="item-desc">Before any Edge is appended, the relevant Buckets are consulted against the proposed Edge properties and the current Projection of the participating Nodes.</div>
+      </div>
+    </div>
+    <div class="item" data-id="b3">
+      <div class="pod-wrap"><input type="checkbox" id="b3"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Refusal leaves history untouched</div>
+        <div class="item-desc">A failed Bucket evaluation produces no Event, no Edge, and no Projection change. Success produces the triple atomically.</div>
+      </div>
+    </div>
+    <div class="item" data-id="b4">
+      <div class="pod-wrap"><input type="checkbox" id="b4"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Bucket versions are themselves facts</div>
+        <div class="item-desc">Constraint values may change over time only by recording a new versioned fact. Prior evaluations remain reconstructible from the Event stream.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRACT -->
+  <div class="panel" id="contract">
+    <h2>Contract Workloads <span class="badge" id="badge-contract">(0/4)</span></h2>
+    <p class="layer-label">port interfaces at Fragment boundaries</p>
+    <p class="lead">A Contract is the only legal surface at which two Fragments may later join. Workloads formalize the boundary before any composition is attempted.</p>
+
+    <div class="item" data-id="c1">
+      <div class="pod-wrap"><input type="checkbox" id="c1"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Identify boundary Nodes inside the seed Fragment</div>
+        <div class="item-desc">Mark which Nodes of the existing WorkOrder Fragment may serve as ports for future attachment. Internal Nodes remain private to the Fragment.</div>
+      </div>
+    </div>
+    <div class="item" data-id="c2">
+      <div class="pod-wrap"><input type="checkbox" id="c2"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Declare allowed crossing Edge types</div>
+        <div class="item-desc">Name the Edge types that may leave or enter a Fragment at a Contract. All other Edge types are forbidden from crossing.</div>
+      </div>
+    </div>
+    <div class="item" data-id="c3">
+      <div class="pod-wrap"><input type="checkbox" id="c3"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Specify Projection shape required at the join</div>
+        <div class="item-desc">State which Projection facts must remain consistent on both sides of a Contract after attachment. Consistency is checked by Projection comparison, never by rewriting history.</div>
+      </div>
+    </div>
+    <div class="item" data-id="c4">
+      <div class="pod-wrap"><input type="checkbox" id="c4"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Treat Contract as annotation until composition is required</div>
+        <div class="item-desc">Until a second Fragment exists, a Contract is simply a typed declaration on the boundary Nodes. No additional mutation language is introduced.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRAGMENT -->
+  <div class="panel" id="fragment">
+    <h2>Fragment Workloads <span class="badge" id="badge-fragment">(0/6)</span></h2>
+    <p class="layer-label">primary unit of scale · self-contained DAG</p>
+    <p class="lead">A Fragment is born by emission of a typed creation Edge, owns a contiguous Event slice, and exposes zero or more Contracts. These workloads make the seed WorkOrder recognizable as the first Fragment and establish the pattern for every subsequent Fragment.</p>
+
+    <div class="item" data-id="f1">
+      <div class="pod-wrap"><input type="checkbox" id="f1"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Designate the root Node of the seed Fragment</div>
+        <div class="item-desc">The WorkOrder Node already present is declared the root. All other Nodes and Edges of the Fragment are reachable from this root by directed paths.</div>
+      </div>
+    </div>
+    <div class="item" data-id="f2">
+      <div class="pod-wrap"><input type="checkbox" id="f2"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Bind the Fragment to a contiguous Event slice</div>
+        <div class="item-desc">Every Event belonging to the Fragment is identifiable by stream identity or correlation so that the Fragment can be replayed in isolation.</div>
+      </div>
+    </div>
+    <div class="item" data-id="f3">
+      <div class="pod-wrap"><input type="checkbox" id="f3"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Confirm the first Projection is keyed by the root</div>
+        <div class="item-desc">The existing current-state Projection is recognized as the Fragment’s primary readable surface. No second source of current truth is permitted.</div>
+      </div>
+    </div>
+    <div class="item" data-id="f4">
+      <div class="pod-wrap"><input type="checkbox" id="f4"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Treat creation Edge emission as the sole birth act</div>
+        <div class="item-desc">A new Fragment comes into existence only by appending a typed creation Edge and its matching Event. Schema mutation is never the birth mechanism.</div>
+      </div>
+    </div>
+    <div class="item" data-id="f5">
+      <div class="pod-wrap"><input type="checkbox" id="f5"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Keep internal Edges private to the Fragment</div>
+        <div class="item-desc">Edges that do not appear in any Contract declaration never leave the Fragment boundary. Cross-Fragment contact is deferred until Contract workloads are complete.</div>
+      </div>
+    </div>
+    <div class="item" data-id="f6">
+      <div class="pod-wrap"><input type="checkbox" id="f6"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Derive critical-path length as a Projection, never as mutable state</div>
+        <div class="item-desc">Longest-path length inside the Fragment is computed from the Edge set and stored only as a derived Projection. It is never updated in place.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBSTRATE — most detail, immediate focus -->
+  <div class="panel priority" id="substrate">
+    <h2 class="warn-head">Substrate Workloads <span class="badge" id="badge-substrate">(0/10)</span></h2>
+    <p class="layer-label">now · infrastructure readiness · highest priority</p>
+    <p class="lead">These workloads make the four substrate relations operationally true and observable. They are the only work that may proceed before Fragment formalization. Every higher language depends on their completion.</p>
+
+    <div class="phase-head">
+      <h3>Identity and Contact</h3>
+      <span class="phase-badge" id="ph-id">(0/3)</span>
+    </div>
+
+    <div class="item" data-id="s1">
+      <div class="pod-wrap"><input type="checkbox" id="s1"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Verify every process participant is a typed Node</div>
+        <div class="item-desc">Confirm that WorkOrder, and any future actor or state holder, exists only as a Node with stable identity, declared type, and properties. No process step is encoded inside a Node.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s2">
+      <div class="pod-wrap"><input type="checkbox" id="s2"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Confirm every transition is a typed Edge</div>
+        <div class="item-desc">Creation, approval, assignment, consumption, and notification each appear solely as an Edge linking two Nodes, carrying correlation and causation identifiers.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s3">
+      <div class="pod-wrap"><input type="checkbox" id="s3"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Refuse any contact that is not an Edge</div>
+        <div class="item-desc">Direct mutation of Node properties to represent process progress is disallowed. Progress is expressed only by additional Edges.</div>
+      </div>
+    </div>
+
+    <div class="phase-head">
+      <h3>History and Truth</h3>
+      <span class="phase-badge" id="ph-hist">(0/3)</span>
+    </div>
+
+    <div class="item" data-id="s4">
+      <div class="pod-wrap"><input type="checkbox" id="s4"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Guarantee the Event log is append-only</div>
+        <div class="item-desc">Every Edge emission produces a corresponding Event. No Event is updated or removed. Replay of the Event stream must reconstruct every Projection exactly.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s5">
+      <div class="pod-wrap"><input type="checkbox" id="s5"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Enforce Projection as the sole readable current truth</div>
+        <div class="item-desc">All consumers—analytics, future Contracts, future Buckets—read only from Projections. Direct Event interrogation is reserved for audit and reconstruction.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s6">
+      <div class="pod-wrap"><input type="checkbox" id="s6"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Lock character against mutation of history</div>
+        <div class="item-desc">No future language may issue an in-place change to an existing Event or historical Edge. All change is additional Edges and Events; Projections are derived.</div>
+      </div>
+    </div>
+
+    <div class="phase-head">
+      <h3>Observability and Proof</h3>
+      <span class="phase-badge" id="ph-obs">(0/4)</span>
+    </div>
+
+    <div class="item" data-id="s7">
+      <div class="pod-wrap"><input type="checkbox" id="s7"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Prove the seed closed loop is live</div>
+        <div class="item-desc">A WorkOrder Node, its creation Edge, the matching Event, and the Projection row exist and are jointly queryable. This is the minimal proof the four relations cooperate.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s8">
+      <div class="pod-wrap"><input type="checkbox" id="s8"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Confirm substrate reachability from every host consumer</div>
+        <div class="item-desc">The same substrate answers every authorized consumer without translation. Ordered edge streams remain reserved capacity and are not yet required for domain correctness.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s9">
+      <div class="pod-wrap"><input type="checkbox" id="s9"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Establish that replay regenerates the Projection</div>
+        <div class="item-desc">From the Event stream alone it is possible to rebuild the current-state Projection. This capability is the operational definition of append-only character.</div>
+      </div>
+    </div>
+    <div class="item" data-id="s10">
+      <div class="pod-wrap"><input type="checkbox" id="s10"><div class="pod"><span class="check-mark">✓</span></div></div>
+      <div class="item-body">
+        <div class="item-title">Declare substrate readiness complete</div>
+        <div class="item-desc">When all preceding substrate workloads are true, the domain is ready for Fragment formalization. No higher language may begin before this declaration.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELIVERABLE -->
+  <div class="panel">
+    <h2>Deliverable Horizon <span class="badge">// upward drive</span></h2>
+    <p class="lead">The immediate deliverable is a substrate whose seven (now ten) domain invariants are observably true, followed by recognition of the seed WorkOrder as the first Fragment. That recognition is itself a domain act: designation of root, binding of Event slice, and confirmation that the existing Projection is the Fragment’s primary surface.</p>
+    <p>Only after that deliverable is green do Contract annotations become useful. Only after Contracts exist do Bucket evaluations gain attachment points. Composition and federation remain speculative until the lower languages produce a measurable critical-path length that can be trusted across Fragment boundaries.</p>
+  </div>
+
+  <!-- INVARIANTS -->
+  <div class="panel">
+    <h2>Invariants That Constrain Every Workload <span class="badge">// non-negotiable</span></h2>
+    <ul>
+      <li>Every business action becomes a typed Edge.</li>
+      <li>Projections are the only surface for current truth.</li>
+      <li>Buckets gate Edges before they are written; they never rewrite history.</li>
+      <li>Fragments are born by creation Edges, never by schema mutation.</li>
+      <li>Contracts are the sole legal crossing points between Fragments.</li>
+      <li>Composition is a Projection over existing Edges, never a new mutation language.</li>
+      <li>Replay remains free: any Projection can be rebuilt from its Event stream.</li>
+    </ul>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn warn" id="btnReset">Reset All Workloads</button>
+  </div>
+
+  <footer style="margin-top:2.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-dim);text-align:center">
+    // forged under alien purple protocol · workload path · pairs with critical path ontology · domain language only
+  </footer>
+</div>
+
+<div class="save-ind" id="saveInd">saved</div>
+
+<script>
+(function () {
+  const checks = document.querySelectorAll('input[type=checkbox]');
+  const total = checks.length;
+  const fill = document.getElementById('fillBar');
+  const pctEl = document.getElementById('pctLabel');
+  const statusEl = document.getElementById('statusLabel');
+  const saveInd = document.getElementById('saveInd');
+
+  const groups = {
+    substrate: ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'],
+    fragment:  ['f1','f2','f3','f4','f5','f6'],
+    contract:  ['c1','c2','c3','c4'],
+    bucket:    ['b1','b2','b3','b4'],
+    'ph-id':   ['s1','s2','s3'],
+    'ph-hist': ['s4','s5','s6'],
+    'ph-obs':  ['s7','s8','s9','s10']
+  };
+
+  const thresholds = [
+    { p: 0,   label: 'System Critical' },
+    { p: 1,   label: 'Diagnostics Running' },
+    { p: 25,  label: 'Stabilizing Core' },
+    { p: 50,  label: 'Halfway To Orbit' },
+    { p: 75,  label: 'Nearly Operational' },
+    { p: 99,  label: 'Final Checks' },
+    { p: 100, label: 'Fully Operational' }
+  ];
+
+  function statusFor(p) {
+    let label = thresholds[0].label;
+    for (const t of thresholds) {
+      if (p >= t.p) label = t.label;
+    }
+    return label;
+  }
+
+  function countGroup(ids) {
+    let n = 0;
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.checked) n++;
+    });
+    return n;
+  }
+
+  function updateMeter() {
+    let done = 0;
+    checks.forEach(cb => {
+      if (cb.checked) done++;
+      const item = cb.closest('.item');
+      if (item) item.classList.toggle('done', cb.checked);
+    });
+    const p = total === 0 ? 0 : Math.round((done / total) * 100);
+    fill.style.width = p + '%';
+    pctEl.textContent = p + '%';
+    statusEl.textContent = statusFor(p);
+
+    const badgeMap = {
+      'badge-substrate': groups.substrate,
+      'badge-fragment':  groups.fragment,
+      'badge-contract':  groups.contract,
+      'badge-bucket':    groups.bucket,
+      'ph-id':           groups['ph-id'],
+      'ph-hist':         groups['ph-hist'],
+      'ph-obs':          groups['ph-obs']
+    };
+    Object.keys(badgeMap).forEach(bid => {
+      const el = document.getElementById(bid);
+      if (!el) return;
+      const ids = badgeMap[bid];
+      el.textContent = '(' + countGroup(ids) + '/' + ids.length + ')';
+    });
+  }
+
+  function showSaved(msg) {
+    saveInd.textContent = msg || 'saved';
+    saveInd.classList.add('show');
+    setTimeout(() => saveInd.classList.remove('show'), 1200);
+  }
+
+  async function persist(id, checked) {
+    const key = 'dag_frag_wl_' + id;
+    try {
+      if (window.storage && window.storage.set) {
+        await window.storage.set(key, checked ? '1' : '0');
+      } else {
+        localStorage.setItem(key, checked ? '1' : '0');
+      }
+      showSaved('saved');
+    } catch (_) {}
+  }
+
+  checks.forEach(cb => {
+    const key = 'dag_frag_wl_' + cb.id;
+    (async () => {
+      try {
+        let val = null;
+        if (window.storage && window.storage.get) val = await window.storage.get(key);
+        else val = localStorage.getItem(key);
+        if (val === '1') cb.checked = true;
+      } catch (_) {}
+      updateMeter();
+    })();
+
+    cb.addEventListener('change', () => {
+      persist(cb.id, cb.checked);
+      updateMeter();
+    });
+  });
+
+  document.getElementById('btnReset').addEventListener('click', async () => {
+    for (const cb of checks) {
+      cb.checked = false;
+      await persist(cb.id, false);
+    }
+    updateMeter();
+    showSaved('reset');
+  });
+
+  updateMeter();
+})();
+</script>
+</body>
+</html>

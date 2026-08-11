@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAG Master Domain Path — Completeness Observability</title>
+<style>
+:root {
+  --void: #0a0512;
+  --panel: rgba(34, 16, 60, 0.55);
+  --panel-border: rgba(157, 92, 255, 0.35);
+  --ink: #ede6ff;
+  --ink-dim: #a996d6;
+  --signal: #9d5cff;
+  --signal-bright: #c084fc;
+  --spore: #d8c6ff;
+  --bio: #5ffbf1;
+  --warn: #ff6b81;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, Consolas, "SFMono-Regular", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(157,92,255,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 85% 110%, rgba(95,251,241,0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(157,92,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.28;
+  z-index: -1;
+  pointer-events: none;
+}
+.blob-purple {
+  width: 320px; height: 320px;
+  background: #9d5cff;
+  top: 15%; left: -80px;
+  animation: driftA 28s ease-in-out infinite;
+}
+.blob-cyan {
+  width: 260px; height: 260px;
+  background: #5ffbf1;
+  bottom: 10%; right: -60px;
+  animation: driftB 32s ease-in-out infinite;
+}
+
+@keyframes driftA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(36px, 28px); }
+}
+@keyframes driftB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-32px, -24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob, .pulse-edge { animation: none !important; }
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  background: linear-gradient(90deg, var(--signal-bright), var(--bio));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.35rem;
+}
+.subtitle {
+  font-family: var(--font-mono);
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 1.05rem;
+  color: var(--signal-bright);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+h2 .badge {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  color: var(--ink-dim);
+  text-transform: none;
+  white-space: nowrap;
+}
+h2.warn-head { color: var(--warn); }
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.92rem;
+  color: var(--signal-bright);
+  margin: 1.35rem 0 0.6rem;
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--panel-border);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  padding: 1.35rem 1.4rem;
+  margin-bottom: 1.75rem;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+.panel.priority {
+  border-left: 3px solid var(--warn);
+}
+.panel.dimmed {
+  opacity: 0.42;
+  filter: saturate(0.55);
+}
+.panel.focused {
+  opacity: 1;
+  filter: none;
+  box-shadow: 0 0 24px rgba(157,92,255,0.18);
+}
+
+.meter-block { margin-bottom: 1.5rem; }
+.meter-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+  margin-bottom: 0.45rem;
+  display: flex;
+  justify-content: space-between;
+}
+.meter-pct {
+  font-weight: 700;
+  color: var(--bio);
+  text-shadow: 0 0 10px rgba(95,251,241,0.55);
+}
+.track {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+  position: relative;
+}
+.fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--signal), var(--bio));
+  box-shadow: 0 0 16px rgba(157,92,255,0.7);
+  position: relative;
+  transition: width 0.45s ease;
+}
+.pulse-edge {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 16px;
+  background: rgba(255,255,255,0.7);
+  filter: blur(5px);
+  animation: pulse 1.8s ease-in-out infinite;
+  opacity: 0.5;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.85; }
+}
+
+p, li { font-size: 0.92rem; }
+ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+li { margin-bottom: 0.35rem; color: var(--ink-dim); }
+.lead { color: var(--ink); margin-bottom: 1rem; }
+.nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.75rem;
+}
+.nav-pills a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  border: 1px solid var(--panel-border);
+  padding: 4px 10px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.nav-pills a:hover {
+  border-color: var(--signal);
+  color: var(--signal-bright);
+}
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+.chain-node {
+  padding: 7px 10px;
+  border: 1px solid var(--panel-border);
+  background: rgba(157,92,255,0.06);
+  white-space: nowrap;
+  transition: all 0.25s;
+}
+.chain-node.active {
+  border-color: var(--bio);
+  color: var(--bio);
+  box-shadow: 0 0 12px rgba(95,251,241,0.35);
+}
+.chain-node.now { border-color: var(--warn); color: var(--warn); }
+.chain-arrow { color: var(--ink-dim); }
+.layer-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+.brief { color: var(--ink-dim); font-size: 0.88rem; }
+
+/* Slider control */
+.slider-block {
+  margin-bottom: 1.75rem;
+}
+.slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.slider-head span {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+}
+.slider-focus {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--bio);
+  text-shadow: 0 0 8px rgba(95,251,241,0.4);
+  font-weight: 700;
+}
+.slider-track-wrap {
+  position: relative;
+  padding: 8px 0 28px;
+}
+input[type=range].completeness {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--panel-border);
+  outline: none;
+  cursor: pointer;
+}
+input[type=range].completeness::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--signal), var(--bio));
+  border: 2px solid var(--void);
+  box-shadow: 0 0 12px rgba(157,92,255,0.7);
+  cursor: grab;
+}
+input[type=range].completeness::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--signal), var(--bio));
+  border: 2px solid var(--void);
+  box-shadow: 0 0 12px rgba(157,92,255,0.7);
+  cursor: grab;
+}
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.slider-ticks span { max-width: 56px; text-align: center; line-height: 1.2; }
+
+/* Heat map */
+.heat-grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  margin: 12px 0 4px;
+  align-items: center;
+}
+.heat-grid .h-head {
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.68rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 4px;
+}
+.heat-topic { color: var(--ink); }
+.heat-bar-wrap {
+  width: 72px;
+  height: 8px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.heat-bar { height: 100%; border-radius: 999px; transition: width 0.3s; }
+.heat-hot  { background: linear-gradient(90deg, var(--signal), var(--bio)); width: 92%; box-shadow: 0 0 8px rgba(95,251,241,0.45); }
+.heat-warm { background: linear-gradient(90deg, var(--signal), var(--signal-bright)); width: 68%; }
+.heat-cool { background: var(--signal); width: 38%; opacity: 0.7; }
+.heat-cold { background: var(--panel-border); width: 14%; }
+.heat-label { color: var(--ink-dim); font-size: 0.72rem; white-space: nowrap; }
+.heat-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  margin-top: 10px;
+}
+
+/* Grammar blocks */
+.grammar {
+  background: #050208;
+  border: 1px solid var(--panel-border);
+  border-left: 3px solid var(--bio);
+  padding: 12px 14px;
+  margin: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--spore);
+  line-height: 1.5;
+}
+.grammar .g-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.grammar .g-row:last-child { margin-bottom: 0; }
+.grammar .g-key {
+  color: var(--signal-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.68rem;
+  padding-top: 2px;
+}
+.grammar .g-val { color: var(--spore); }
+
+.cap-rank {
+  margin: 8px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.cap-rank li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--ink-dim);
+}
+.cap-rank .rank {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--bio);
+  min-width: 28px;
+  padding-top: 1px;
+}
+
+.detail-full { display: block; }
+.detail-brief { display: none; }
+.panel.dimmed .detail-full { display: none; }
+.panel.dimmed .detail-brief { display: block; }
+.panel.focused .detail-full { display: block; }
+.panel.focused .detail-brief { display: none; }
+
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+.btn {
+  background: transparent;
+  border: 1px solid var(--signal);
+  color: var(--signal);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.15s, color 0.15s;
+}
+.btn:hover {
+  background: var(--signal);
+  color: var(--void);
+}
+</style>
+</head>
+<body>
+<div class="blob blob-purple"></div>
+<div class="blob blob-cyan"></div>
+
+<div class="wrap">
+  <h1>DAG Master Domain Path</h1>
+  <p class="subtitle">// completeness observability · free-position mental burn-in · substrate → antenna</p>
+
+  <nav class="nav-pills">
+    <a href="#status">Status</a>
+    <a href="#slider">Slider</a>
+    <a href="#heat">Heat</a>
+    <a href="#antenna">Antenna</a>
+    <a href="#compose">Composition</a>
+    <a href="#bucket">Bucket</a>
+    <a href="#contract">Contract</a>
+    <a href="#fragment">Fragment</a>
+    <a href="#substrate">Substrate</a>
+    <a href="#grammar">Grammar</a>
+    <a href="#observe">Observability</a>
+  </nav>
+
+  <!-- STATUS METER -->
+  <div class="meter-block" id="status">
+    <div class="meter-label">
+      <span id="statusLabel">Observability Ready</span>
+      <span class="meter-pct" id="pctLabel">—</span>
+    </div>
+    <div class="track">
+      <div class="fill" id="fillBar" style="width:100%">
+        <div class="pulse-edge"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE -->
+  <div class="panel">
+    <h2>Governing Objective <span class="badge">// master</span></h2>
+    <p class="lead">The system is expressible as a top-down domain language in which every higher action is semantically licensed by the layer beneath it. The critical path is Substrate → Fragment → Contract → Bucket → Composition → Antenna. A higher domain language may compose and constrain lower-domain facts; it may never invent a new kind of historical truth that bypasses the substrate.</p>
+    <p class="brief">This master is an observability surface for mental burn-in. It is not an in-action checklist. Drag the completeness slider to bring any layer into full focus while the others recede. The heat map shows language density already established versus language still thin. Ranked capability dimensions appear inside each focused layer so acquisition thinking can begin without naming tools.</p>
+    <div class="chain" id="pathChain">
+      <span class="chain-node" data-layer="0">Substrate</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="1">Fragment</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="2">Contract</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="3">Bucket</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="4">Composition</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-node" data-layer="5">Antenna</span>
+    </div>
+  </div>
+
+  <!-- COMPLETENESS SLIDER -->
+  <div class="panel slider-block" id="slider">
+    <h2>Completeness Slider <span class="badge">// free position · line of sight</span></h2>
+    <div class="slider-head">
+      <span>Drag to focus any layer</span>
+      <span class="slider-focus" id="focusLabel">Contract</span>
+    </div>
+    <div class="slider-track-wrap">
+      <input type="range" class="completeness" id="completeness" min="0" max="5" step="1" value="2">
+      <div class="slider-ticks">
+        <span>Substrate</span>
+        <span>Fragment</span>
+        <span>Contract</span>
+        <span>Bucket</span>
+        <span>Compose</span>
+        <span>Antenna</span>
+      </div>
+    </div>
+    <p class="brief">Focused layer receives full domain grammar (Object → State → Relation → Operation → Constraint → Evidence → ranked Capability). Adjacent and distant layers collapse to brief summaries so mental load stays on the chosen horizon.</p>
+  </div>
+
+  <!-- HEAT -->
+  <div class="panel" id="heat">
+    <h2>Domain Heat Map <span class="badge">// coverage density</span></h2>
+    <p class="layer-label">settled language versus emerging language</p>
+    <div class="heat-grid">
+      <span class="h-head">Topic</span>
+      <span class="h-head">Heat</span>
+      <span class="h-head">Language</span>
+      <span class="heat-topic">Substrate (Node·Edge·Event·Projection)</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-hot"></div></div>
+      <span class="heat-label">dense · settled</span>
+      <span class="heat-topic">Single Fragment Unit</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-hot"></div></div>
+      <span class="heat-label">dense · settled</span>
+      <span class="heat-topic">Fragment Language</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-warm"></div></div>
+      <span class="heat-label">established</span>
+      <span class="heat-topic">Contract Boundary</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-warm"></div></div>
+      <span class="heat-label">active · expanding</span>
+      <span class="heat-topic">Bucket Constraint Domains</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-cool"></div></div>
+      <span class="heat-label">named · thin</span>
+      <span class="heat-topic">Composition Join</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-cool"></div></div>
+      <span class="heat-label">named · thin</span>
+      <span class="heat-topic">Antenna / Federation</span>
+      <div class="heat-bar-wrap"><div class="heat-bar heat-cold"></div></div>
+      <span class="heat-label">deferred</span>
+    </div>
+    <p class="heat-note">// hot = dense domain language already present · warm = current focus · cool = next horizon · cold = antenna</p>
+  </div>
+
+  <!-- ANTENNA L5 -->
+  <div class="panel layer-panel" data-layer="5" id="antenna">
+    <h2>Antenna Language <span class="badge">// layer 5</span></h2>
+    <p class="layer-label">federation · discovery · alignment · orchestration</p>
+    <div class="detail-brief">
+      <p class="brief">Federated discovery and orchestration across independently projected Fragment substrates. Actionable only after Composition yields a measurable joined critical path.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">Antenna is the highest named language. It represents federated discovery, alignment, and orchestration across independently projected Fragment substrates. Prerequisites are a stable Composition language and a measurable joined critical path. Cross-substrate Projection alignment and multi-domain orchestration remain future surfaces until those prerequisites hold.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Federated Fragment graph</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Independently projected substrates discoverable and alignable</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Cross-substrate Contract matching and Projection alignment</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Discover, align, federate, orchestrate</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">No new historical truth; all federation derives from existing Events and Edges</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Joined critical path measurable across federated boundaries; alignment observable without mutation</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Durable discovery of published Contract identities across substrates</li>
+        <li><span class="rank">R2</span> Projection alignment without rewriting historical Events</li>
+        <li><span class="rank">R3</span> Orchestration that respects Contract crossing rules and Bucket gates</li>
+        <li><span class="rank">R4</span> Independent inspection of federated critical-path length</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMPOSITION L4 -->
+  <div class="panel layer-panel" data-layer="4" id="compose">
+    <h2>Composition Language <span class="badge">// layer 4</span></h2>
+    <p class="layer-label">match · attach · validate · join · project · measure</p>
+    <div class="detail-brief">
+      <p class="brief">Semantic joining of independently complete Fragments through matching Contracts. Produces a larger DAG whose structure is a Projection over existing Edges. No new mutation language.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">Composition is the semantic joining of independently complete Fragments through matching published Contract identities. The result is a larger well-formed DAG whose current structure is represented by Projection over existing Edges. Composition must never require rewriting historical relations to make the joined graph true.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Joined Fragment graph</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Acyclic composition of independently valid Fragments</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Attachment at matching Contract identities</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Identify candidates, match identities, verify compatibility, establish joined Projection, derive critical path</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">Contract, Node, Edge, and Projection compatibility; DAG preserved; history untouched</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Valid attachment, valid joined Projection, no cycle, measurable critical path</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Compatibility evaluation against static Contract declarations</li>
+        <li><span class="rank">R2</span> Acyclicity verification on the joined graph</li>
+        <li><span class="rank">R3</span> Derivation of joined Projection without mutation of source history</li>
+        <li><span class="rank">R4</span> Path-length analysis that yields a single critical-path measure</li>
+        <li><span class="rank">R5</span> Reproducible inspection of the joined structure</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BUCKET L3 -->
+  <div class="panel layer-panel" data-layer="3" id="bucket">
+    <h2>Bucket Language <span class="badge">// layer 3</span></h2>
+    <p class="layer-label">constraint · version · evaluate · permit · refuse</p>
+    <div class="detail-brief">
+      <p class="brief">Versioned constraint domain evaluated against a proposed Edge before that Edge becomes historical fact. Refusal leaves history untouched; permit authorizes the atomic Event + Edge + Projection transition.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">A Bucket is a versioned constraint domain against which a proposed Edge is evaluated before that Edge becomes historical fact. Evaluation uses the constraint state, the proposed Edge properties, and the current Projection of participating Nodes. Two outcomes exist: refuse (no new historical relation) or permit (Event + Edge + Projection update). Buckets are facts, not history-mutating processes.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Versioned constraint domain</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Applicable constraint fact with historical attribution</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Governs proposed Edge relative to current Projection</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Name domain, version constraint, bind to proposed Edge, evaluate, refuse or permit</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">Evaluation precedes emission; refusal produces no mutation; prior versions remain historical facts</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Given Bucket state + proposed Edge + Projection, domain produces reproducible permit or refuse</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Versioned constraint representation that itself remains historical fact</li>
+        <li><span class="rank">R2</span> Deterministic evaluation against proposed Edge and current Projection</li>
+        <li><span class="rank">R3</span> Atomic authorization boundary (permit produces the triple; refuse produces nothing)</li>
+        <li><span class="rank">R4</span> Decision traceability without alteration of prior Events</li>
+        <li><span class="rank">R5</span> Independent inspection of which constraint version governed a past decision</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTRACT L2 — default focus -->
+  <div class="panel layer-panel priority focused" data-layer="2" id="contract">
+    <h2 class="warn-head">Contract Language <span class="badge">// layer 2 · current focus</span></h2>
+    <p class="layer-label">identity · ownership · boundary · crossing · projection shape</p>
+    <div class="detail-brief">
+      <p class="brief">Declared interface owned and published by a Fragment. Specifies boundary Node types, crossing Edge types, and static Projection shape. Discoverable before any join.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">A Contract is a declared interface owned and published by a Fragment. It specifies what may appear at the boundary, what relations may cross, and what Projection shape must remain compatible. It is a pre-existing discoverable fact, not a pair-wise agreement invented at join time. Projection-shape consistency is a static declaration; runtime verification only enforces that declaration. Mismatch becomes refused join, never corrective mutation.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Published Contract identity</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Owned, identifiable, discoverable, boundary-bound</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Associates Fragment ownership with permitted Nodes, Edges, and Projection shape</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Declare identity, bind boundary, publish, declare crossing rules, declare static shape, enforce, refuse</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">Only declared Nodes participate; only declared Edge types cross; shape is static; incompatible joins refused without history change</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Another Fragment can discover the Contract and determine compatibility without first creating a join</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Durable declaration of identity and ownership separate from runtime observation</li>
+        <li><span class="rank">R2</span> Typed boundary representation that distinguishes public Nodes from private Nodes</li>
+        <li><span class="rank">R3</span> Static constraint representation for Edge types and Projection shape</li>
+        <li><span class="rank">R4</span> Discoverability of the Contract as a domain fact before any composition attempt</li>
+        <li><span class="rank">R5</span> Compatibility evaluation that produces non-destructive refusal</li>
+        <li><span class="rank">R6</span> Independent inspection of the published declarations</li>
+      </ul>
+      <p class="layer-label" style="margin-top:14px">Action sequence (domain order)</p>
+      <ul>
+        <li>Declare Contract identity owned by the Fragment</li>
+        <li>Bind Contract to boundary Nodes (and Node types)</li>
+        <li>Publish Contract as discoverable domain fact</li>
+        <li>Declare permitted crossing Edge types and direction</li>
+        <li>Prevent internal Nodes from exposure</li>
+        <li>Statically declare required Projection shape</li>
+        <li>Treat runtime verification as enforcement only</li>
+        <li>Refuse incompatible composition without altering history</li>
+        <li>Declare Contract ready for discovery and matching</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FRAGMENT L1 -->
+  <div class="panel layer-panel" data-layer="1" id="fragment">
+    <h2>Fragment Language <span class="badge">// layer 1</span></h2>
+    <p class="layer-label">root · birth · scope · closure · dag · projection</p>
+    <div class="detail-brief">
+      <p class="brief">Bounded, purposeful, directed acyclic set of Nodes and Edges with identifiable root, attributable Event history, and independent Projection. Primary unit of scale.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">A Fragment is a bounded, purposeful, directed acyclic set of Nodes and Edges possessing an identifiable root and an independently meaningful Event history and Projection. It is the primary unit of scale. Birth occurs only through a typed creation Edge and corresponding Event. Internal Edges remain internal; only Contract-declared Edges may later cross. Critical-path length inside a Fragment is derived graph knowledge, never mutable business state.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Fragment</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Closed, purposeful DAG with root, attributable history, and current Projection</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Root identity; membership boundary; Event-slice ownership</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Designate root, emit creation Edge, bind Event scope, keep internal Edges private, derive Projection and critical path</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">Acyclic; internally bounded; birth by creation Edge only; history attributable; Projection reconstructible</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Fragment can be independently identified, traversed, projected, replayed, and validated as acyclic</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Graph identity and root designation</li>
+        <li><span class="rank">R2</span> Directed relation construction with historical attribution</li>
+        <li><span class="rank">R3</span> Historical partitioning (Event slice attributable to the Fragment)</li>
+        <li><span class="rank">R4</span> Current-state derivation keyed by root</li>
+        <li><span class="rank">R5</span> Acyclicity verification and reproducible reconstruction</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SUBSTRATE L0 -->
+  <div class="panel layer-panel" data-layer="0" id="substrate">
+    <h2>Substrate Language <span class="badge">// layer 0</span></h2>
+    <p class="layer-label">node · edge · event · projection</p>
+    <div class="detail-brief">
+      <p class="brief">Four irreducible relations: Node identifies, Edge relates, Event records, Projection derives. Historical character is append-only. One complete Fragment unit must be jointly observable before concurrent birth is claimed.</p>
+    </div>
+    <div class="detail-full">
+      <p class="lead">The substrate has four irreducible domain commitments. Node answers what exists as an identifiable participant. Edge answers what directed relationship exists. Event answers what happened and in what order. Projection answers what is true now according to accumulated history. Higher languages consume Projection; direct Event interrogation is reserved for audit and reconstruction. The substrate is complete when one complete Fragment can be represented simultaneously as Node, Edge, Event, and Projection with historical character preserved.</p>
+      <div class="grammar">
+        <div class="g-row"><span class="g-key">Object</span><span class="g-val">Four relations (Node, Edge, Event, Projection)</span></div>
+        <div class="g-row"><span class="g-key">State</span><span class="g-val">Jointly observable; append-only history; derived current truth</span></div>
+        <div class="g-row"><span class="g-key">Relation</span><span class="g-val">Node participates in Edges; Edges originate Events; Events support Projection</span></div>
+        <div class="g-row"><span class="g-key">Operation</span><span class="g-val">Establish identity, establish directed contact, record occurrence, derive current truth, prove closed loop</span></div>
+        <div class="g-row"><span class="g-key">Constraint</span><span class="g-val">No mutation of historical Events or Edges; Projection never becomes independent source of historical truth</span></div>
+        <div class="g-row"><span class="g-key">Evidence</span><span class="g-val">Seed unit jointly queryable; replay regenerates Projection; character locked for all higher languages</span></div>
+      </div>
+      <p class="layer-label" style="margin-top:12px">Ranked capability dimensions</p>
+      <ul class="cap-rank">
+        <li><span class="rank">R1</span> Durable identity representation and deterministic lookup</li>
+        <li><span class="rank">R2</span> Directed typed relation creation with historical origin</li>
+        <li><span class="rank">R3</span> Append-only occurrence recording with ordering and retrieval</li>
+        <li><span class="rank">R4</span> Deterministic derivation of current truth from Event history</li>
+        <li><span class="rank">R5</span> Joint observability of the four relations for one complete unit</li>
+        <li><span class="rank">R6</span> Reconstruction of Projection by replay alone</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GLOBAL GRAMMAR -->
+  <div class="panel" id="grammar">
+    <h2>Physical-Work Grammar <span class="badge">// every domain object</span></h2>
+    <p class="layer-label">object → state → relation → operation → constraint → evidence → capability</p>
+    <p class="lead">Every actionable domain object is expressed in this sequence. The sequence is the bridge from ontology to physical work and to later tool-acquisition thinking. Capability remains ranked abstract dimensions; no tool is named here.</p>
+    <ul>
+      <li><strong style="color:var(--signal-bright)">Domain Object</strong> — what entity or relation is being established</li>
+      <li><strong style="color:var(--signal-bright)">Required State</strong> — what must be true after the action</li>
+      <li><strong style="color:var(--signal-bright)">Precondition</strong> — what lower-layer fact must already exist</li>
+      <li><strong style="color:var(--signal-bright)">Domain Operation</strong> — what action is performed</li>
+      <li><strong style="color:var(--signal-bright)">Invariant</strong> — what must remain true during and after</li>
+      <li><strong style="color:var(--signal-bright)">Forbidden Transition</strong> — what must not happen</li>
+      <li><strong style="color:var(--signal-bright)">Evidence</strong> — observable fact that proves completion</li>
+      <li><strong style="color:var(--signal-bright)">Ranked Capability</strong> — ordered dimensions the environment must possess</li>
+    </ul>
+    <p class="brief" style="margin-top:12px">Acquisition thinking works backwards: domain requirement → required capability dimensions → acquisition constraints → candidate capability → verification → action → domain evidence → workload completion. This prevents fitting the domain to whatever happens to be available.</p>
+  </div>
+
+  <!-- GLOBAL INVARIANTS -->
+  <div class="panel">
+    <h2>Global Domain Laws <span class="badge">// never restated per layer</span></h2>
+    <ul>
+      <li>Every business action becomes a typed Edge.</li>
+      <li>Projection is the sole current-truth surface.</li>
+      <li>Events remain append-only; historical Edges are never rewritten.</li>
+      <li>Fragment birth occurs through creation Edge + Event only.</li>
+      <li>Contracts are the sole legal Fragment crossing points.</li>
+      <li>Buckets gate Edge emission; they never rewrite history.</li>
+      <li>Composition is a Projection over existing Edges, never a new mutation language.</li>
+      <li>Any Projection can be rebuilt from its Event stream.</li>
+      <li>A higher language may compose lower facts; it may not invent historical truth that bypasses the substrate.</li>
+    </ul>
+  </div>
+
+  <!-- OBSERVABILITY -->
+  <div class="panel" id="observe">
+    <h2>Observability Statement <span class="badge">// foundation · master · next</span></h2>
+    <p class="layer-label">readiness for companion toolset domain language</p>
+    <p><strong style="color:var(--signal-bright)">Foundation.</strong> Substrate Production, Fragment Workloads, Contract Boundary, and Critical Path ontology established the ascending languages and proved one complete Fragment unit. Heat shows Substrate and Single Unit hot; Fragment and Contract warm; Bucket and Composition cool; Antenna cold.</p>
+    <p><strong style="color:var(--signal-bright)">This master.</strong> Consolidates the full critical path into a free-position observability surface. Completeness slider controls mental focus. Each layer carries Object → State → Relation → Operation → Constraint → Evidence plus ranked capability dimensions. Redundant invariant restatement is collapsed into global domain laws. Depth and width are sufficient to generate a companion toolset domain language without reopening settled substrate character.</p>
+    <p><strong style="color:var(--signal-bright)">Direction.</strong> The next companion document maps ranked capability dimensions onto acquisition specifications and verification tests. That document remains pure domain language; it will compel tool choice without naming tools inside this master. The critical path stays solid only if each higher language continues to be expressed exclusively in terms of the languages already hot beneath it.</p>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn" id="btnResetFocus">Reset Focus to Contract</button>
+  </div>
+
+  <footer style="margin-top:2.5rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-dim);text-align:center">
+    // forged under alien purple protocol · master domain path · completeness observability · no tool names
+  </footer>
+</div>
+
+<script>
+(function () {
+  const slider = document.getElementById('completeness');
+  const focusLabel = document.getElementById('focusLabel');
+  const layers = ['Substrate', 'Fragment', 'Contract', 'Bucket', 'Composition', 'Antenna'];
+  const panels = document.querySelectorAll('.layer-panel');
+  const chainNodes = document.querySelectorAll('#pathChain .chain-node');
+
+  function applyFocus(val) {
+    const v = parseInt(val, 10);
+    focusLabel.textContent = layers[v];
+    panels.forEach(p => {
+      const L = parseInt(p.dataset.layer, 10);
+      p.classList.remove('focused', 'dimmed', 'priority');
+      if (L === v) {
+        p.classList.add('focused');
+        if (v === 2) p.classList.add('priority');
+      } else {
+        p.classList.add('dimmed');
+      }
+    });
+    chainNodes.forEach(n => {
+      n.classList.remove('active');
+      if (parseInt(n.dataset.layer, 10) === v) n.classList.add('active');
+    });
+  }
+
+  slider.addEventListener('input', () => applyFocus(slider.value));
+  document.getElementById('btnResetFocus').addEventListener('click', () => {
+    slider.value = 2;
+    applyFocus(2);
+  });
+
+  applyFocus(slider.value);
+})();
+</script>
+</body>
+</html>
