@@ -153,6 +153,24 @@ octave foundation/matlab/octave_visualizer.m
 
 ---
 
-## 8. License & Character
+## 8. Dynamic Content Mutation & Burn-In Inspection Protocol
+
+The substrate enforces a two-layer dynamic mutation architecture:
+1. **Immutable Foundation**: Node identity, external reference, canonical type, rank classification, layer placement, and topological edges remain strictly frozen after burn-in validation.
+2. **Append-Only Dynamic Content Events**: Nodes undergo content/statement/metadata refinement via explicit `content_mutation` events governed by `foundation/dynamic_dag/mutation_protocol.py`.
+
+### Inspection & Mutation Pipeline
+```
+SOURCE DATA -> FLATTEN -> INSPECT -> LLM PROPOSALS -> VALIDATE -> BURN-IN EVENTS -> FOUNDATION DAG
+```
+- **Flattened Projection & Inspection**: External source data is flattened with provenance hashes (`source_id`, `source_hash`, `relationships`) for candidate inspection without mutating the DAG.
+- **Dynamic Agent Loop**: `select_node` -> `read_projection` -> `propose_content` -> `validate_mutation` -> `commit_event` -> `rebuild_projection` -> `verify`.
+- **Refusal on Invariant Breach**: Attempting to alter immutable identity fields or supplying a stale projection hash produces immediate validation refusal with zero historical side-effects.
+
+For complete burn-in inspection workflows, candidate schemas, and LLM proposal formats, see [side_project/burnin_inspection/README.md](side_project/burnin_inspection/README.md).
+
+---
+
+## 9. License & Character
 
 100% Open-Source stack. Append-only event store invariants, Bucket gates, and immutable representational identity remain non-negotiable; adapters, tools, and visualizers are dynamically extensible.

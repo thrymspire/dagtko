@@ -84,8 +84,8 @@ make down-native # stop native services
 See root `README.md` Capability Statement.
 
 - `agents/` — AutoGen and ADK thin adapters sharing one substrate.
-- `dynamic_dag/` — NetworkX-powered tools for sequential, parallel, conditional, hierarchical DAGs.
+- `dynamic_dag/` — NetworkX-powered tools for sequential, parallel, conditional, hierarchical DAGs, and `mutation_protocol.py` for two-layer immutable foundation / append-only dynamic events.
 - `llm/` — Local Ollama grounding + MCP image-generation stub.
 - `matlab/analysis/` — Full-scale MATLAB / Octave analysis framework.
 
-Seed is now the Ledger Set (WorkOrder language removed). Content is dynamically mutable after burn-in; representational identity is not.
+Seed is now the Ledger Set (WorkOrder language removed). Content is dynamically mutable after burn-in; representational identity is not. Details: [side_project/burnin_inspection/README.md](../side_project/burnin_inspection/README.md).

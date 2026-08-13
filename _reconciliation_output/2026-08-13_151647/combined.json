@@ -1,0 +1,5024 @@
+{
+  "nodes": [
+    {
+      "id": "function_f01",
+      "label": "Function 01",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f02",
+      "label": "Function 02",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f03",
+      "label": "Function 03",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f04",
+      "label": "Function 04",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f05",
+      "label": "Function 05",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f06",
+      "label": "Function 06",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical",
+      "payload": {
+        "function_type": "physical",
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "function_f07",
+      "label": "Vector",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical_source_matched",
+      "payload": {
+        "function_type": "index",
+        "source_evidence": [
+          {
+            "source_file": "domain-docs/ledger/ledger-set-dag.json",
+            "source_id": "fn_vector",
+            "label": "Vector",
+            "payload": {
+              "id": "fn_vector",
+              "type": "function_tag",
+              "label": "Vector",
+              "layer": 2,
+              "definition": "Pushes momentum forward",
+              "physical_symbol": false,
+              "object_id": null,
+              "svg_emblem_id": null
+            }
+          }
+        ]
+      },
+      "source_files": [
+        "domain-docs/ledger/ledger-set-dag.json"
+      ]
+    },
+    {
+      "id": "function_f08",
+      "label": "Pivot",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical_source_matched",
+      "payload": {
+        "function_type": "index",
+        "source_evidence": [
+          {
+            "source_file": "domain-docs/ledger/ledger-set-dag.json",
+            "source_id": "fn_pivot",
+            "label": "Pivot",
+            "payload": {
+              "id": "fn_pivot",
+              "type": "function_tag",
+              "label": "Pivot",
+              "layer": 2,
+              "definition": "Changes direction, reframes",
+              "physical_symbol": false,
+              "object_id": null,
+              "svg_emblem_id": null
+            }
+          }
+        ]
+      },
+      "source_files": [
+        "domain-docs/ledger/ledger-set-dag.json"
+      ]
+    },
+    {
+      "id": "function_f09",
+      "label": "Draft",
+      "kind": "function",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": null,
+      "phase": null,
+      "status": "canonical_source_matched",
+      "payload": {
+        "function_type": "index",
+        "source_evidence": [
+          {
+            "source_file": "domain-docs/ledger/ledger-set-dag.json",
+            "source_id": "fn_draft",
+            "label": "Draft",
+            "payload": {
+              "id": "fn_draft",
+              "type": "function_tag",
+              "label": "Draft",
+              "layer": 2,
+              "definition": "Pulls others along",
+              "physical_symbol": false,
+              "object_id": null,
+              "svg_emblem_id": null
+            }
+          }
+        ]
+      },
+      "source_files": [
+        "domain-docs/ledger/ledger-set-dag.json"
+      ]
+    },
+    {
+      "id": "outcome_01",
+      "label": "Outcome 01",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_02",
+      "label": "Outcome 02",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_03",
+      "label": "Outcome 03",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_04",
+      "label": "Outcome 04",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_05",
+      "label": "Outcome 05",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_06",
+      "label": "Outcome 06",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_07",
+      "label": "Outcome 07",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_08",
+      "label": "Outcome 08",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_09",
+      "label": "Outcome 09",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "outcome_10",
+      "label": "Outcome 10",
+      "kind": "outcome",
+      "layer": "ontology",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o01",
+      "label": "Function 01 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o02",
+      "label": "Function 01 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o03",
+      "label": "Function 01 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o04",
+      "label": "Function 01 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o05",
+      "label": "Function 01 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o06",
+      "label": "Function 01 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o07",
+      "label": "Function 01 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o08",
+      "label": "Function 01 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o09",
+      "label": "Function 01 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f01_o10",
+      "label": "Function 01 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F01",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F01",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o01",
+      "label": "Function 02 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o02",
+      "label": "Function 02 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o03",
+      "label": "Function 02 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o04",
+      "label": "Function 02 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o05",
+      "label": "Function 02 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o06",
+      "label": "Function 02 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o07",
+      "label": "Function 02 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o08",
+      "label": "Function 02 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o09",
+      "label": "Function 02 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f02_o10",
+      "label": "Function 02 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F02",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F02",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o01",
+      "label": "Function 03 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o02",
+      "label": "Function 03 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o03",
+      "label": "Function 03 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o04",
+      "label": "Function 03 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o05",
+      "label": "Function 03 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o06",
+      "label": "Function 03 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o07",
+      "label": "Function 03 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o08",
+      "label": "Function 03 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o09",
+      "label": "Function 03 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f03_o10",
+      "label": "Function 03 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F03",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F03",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o01",
+      "label": "Function 04 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o02",
+      "label": "Function 04 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o03",
+      "label": "Function 04 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o04",
+      "label": "Function 04 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o05",
+      "label": "Function 04 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o06",
+      "label": "Function 04 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o07",
+      "label": "Function 04 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o08",
+      "label": "Function 04 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o09",
+      "label": "Function 04 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f04_o10",
+      "label": "Function 04 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F04",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F04",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o01",
+      "label": "Function 05 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o02",
+      "label": "Function 05 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o03",
+      "label": "Function 05 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o04",
+      "label": "Function 05 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o05",
+      "label": "Function 05 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o06",
+      "label": "Function 05 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o07",
+      "label": "Function 05 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o08",
+      "label": "Function 05 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o09",
+      "label": "Function 05 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f05_o10",
+      "label": "Function 05 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F05",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F05",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o01",
+      "label": "Function 06 × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o02",
+      "label": "Function 06 × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o03",
+      "label": "Function 06 × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o04",
+      "label": "Function 06 × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o05",
+      "label": "Function 06 × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o06",
+      "label": "Function 06 × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o07",
+      "label": "Function 06 × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o08",
+      "label": "Function 06 × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o09",
+      "label": "Function 06 × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f06_o10",
+      "label": "Function 06 × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F06",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F06",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o01",
+      "label": "Vector × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o02",
+      "label": "Vector × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o03",
+      "label": "Vector × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o04",
+      "label": "Vector × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o05",
+      "label": "Vector × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o06",
+      "label": "Vector × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o07",
+      "label": "Vector × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o08",
+      "label": "Vector × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o09",
+      "label": "Vector × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f07_o10",
+      "label": "Vector × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F07",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F07",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o01",
+      "label": "Pivot × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o02",
+      "label": "Pivot × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o03",
+      "label": "Pivot × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o04",
+      "label": "Pivot × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o05",
+      "label": "Pivot × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o06",
+      "label": "Pivot × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o07",
+      "label": "Pivot × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o08",
+      "label": "Pivot × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o09",
+      "label": "Pivot × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f08_o10",
+      "label": "Pivot × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F08",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F08",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o01",
+      "label": "Draft × Outcome 01",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 1,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 1
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o02",
+      "label": "Draft × Outcome 02",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 2,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 2
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o03",
+      "label": "Draft × Outcome 03",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 3,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 3
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o04",
+      "label": "Draft × Outcome 04",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 4,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 4
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o05",
+      "label": "Draft × Outcome 05",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 5,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 5
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o06",
+      "label": "Draft × Outcome 06",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 6,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 6
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o07",
+      "label": "Draft × Outcome 07",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 7,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 7
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o08",
+      "label": "Draft × Outcome 08",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 8,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 8
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o09",
+      "label": "Draft × Outcome 09",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 9,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 9
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "matrix_f09_o10",
+      "label": "Draft × Outcome 10",
+      "kind": "matrix_entry",
+      "layer": "matrix",
+      "source_id": null,
+      "function_id": "F09",
+      "outcome_id": 10,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "matrix": {
+          "function": "F09",
+          "outcome": 10
+        },
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "phase_prime",
+      "label": "Prime / Initiation",
+      "kind": "phase",
+      "layer": "phase",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": null,
+      "phase": "prime",
+      "status": "canonical",
+      "payload": {
+        "order": 0,
+        "outcomes": [
+          1,
+          2
+        ],
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "phase_core",
+      "label": "Core / Stabilization",
+      "kind": "phase",
+      "layer": "phase",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": null,
+      "phase": "core",
+      "status": "canonical",
+      "payload": {
+        "order": 1,
+        "outcomes": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "source_evidence": []
+      },
+      "source_files": []
+    },
+    {
+      "id": "phase_echo",
+      "label": "Echo / Resolution",
+      "kind": "phase",
+      "layer": "phase",
+      "source_id": null,
+      "function_id": null,
+      "outcome_id": null,
+      "phase": "echo",
+      "status": "canonical",
+      "payload": {
+        "order": 2,
+        "outcomes": [
+          9,
+          10
+        ],
+        "source_evidence": []
+      },
+      "source_files": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f01",
+      "target": "matrix_f01_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f02",
+      "target": "matrix_f02_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f03",
+      "target": "matrix_f03_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f04",
+      "target": "matrix_f04_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f05",
+      "target": "matrix_f05_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f06",
+      "target": "matrix_f06_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f07",
+      "target": "matrix_f07_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f08",
+      "target": "matrix_f08_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o01",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o01",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o02",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o02",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o03",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o03",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o04",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o04",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o05",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o05",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o06",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o06",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o07",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o07",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o08",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o08",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o09",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o09",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o10",
+      "relation": "defines",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "function_f09",
+      "target": "matrix_f09_o10",
+      "relation": "defines",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f01_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f02_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f03_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f04_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f05_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f06_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f07_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f08_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o01",
+      "target": "outcome_01",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o01",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o02",
+      "target": "outcome_02",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o02",
+      "target": "phase_prime",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o03",
+      "target": "outcome_03",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o03",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o04",
+      "target": "outcome_04",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o04",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o05",
+      "target": "outcome_05",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o05",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o06",
+      "target": "outcome_06",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o06",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o07",
+      "target": "outcome_07",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o07",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o08",
+      "target": "outcome_08",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o08",
+      "target": "phase_core",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o09",
+      "target": "outcome_09",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o09",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o10",
+      "target": "outcome_10",
+      "relation": "resolves_to",
+      "layer": "matrix",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "matrix_f09_o10",
+      "target": "phase_echo",
+      "relation": "in_phase",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "phase_core",
+      "target": "phase_echo",
+      "relation": "phase_transition",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    },
+    {
+      "source": "phase_prime",
+      "target": "phase_core",
+      "relation": "phase_transition",
+      "layer": "phase",
+      "source_id": null,
+      "payload": {}
+    }
+  ]
+}

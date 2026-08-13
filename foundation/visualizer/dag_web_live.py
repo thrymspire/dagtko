@@ -548,6 +548,20 @@ setInterval(refreshData, 4000);
 
 
 class VisualizerHandler(BaseHTTPRequestHandler):
+    def do_HEAD(self):
+        if self.path == "/" or self.path == "/index.html":
+            self.send_response(200)
+            self.send_header("Content-type", "text/html; charset=utf-8")
+            self.end_headers()
+        elif self.path == "/api/data":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+        else:
+            self.send_response(404)
+            self.end_headers()
+
     def do_GET(self):
         if self.path == "/" or self.path == "/index.html":
             self.send_response(200)

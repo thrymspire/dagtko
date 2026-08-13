@@ -157,7 +157,6 @@ digraph LedgerSetDAG {
   n_8da561f5_5244_545e_b904_94b2bde69d5e [label="ANCHOR-07 action", fillcolor="#8be9fd", fontcolor="#07030d", color="#8be9fd"];
   n_afdabe3f_8caa_59e4_ae7c_4933d032e880 [label="ANCHOR-09 action", fillcolor="#8be9fd", fontcolor="#07030d", color="#8be9fd"];
   n_d5c3de20_4370_5e85_a026_41a5af98332d [label="QUIET-04 action", fillcolor="#8be9fd", fontcolor="#07030d", color="#8be9fd"];
-  n_016012c0_feab_5a16_88d4_b3dc7aded0e1 [label="ANCHOR-05", fillcolor="#9d5cff", fontcolor="#ffffff", color="#ede6ff"];
   n_7c54e18a_3d78_52ab_a40c_afc5e1d10209 [label="ANCHOR-06", fillcolor="#9d5cff", fontcolor="#ffffff", color="#ede6ff"];
   n_d3a87090_938b_51fb_ac9f_f393d6e4a780 [label="ANCHOR-07", fillcolor="#9d5cff", fontcolor="#ffffff", color="#ede6ff"];
   n_c34229c4_a4a3_5e87_a57a_1ef67c6b2784 [label="ANCHOR-08", fillcolor="#9d5cff", fontcolor="#ffffff", color="#ede6ff"];
@@ -253,6 +252,7 @@ digraph LedgerSetDAG {
   n_6f3b7a70_be00_511e_abf2_5052d5c68882 [label="Kit item 3", fillcolor="#5ffbf1", fontcolor="#07030d", color="#5ffbf1"];
   n_01fe1483_5b72_5772_9ba6_ad6499f1c6ff [label="Kit item 4", fillcolor="#5ffbf1", fontcolor="#07030d", color="#5ffbf1"];
   n_a6dd9f78_7845_5ce9_9558_ca5b948eb1de [label="02", fillcolor="#5ffbf1", fontcolor="#07030d", color="#5ffbf1"];
+  n_016012c0_feab_5a16_88d4_b3dc7aded0e1 [label="ANCHOR-05", fillcolor="#9d5cff", fontcolor="#ffffff", color="#ede6ff"];
   n_7a7cda4c_d42d_5cf2_afb6_060ebaf6b82b -> n_ec1dd18e_8bf8_5f05_b409_4123b72bf5cc;
   n_7a7cda4c_d42d_5cf2_afb6_060ebaf6b82b -> n_74a24ece_ecbc_58ac_8cec_489ad7e713a8;
   n_7a7cda4c_d42d_5cf2_afb6_060ebaf6b82b -> n_68478edc_4d14_5f0c_a45b_c6ba3f51581c;
@@ -755,4 +755,5 @@ digraph LedgerSetDAG {
   n_1ad01f28_3b8d_52fe_9628_b1ce42984672 -> n_6f3b7a70_be00_511e_abf2_5052d5c68882;
   n_1ad01f28_3b8d_52fe_9628_b1ce42984672 -> n_01fe1483_5b72_5772_9ba6_ad6499f1c6ff;
   n_ec1dd18e_8bf8_5f05_b409_4123b72bf5cc -> n_a6dd9f78_7845_5ce9_9558_ca5b948eb1de;
+  n_0153a4c7_f70b_5b5e_9cc3_939cb784077c -> n_016012c0_feab_5a16_88d4_b3dc7aded0e1;
 }
