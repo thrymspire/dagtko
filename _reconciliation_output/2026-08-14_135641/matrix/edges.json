@@ -1,0 +1,902 @@
+[
+  {
+    "source": "fn_span",
+    "target": "entry_span_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_span_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_span_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_span_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_span_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_span_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_span_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_span_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_span_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_span_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_span_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_break_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_break_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_break_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_break_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_break_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_break_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_break_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_break_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_break_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_break_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_fuse_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_fuse_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_fuse_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_fuse_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_fuse_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_fuse_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_fuse_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_fuse_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_fuse_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_fuse_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_relay_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_relay_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_relay_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_relay_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_relay_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_relay_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_relay_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_relay_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_relay_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_relay_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_anchor_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_anchor_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_anchor_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_anchor_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_anchor_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_anchor_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_anchor_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_anchor_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_anchor_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_anchor_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_quiet_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_quiet_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_quiet_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_quiet_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_quiet_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_quiet_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_quiet_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_quiet_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_quiet_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_quiet_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_vector_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_vector_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_vector_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_vector_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_vector_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_vector_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_vector_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_vector_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_vector_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_vector_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_pivot_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_pivot_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_pivot_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_pivot_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_pivot_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_pivot_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_pivot_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_pivot_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_pivot_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_pivot_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_draft_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_draft_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_draft_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_draft_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_draft_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_draft_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_draft_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_draft_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_draft_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_draft_10",
+    "relation": "instantiates_outcome"
+  }
+]
