@@ -1259,3 +1259,31 @@ def build_phase_reconciliation(
         nodes=selected,
         edges=selected_edges,
     )
+# ======================================================================
+# BEGIN: ENTRY POINT
+# Do not edit.
+# ======================================================================
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(
+            main()
+        )
+    except KeyboardInterrupt:
+        print(
+            "\nInterrupted.",
+            file=sys.stderr,
+        )
+        raise SystemExit(130)
+    except Exception as exc:
+        print(
+            "\nERROR:",
+            str(exc),
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+
+
+# ======================================================================
+# END: ENTRY POINT
+# ======================================================================
