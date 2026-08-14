@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Ledger Set &#8212; Typhen Field Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --void:#0a0512; --panel:rgba(34,16,60,0.55); --panel-border:rgba(157,92,255,0.35);
+  --ink:#ede6ff; --ink-dim:#a996d6; --signal:#9d5cff; --signal-bright:#c084fc;
+  --spore:#d8c6ff; --bio:#5ffbf1; --warn:#ff6b81;
+  --font-display:"Segoe UI",ui-sans-serif,system-ui,sans-serif;
+  --font-body:"Segoe UI",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"Cascadia Code",ui-monospace,Consolas,"SFMono-Regular",monospace;
+}
+*{box-sizing:border-box;}
+html{background:var(--void);}
+body{margin:0;background:var(--void);color:var(--ink);font-family:var(--font-body);
+     line-height:1.55;position:relative;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+.neb1{position:fixed;inset:0;z-index:-2;pointer-events:none;
+      background:radial-gradient(ellipse 80% 50% at 18% -10%, rgba(157,92,255,.18), transparent 60%),
+                 radial-gradient(ellipse 70% 45% at 92% 8%, rgba(95,251,241,.13), transparent 60%),
+                 radial-gradient(ellipse 75% 55% at 45% 112%, rgba(157,92,255,.15), transparent 60%);}
+.blob{position:fixed;width:320px;height:320px;border-radius:50%;filter:blur(60px);
+      opacity:.28;z-index:-1;pointer-events:none;}
+.blob-a{background:#9d5cff;top:12%;left:6%;animation:driftA 28s ease-in-out infinite;}
+.blob-b{background:#5ffbf1;bottom:8%;right:8%;animation:driftB 32s ease-in-out infinite;}
+@keyframes driftA{0%,100%{transform:translate(0,0);}50%{transform:translate(36px,-28px);}}
+@keyframes driftB{0%,100%{transform:translate(0,0);}50%{transform:translate(-32px,34px);}}
+@media (prefers-reduced-motion:reduce){.blob{animation:none!important;}}
+
+.wrap{max-width:760px;margin:0 auto;padding:64px 24px 110px;position:relative;z-index:1;}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+         letter-spacing:.06em;margin:0;}
+.gradient-text{background:linear-gradient(90deg,var(--signal-bright),var(--bio));
+               -webkit-background-clip:text;background-clip:text;color:transparent;}
+.eyebrow{font-family:var(--font-mono);color:var(--ink-dim);font-size:12px;
+         letter-spacing:.1em;text-transform:uppercase;}
+p{margin:0 0 12px;}
+
+header{border-bottom:1px solid var(--panel-border);padding-bottom:36px;margin-bottom:56px;}
+header h1{font-size:38px;letter-spacing:.05em;}
+header .sub{font-family:var(--font-mono);color:var(--ink-dim);font-size:13px;margin-top:14px;
+            max-width:56ch;}
+header .sub::before{content:"// ";color:var(--signal);}
+
+section{margin-bottom:72px;}
+.shead{display:flex;justify-content:space-between;align-items:baseline;
+       border-bottom:1px solid var(--panel-border);padding-bottom:10px;margin-bottom:22px;gap:16px;}
+.shead h2{font-size:20px;margin-top:4px;}
+.scount{font-family:var(--font-mono);color:var(--bio);font-size:12.5px;white-space:nowrap;
+        text-shadow:0 0 12px rgba(95,251,241,.5);}
+.lede{color:var(--ink-dim);font-size:14.5px;max-width:62ch;margin-bottom:26px;}
+
+.panel{background:var(--panel);border:1px solid var(--panel-border);
+       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+       clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);}
+
+.objects{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.obj{padding:18px 20px;}
+.obj .oname{font-family:var(--font-mono);font-size:13px;color:var(--signal-bright);margin-bottom:6px;}
+.obj .odesc{color:var(--ink-dim);font-size:13.5px;}
+.closing{margin-top:20px;color:var(--ink-dim);font-size:14.5px;font-style:italic;max-width:62ch;}
+
+.pillgroup{margin-bottom:20px;}
+.pillgroup .glabel{font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);
+                    letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.pill{display:inline-block;background:rgba(255,255,255,.03);border:1px solid var(--panel-border);
+      border-radius:3px;padding:6px 11px;margin:0 6px 6px 0;font-size:12.5px;color:var(--ink-dim);}
+.pill b{color:var(--ink);font-weight:600;margin-right:5px;}
+.pill.num{font-family:var(--font-mono);}
+.pill .parc{color:var(--bio);font-style:normal;font-size:10.5px;margin-left:5px;
+            border-left:1px solid var(--panel-border);padding-left:6px;}
+
+.code-block{background:#050208;border:1px solid var(--panel-border);border-left:3px solid var(--bio);
+            font-family:var(--font-mono);color:var(--spore);padding:14px 16px;font-size:13px;
+            display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:6px;}
+.code-block span{color:var(--signal-bright);}
+.copy-btn{border:1px solid var(--signal);background:transparent;color:var(--signal-bright);
+          font-family:var(--font-mono);font-size:11px;padding:5px 12px;cursor:pointer;flex:none;
+          transition:background .15s,color .15s;}
+.copy-btn:hover{background:var(--signal);color:var(--void);}
+
+.callout-warn{border-left:3px solid var(--warn);padding:16px 20px;margin-top:22px;}
+.callout-warn .clabel{font-family:var(--font-mono);color:var(--warn);font-size:11.5px;
+                       letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.callout-warn p{color:var(--ink-dim);font-size:13.5px;margin:0;}
+.callout-warn b{color:var(--ink);}
+
+.mgroup{border:1px solid var(--panel-border);background:rgba(255,255,255,.02);margin-bottom:8px;}
+.mgroup summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;
+                justify-content:space-between;align-items:center;gap:12px;}
+.mgroup summary::-webkit-details-marker{display:none;}
+.msum-left{display:flex;align-items:center;gap:10px;font-family:var(--font-display);
+           font-weight:700;font-size:14px;letter-spacing:.03em;}
+.mchevron{width:8px;height:8px;border-right:2px solid var(--signal-bright);
+          border-bottom:2px solid var(--signal-bright);transform:rotate(-45deg);
+          transition:transform .15s;flex:none;}
+.mgroup[open] .mchevron{transform:rotate(45deg);}
+.msub{font-weight:400;color:var(--ink-dim);text-transform:none;letter-spacing:0;font-size:12.5px;}
+.msum-right{display:flex;align-items:center;gap:12px;flex:none;}
+.tag-in-set{font-family:var(--font-mono);font-size:10px;color:var(--bio);
+            border:1px solid rgba(95,251,241,.35);padding:2px 8px;letter-spacing:.03em;}
+.tag-index-only{font-family:var(--font-mono);font-size:10px;color:var(--ink-dim);
+                border:1px solid var(--panel-border);padding:2px 8px;letter-spacing:.03em;}
+.mcount{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-dim);}
+.mrows{border-top:1px solid var(--panel-border);padding:16px 18px 18px;display:grid;
+       grid-template-columns:1fr 1fr;gap:12px;}
+.acard{background:rgba(255,255,255,.02);border:1px solid var(--panel-border);
+       border-left:2px solid var(--signal);padding:13px 15px;}
+.acard-row{display:flex;gap:8px;font-size:12px;margin-bottom:5px;align-items:baseline;flex-wrap:wrap;}
+.alabel{font-family:var(--font-mono);color:var(--ink-dim);text-transform:uppercase;
+        letter-spacing:.05em;font-size:10px;flex:none;min-width:88px;}
+.aval{color:var(--ink);}
+.aval i{color:var(--ink-dim);font-style:normal;}
+.a-asset{font-family:var(--font-mono);color:var(--bio);font-weight:600;letter-spacing:.02em;}
+.acard-statement{margin-top:9px;padding-top:9px;border-top:1px dashed rgba(157,92,255,.2);}
+.acard-statement .alabel{display:block;margin-bottom:5px;}
+.acard-statement p{color:var(--spore);font-size:12.5px;margin:0;line-height:1.5;}
+@media (max-width:600px){.mrows{grid-template-columns:1fr;}}
+
+.fcard{display:flex;gap:20px;padding:22px 4px;border-top:1px solid var(--panel-border);}
+.fcard:last-child{border-bottom:1px solid var(--panel-border);}
+.fcard-icon{flex:none;width:50px;padding-top:2px;}
+.fcard-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.fname{font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.05em;}
+.fcode{font-family:var(--font-mono);font-size:12px;color:var(--bio);}
+.fmeaning{color:var(--ink);font-size:14px;margin-bottom:8px;}
+.fobj,.fmark{color:var(--ink-dim);font-size:12.5px;margin-bottom:3px;}
+.ftag{font-family:var(--font-mono);color:var(--ink-dim);margin-left:2px;}
+
+.bookend{display:flex;align-items:center;gap:20px;padding:20px 22px;margin-bottom:18px;}
+.bookend .bname{font-family:var(--font-display);font-weight:700;font-size:15px;
+                letter-spacing:.05em;margin-bottom:4px;}
+.bookend .bdesc{color:var(--ink-dim);font-size:13px;}
+
+.example-flow{display:flex;align-items:center;gap:18px;margin:8px 0 30px;flex-wrap:wrap;}
+.phases{display:flex;gap:10px;}
+.phase-cell{padding:16px 18px;text-align:center;flex:1;}
+.phase-name{font-family:var(--font-display);font-weight:700;font-size:12.5px;
+            text-transform:uppercase;letter-spacing:.03em;margin-top:8px;}
+.phase-name .rank{color:var(--bio);text-transform:none;letter-spacing:0;font-weight:400;
+                   font-family:var(--font-mono);font-size:11px;}
+.flow-arrow{color:var(--signal-bright);font-family:var(--font-mono);font-size:20px;flex:none;}
+.fused-result{text-align:center;padding:16px 18px;}
+.fused-result .flabel{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-dim);
+                      text-transform:uppercase;letter-spacing:.08em;margin-top:8px;}
+
+table.rank-table{width:100%;border-collapse:collapse;margin-top:4px;}
+table.rank-table th{font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);
+                    text-transform:uppercase;letter-spacing:.06em;text-align:left;
+                    padding:8px 12px;border-bottom:1px solid var(--panel-border);}
+table.rank-table td{padding:10px 12px;font-size:13px;color:var(--ink);
+                    border-bottom:1px solid rgba(157,92,255,.1);vertical-align:top;}
+table.rank-table td:first-child{font-family:var(--font-display);font-weight:700;
+                                letter-spacing:.04em;color:var(--signal-bright);white-space:nowrap;}
+.why-ranks{margin-top:20px;color:var(--ink-dim);font-size:13.5px;}
+.why-ranks b{color:var(--ink);font-weight:600;}
+
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:20px 36px;margin-top:4px;}
+.spec dt{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-dim);
+         text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.spec dd{margin:0;font-size:13.5px;color:var(--ink);}
+.kit{margin-top:24px;padding-top:20px;border-top:1px solid var(--panel-border);}
+.kit ul{margin:10px 0 0;padding-left:18px;color:var(--ink-dim);font-size:13.5px;}
+.kit li{margin-bottom:5px;}
+
+footer{border-top:1px solid var(--panel-border);padding-top:22px;color:var(--ink-dim);
+       font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+       display:flex;justify-content:space-between;}
+
+@media (max-width:600px){
+  .objects{grid-template-columns:1fr;}
+  .specs{grid-template-columns:1fr;}
+  .phases{flex-direction:column;}
+  .example-flow{flex-direction:column;}
+  header h1{font-size:28px;}
+}
+</style>
+</head>
+<body>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><symbol id="tri-span" viewBox="0 0 100 100">
+<line class="ln" x1="32" y1="16" x2="32" y2="86"/>
+<line class="ln" x1="50" y1="16" x2="50" y2="86"/>
+<line class="ln" x1="68" y1="16" x2="68" y2="86"/>
+<line class="ln" x1="21" y1="79" x2="79" y2="21"/>
+<circle class="dot-fill" cx="50" cy="50" r="5.5"/>
+</symbol><symbol id="span-initiation" viewBox="0 0 100 100">
+<polygon class="ln" points="50.00,16.00 19.00,82.00 81.00,82.00"/>
+<circle class="dot-open" cx="50" cy="60" r="8.5"/>
+</symbol><symbol id="span-stabilization" viewBox="0 0 100 100">
+<circle class="ln" cx="50" cy="50" r="26"/>
+<line class="ln-thin" x1="50" y1="19" x2="50" y2="30"/>
+<line class="ln-thin" x1="50" y1="70" x2="50" y2="81"/>
+<line class="ln-thin" x1="19" y1="50" x2="30" y2="50"/>
+<line class="ln-thin" x1="70" y1="50" x2="81" y2="50"/>
+<circle class="dot-fill" cx="50" cy="50" r="7.5"/>
+</symbol><symbol id="span-resolution" viewBox="0 0 100 100">
+<path class="ln" d="M26,84 L26,50 A24,24 0 0,1 74,50 L74,84"/>
+<circle class="dot-echo" cx="50" cy="68" r="6.5"/>
+</symbol><symbol id="break-initiation" viewBox="0 0 100 100">
+<polygon class="ln" points="50.00,14.00 61.00,29.00 57.00,36.00 82.00,50.00 61.00,59.00 67.00,68.00 50.00,86.00 37.00,68.00 43.00,59.00 18.00,50.00 43.00,36.00 39.00,29.00"/>
+<circle class="dot-open" cx="50" cy="50" r="7.5"/>
+</symbol><symbol id="break-stabilization" viewBox="0 0 100 100">
+<line class="ln" x1="27" y1="27" x2="73" y2="73"/>
+<line class="ln" x1="73" y1="27" x2="27" y2="73"/>
+<circle class="dot-fill" cx="50" cy="50" r="7.5"/>
+</symbol><symbol id="break-resolution" viewBox="0 0 100 100">
+<path class="ln" d="M40.42,76.31 A28,28 0 0,1 40.42,23.69"/>
+<path class="ln" d="M59.58,23.69 A28,28 0 0,1 59.58,76.31"/>
+<circle class="dot-echo" cx="50" cy="50" r="6.5"/>
+</symbol><symbol id="fuse-initiation" viewBox="0 0 100 100">
+<polygon class="ln" points="50.00,18.00 77.71,34.00 77.71,66.00 50.00,82.00 22.29,66.00 22.29,34.00"/>
+<circle class="dot-open" cx="50" cy="50" r="8"/>
+</symbol><symbol id="fuse-stabilization" viewBox="0 0 100 100">
+<circle class="ln" cx="50" cy="50" r="27"/>
+<line class="ln-thin" x1="73.00" y1="50.00" x2="80.00" y2="50.00"/>
+<line class="ln-thin" x1="66.26" y1="66.26" x2="71.21" y2="71.21"/>
+<line class="ln-thin" x1="50.00" y1="73.00" x2="50.00" y2="80.00"/>
+<line class="ln-thin" x1="33.74" y1="66.26" x2="28.79" y2="71.21"/>
+<line class="ln-thin" x1="27.00" y1="50.00" x2="20.00" y2="50.00"/>
+<line class="ln-thin" x1="33.74" y1="33.74" x2="28.79" y2="28.79"/>
+<line class="ln-thin" x1="50.00" y1="27.00" x2="50.00" y2="20.00"/>
+<line class="ln-thin" x1="66.26" y1="33.74" x2="71.21" y2="28.79"/>
+<circle class="dot-fill" cx="50" cy="50" r="7.5"/>
+</symbol><symbol id="fuse-resolution" viewBox="0 0 100 100">
+<circle class="ln" cx="50.00" cy="39.00" r="15"/>
+<circle class="ln" cx="59.53" cy="55.50" r="15"/>
+<circle class="ln" cx="40.47" cy="55.50" r="15"/>
+<circle class="dot-echo" cx="50" cy="50" r="5"/>
+</symbol><symbol id="relay-initiation" viewBox="0 0 100 100">
+<polyline class="ln" points="16.00,39.00 26.00,50.00 16.00,61.00"/>
+<polyline class="ln" points="32.00,39.00 42.00,50.00 32.00,61.00"/>
+<polyline class="ln" points="48.00,39.00 58.00,50.00 48.00,61.00"/>
+<circle class="dot-open" cx="79" cy="50" r="8.5"/>
+</symbol><symbol id="relay-stabilization" viewBox="0 0 100 100">
+<polygon class="ln" points="32.00,32.00 68.00,32.00 68.00,68.00 32.00,68.00"/>
+<line class="ln-thin" x1="32" y1="32" x2="68" y2="68"/>
+<line class="ln-thin" x1="68" y1="32" x2="32" y2="68"/>
+<circle class="ln-thin" cx="32" cy="32" r="3"/>
+<circle class="ln-thin" cx="68" cy="32" r="3"/>
+<circle class="ln-thin" cx="68" cy="68" r="3"/>
+<circle class="ln-thin" cx="32" cy="68" r="3"/>
+<circle class="dot-fill" cx="50" cy="50" r="8"/>
+</symbol><symbol id="relay-resolution" viewBox="0 0 100 100">
+<line class="ln-thin" x1="21" y1="50" x2="79" y2="50"/>
+<circle class="dot-fill" cx="21" cy="50" r="4.5"/>
+<circle class="dot-fill" cx="79" cy="50" r="4.5"/>
+<circle class="dot-echo" cx="50" cy="50" r="7"/>
+</symbol><symbol id="anchor-initiation" viewBox="0 0 100 100">
+<rect class="ln" x="30" y="18" width="40" height="60"/>
+<line class="ln-thin" x1="50" y1="18" x2="50" y2="78"/>
+<polyline class="ln-thin" points="24.00,22.00 24.00,14.00 32.00,14.00"/>
+<circle class="dot-open" cx="50" cy="37" r="7.5"/>
+</symbol><symbol id="anchor-stabilization" viewBox="0 0 100 100">
+<path class="ln" d="M30,24 L70,24 L70,52 Q70,74 50,86 Q30,74 30,52 Z"/>
+<circle class="dot-fill" cx="50" cy="48" r="7.5"/>
+</symbol><symbol id="anchor-resolution" viewBox="0 0 100 100">
+<path class="ln" d="M50,80 Q20,71 14,32"/>
+<path class="ln" d="M50,80 Q80,71 86,32"/>
+<circle class="dot-echo" cx="50" cy="75" r="6.5"/>
+</symbol><symbol id="quiet-initiation" viewBox="0 0 100 100">
+<path class="ln" d="M14,50 Q50,25 86,50 Q50,75 14,50 Z"/>
+<circle class="dot-open" cx="50" cy="50" r="9"/>
+</symbol><symbol id="quiet-stabilization" viewBox="0 0 100 100">
+<path class="ln" d="M63.77,69.66 A24,24 0 1,1 63.77,30.34"/>
+<circle class="dot-fill" cx="72" cy="50" r="7"/>
+</symbol><symbol id="quiet-resolution" viewBox="0 0 100 100">
+<polygon class="ln" points="20.00,26.00 80.00,26.00 50.00,84.00"/>
+<circle class="dot-echo" cx="50" cy="42" r="7.5"/>
+</symbol><symbol id="blank-coin" viewBox="0 0 100 100">
+<circle class="ln" cx="50" cy="50" r="30"/>
+</symbol><symbol id="span-emblem" viewBox="0 0 100 240">
+<polygon class="ln" points="50.00,14.00 26.00,90.00 74.00,90.00"/>
+<circle class="dot-open" cx="50" cy="66" r="8"/>
+<circle class="ln" cx="50" cy="130" r="40"/>
+<line class="ln-thin" x1="83.00" y1="130.00" x2="90.00" y2="130.00"/><line class="ln-thin" x1="50.00" y1="163.00" x2="50.00" y2="170.00"/><line class="ln-thin" x1="17.00" y1="130.00" x2="10.00" y2="130.00"/><line class="ln-thin" x1="50.00" y1="97.00" x2="50.00" y2="90.00"/>
+<circle class="dot-fill" cx="50" cy="130" r="9"/>
+<path class="ln" d="M26,240 L26,194 A24,24 0 0,1 74,194 L74,240"/>
+<circle class="dot-echo" cx="50" cy="217" r="6.5"/>
+</symbol><symbol id="break-emblem" viewBox="0 0 100 240">
+<polygon class="ln" points="50.00,14.00 60.00,28.00 56.00,35.00 80.00,50.00 60.00,60.00 66.00,70.00 50.00,90.00 37.00,70.00 43.00,60.00 20.00,50.00 43.00,35.00 39.00,28.00"/>
+<circle class="dot-open" cx="50" cy="52" r="7"/>
+<line class="spine-crack" x1="50" y1="90" x2="50" y2="170"/>
+<line class="ln" x1="27" y1="107" x2="73" y2="153"/>
+<line class="ln" x1="73" y1="107" x2="27" y2="153"/>
+<circle class="dot-fill" cx="50" cy="130" r="9"/>
+<path class="ln" d="M38.03,237.89 A35,35 0 0,1 38.03,172.11"/>
+<path class="ln" d="M61.97,172.11 A35,35 0 0,1 61.97,237.89"/>
+<circle class="dot-echo" cx="50" cy="205" r="6.5"/>
+</symbol><symbol id="fuse-emblem" viewBox="0 0 100 240">
+<polygon class="ln" points="50.00,14.00 82.91,33.00 82.91,71.00 50.00,90.00 17.09,71.00 17.09,33.00"/>
+<circle class="dot-open" cx="50" cy="52" r="8"/>
+<line class="ln-thin" x1="41" y1="84" x2="59" y2="96"/><line class="ln-thin" x1="59" y1="84" x2="41" y2="96"/>
+<circle class="ln" cx="50" cy="130" r="40"/>
+<line class="ln-thin" x1="83.00" y1="130.00" x2="90.00" y2="130.00"/><line class="ln-thin" x1="73.33" y1="153.33" x2="78.28" y2="158.28"/><line class="ln-thin" x1="50.00" y1="163.00" x2="50.00" y2="170.00"/><line class="ln-thin" x1="26.67" y1="153.33" x2="21.72" y2="158.28"/><line class="ln-thin" x1="17.00" y1="130.00" x2="10.00" y2="130.00"/><line class="ln-thin" x1="26.67" y1="106.67" x2="21.72" y2="101.72"/><line class="ln-thin" x1="50.00" y1="97.00" x2="50.00" y2="90.00"/><line class="ln-thin" x1="73.33" y1="106.67" x2="78.28" y2="101.72"/>
+<circle class="dot-fill" cx="50" cy="130" r="9"/>
+<line class="ln-thin" x1="41" y1="164" x2="59" y2="176"/><line class="ln-thin" x1="59" y1="164" x2="41" y2="176"/>
+<circle class="ln" cx="50.00" cy="190.00" r="20"/>
+<circle class="ln" cx="62.99" cy="212.50" r="20"/>
+<circle class="ln" cx="37.01" cy="212.50" r="20"/>
+<circle class="dot-echo" cx="50" cy="205" r="5.5"/>
+</symbol><symbol id="relay-emblem" viewBox="0 0 100 240">
+<polyline class="ln" points="42.00,27.20 50.00,36.80 58.00,27.20"/><polyline class="ln" points="42.00,45.20 50.00,54.80 58.00,45.20"/><polyline class="ln" points="42.00,63.20 50.00,72.80 58.00,63.20"/>
+<circle class="dot-open" cx="50" cy="86" r="7.5"/>
+<polyline class="ln" points="44.00,95.40 50.00,102.60 56.00,95.40"/>
+<polygon class="ln" points="26.00,110.00 74.00,110.00 74.00,158.00 26.00,158.00"/>
+<line class="ln-thin" x1="26" y1="110" x2="74" y2="158"/>
+<line class="ln-thin" x1="74" y1="110" x2="26" y2="158"/>
+<circle class="dot-fill" cx="50" cy="134" r="9"/>
+<polyline class="ln" points="44.00,167.40 50.00,174.60 56.00,167.40"/>
+<line class="ln-thin" x1="26" y1="207" x2="74" y2="207"/>
+<circle class="dot-fill" cx="26" cy="207" r="5"/>
+<circle class="dot-fill" cx="74" cy="207" r="5"/>
+<circle class="dot-echo" cx="50" cy="207" r="7.5"/>
+</symbol><symbol id="anchor-emblem" viewBox="0 0 100 240">
+<rect class="ln" x="30" y="14" width="40" height="76"/>
+<polyline class="ln-thin" points="24.00,18.00 24.00,10.00 32.00,10.00"/>
+<circle class="dot-open" cx="50" cy="34" r="7"/>
+<path class="ln" d="M30,90 L70,90 L70,130 Q70,160 50,170 Q30,160 30,130 Z"/>
+<line class="spine-reinforced" x1="50" y1="14" x2="50" y2="170"/>
+<circle class="dot-fill" cx="50" cy="120" r="8"/>
+<path class="ln" d="M50,170 Q22,198 15,232"/>
+<path class="ln" d="M50,170 Q78,198 85,232"/>
+<circle class="dot-echo" cx="50" cy="179" r="6.5"/>
+</symbol><symbol id="quiet-emblem" viewBox="0 0 100 240">
+<path class="ln" d="M14,52 Q50,30 86,52 Q50,74 14,52 Z"/>
+<circle class="dot-open" cx="50" cy="52" r="8"/>
+<line class="spine-faint" x1="50" y1="64" x2="50" y2="90"/>
+<path class="ln" d="M72.94,162.77 A40,40 0 1,1 72.94,97.23"/>
+<circle class="dot-fill" cx="80" cy="130" r="7"/>
+<line class="spine-faint" x1="50" y1="170" x2="50" y2="192"/>
+<polygon class="ln" points="20.00,170.00 80.00,170.00 50.00,236.00"/>
+<circle class="dot-echo" cx="50" cy="192" r="7"/>
+</symbol></defs></svg>
+<div class="neb1"></div>
+<div class="blob blob-a"></div>
+<div class="blob blob-b"></div>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">field reference &#8212; typhen</p>
+    <h1 class="gradient-text">The Ledger Set</h1>
+    <p class="sub">everything typhen carries, indexes, and marks &#8212; one system, fully cross-referenced</p>
+  </header>
+
+  <section id="typhen">
+    
+    <div class="shead">
+      <div class="shead-left"><span class="eyebrow">01</span><h2>Typhen</h2></div>
+      <div class="scount">6 objects</div>
+    </div>
+    <p class="lede">Six objects, six functions. Nothing carried without a reason.</p>
+    <div class="objects">
+      <div class="obj panel"><div class="oname">Graphite ledger</div><div class="odesc">Tracks outcomes, not people. Every page maps what happens when he steps into a situation.</div></div>
+      <div class="obj panel"><div class="oname">Tri-key clasp</div><div class="odesc">Opens nothing alone. Built to combine with keys held by others &#8212; he makes people choose to open doors.</div></div>
+      <div class="obj panel"><div class="oname">Signal baton</div><div class="odesc">Carries no markings. Doesn&#8217;t command &#8212; synchronizes chaos into coordinated motion.</div></div>
+      <div class="obj panel"><div class="oname">Relay node</div><div class="odesc">Amplifies whoever stands near him. His power is never centered on himself.</div></div>
+      <div class="obj panel"><div class="oname">Matte coin</div><div class="odesc">No face, no value. Not currency &#8212; a reminder that he trades in commitments.</div></div>
+      <div class="obj panel"><div class="oname">Industrial cloth</div><div class="odesc">Binds, reinforces, or repairs &#8212; whatever the moment demands.</div></div>
+    </div>
+    <p class="closing">He aligns, coordinates, reinforces, and redirects. Not a mystic, not a brute, not a wanderer &#8212; a force multiplier whose presence turns &#8220;barely holding together&#8221; into &#8220;moving with purpose.&#8221;</p>
+  </section>
+
+  <section id="index">
+    
+    <div class="shead">
+      <div class="shead-left"><span class="eyebrow">02</span><h2>The Ledger Index</h2></div>
+      <div class="scount">9 tags &#215; 10 numbers</div>
+    </div>
+    <p class="lede">Typhen doesn&#8217;t name people &#8212; he indexes them by the role they play in an outcome. A code name has two parts, and every combination of the two is already defined below.</p>
+
+    <div class="pillgroup">
+      <div class="glabel">Function Tag &#8212; the role</div>
+      <span class="pill"><b>Vector</b> pushes momentum forward</span><span class="pill"><b>Anchor</b> stabilizes, prevents drift</span><span class="pill"><b>Relay</b> carries information between groups</span><span class="pill"><b>Pivot</b> changes direction, reframes</span><span class="pill"><b>Fuse</b> binds elements together</span><span class="pill"><b>Break</b> disrupts or ends a pattern</span><span class="pill"><b>Span</b> bridges gaps</span><span class="pill"><b>Draft</b> pulls others along</span><span class="pill"><b>Quiet</b> subtle, decisive influence</span>
+    </div>
+    <div class="pillgroup">
+      <div class="glabel">Outcome Number &#8212; the behavior pattern, traced from Prime to Echo</div>
+      <span class="pill num"><b>01</b> initiates <i class="parc">Prime&#183;Initiation</i></span><span class="pill num"><b>02</b> reinforces <i class="parc">Prime&#183;Initiation</i></span><span class="pill num"><b>03</b> redirects <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>04</b> escalates <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>05</b> stabilizes <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>06</b> dissolves <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>07</b> synchronizes <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>08</b> amplifies <i class="parc">Core&#183;Stabilization</i></span><span class="pill num"><b>09</b> conceals <i class="parc">Echo&#183;Resolution</i></span><span class="pill num"><b>10</b> reveals <i class="parc">Echo&#183;Resolution</i></span>
+    </div>
+    <p class="lede" style="margin-top:-8px;">Read straight down, 01 through 10 is one continuous arc: the same three phases as the Ledger Set&#8217;s marks, just under their other name. 01&#8211;02 are the opening move (<b style="color:var(--ink)">Prime</b> &#183; Initiation), 03&#8211;08 are the sustained, in-motion behaviors (<b style="color:var(--ink)">Core</b> &#183; Stabilization), 09&#8211;10 are what gets decided about the record afterward (<b style="color:var(--ink)">Echo</b> &#183; Resolution).</p>
+
+    <div class="code-block">
+      <div><span>FunctionTag-OutcomeNumber</span> &#8212; e.g. Quiet-08, someone whose subtle influence amplifies others.</div>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('Quiet-08').then(()=&gt;{this.textContent='Copied!';setTimeout(()=&gt;this.textContent='Copy',1200);})">Copy</button>
+    </div>
+
+    <div class="callout-warn">
+      <div class="clabel">&#9888; two systems, one vocabulary</div>
+      <p>Span, Break, Fuse, Relay, Anchor, and Quiet each do double duty: they&#8217;re code-name tags <b>here</b>, in the Ledger Index, and they&#8217;re also cut as physical marks in the Ledger Set below. Vector, Pivot, and Draft are index-only &#8212; they classify people, but Typhen carries no object they correspond to, so there&#8217;s no glyph for them.</p>
+    </div>
+
+    <div class="glabel" style="margin-top:32px;margin-bottom:4px;">The complete matrix &#8212; every tag, every number, made actionable</div>
+    <p class="lede">All 90 combinations, each as a self-contained field entry: the indexed asset, the function it draws from, where that outcome sits on the Prime-to-Echo arc, and what to actually do with it.</p>
+    
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>SPAN</b><span class="msub">&#8212; bridges gaps between separated points or parties</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make first contact between two isolated parties who don't yet know they need each other. Span-01 is the cold introduction that becomes the only route through.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when an existing channel is fraying under load. Span-02 adds redundancy to a bridge so a single point of failure can't sever the whole connection.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the direct path is compromised or blocked. Span-03 finds the detour and makes it feel like the plan all along.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to force two reluctant sides into the same room. Span-04 turns a soft ask into a connection neither party can afford to ignore.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy mid-crossing, when movement across the gap risks stalling. Span-05 keeps throughput steady so nothing is stranded halfway.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once the bridge has served its purpose and lingering ties would only create liability. Span-06 disconnects without leaving a trace of dependency behind.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when both sides must act on the same beat or the connection collapses. Span-07 is the handshake that synchronizes timing across the gap.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a working connection needs more capacity, not a new one. Span-08 widens existing throughput instead of building a second bridge.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the crossing needs to exist for the few who know, and no one else. Span-09 builds a bridge that reads as empty space to anyone not carrying the key.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">SPAN-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Span <i>(Bridges gaps between separated points or parties)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make a hidden route common knowledge, on purpose. Span-10 turns a private crossing into public infrastructure once secrecy stops paying off.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>BREAK</b><span class="msub">&#8212; disrupts or ends an existing pattern</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force — it needs the one flaw that makes everyone else start looking for more.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself — it's making sure the disruption holds and doesn't get walked back.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a fracture is already happening but heading somewhere worse. Break-03 steers the damage toward an outcome you can actually use.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy for scorched-earth exits and the permanent, recursive dismantling of entrenched structures. Break-04 turns a small fissure into a compounding systemic collapse.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy immediately after the initial break, before drift turns a clean cut into an uncontrolled spiral. Break-05 locks the disruption at the size you intended.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to finish a pattern completely, not just interrupt it. Break-06 clears the field so nothing is left to reassert itself later.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a pattern spans multiple actors who all need to feel the break at once. Break-07 makes the reset simultaneous, so no one can quietly opt out of it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to turn a quiet fracture into a visible one. Break-08 exposes the hairline cracks a system was hoping to keep off the record.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the break has to look like decay, not sabotage. Break-09 disrupts from inside the pattern so the shift reads as natural erosion.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">BREAK-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Break <i>(Disrupts or ends an existing pattern)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when denial is the only thing keeping a broken system standing. Break-10 forces the room to acknowledge what already failed.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>FUSE</b><span class="msub">&#8212; binds separate elements into one</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld — small, but it's what everything else gets built on.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy where a bond exists but hasn't been tested under real load yet. Fuse-02 reinforces the seam before pressure finds the weak point for you.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it — it reconfigures what's on each end until the connection actually works.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when partial buy-in isn't enough and the moment calls for total, forced unity. Fuse-04 collapses the space between components until there's no seam left to exploit.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a bonded system is under stress and threatening to shake apart. Fuse-05 keeps the whole assembly coherent through the turbulence.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when components need to separate without damaging each other on the way out. Fuse-06 dissolves the bond along its original seams, not a jagged tear.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once separate parts are bonded and need to move as a single body. Fuse-07 is the shared rhythm that makes a joined system act like it was never two things.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to convert a merger into leverage. Fuse-08 takes a stable bond and pushes its combined output past what either side could produce alone.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when an alliance needs the benefits of unity without the appearance of one. Fuse-09 binds two parties so completely that the bond itself disappears from view.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">FUSE-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Fuse <i>(Binds separate elements into one)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make an alliance official. Fuse-10 puts a bonded relationship on the record, on purpose, as proof of where loyalties now sit.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>RELAY</b><span class="msub">&#8212; carries information from one point to another</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to wake up a network that's gone dormant. Relay-01 is the first ping that gets everyone else moving again.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy on a message that can't afford to degrade in transit. Relay-02 armors the signal so distance and noise can't corrupt it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the intended recipient isn't the right one anymore. Relay-03 reroutes the information before it lands somewhere it can be misused.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when silence is being used as an excuse. Relay-04 turns a routine update into a demand that can't be left unread.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across a long or noisy channel where the signal risks drifting off message. Relay-05 keeps every hop aligned with the original intent.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to shut a channel down without leaving it half-open. Relay-06 lets a transmission system power all the way off, cleanly, once it's no longer needed.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across multiple channels that need to deliver the same message at the same moment. Relay-07 is the master clock that keeps every relay point in time.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach — the same signal, carried past the range it started with.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy for information that has to move without leaving a readable trail. Relay-09 carries the message through channels that don't log what passed through them.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">RELAY-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Relay <i>(Carries information from one point to another)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to settle a dispute over what was actually said. Relay-10 puts the unedited message back in front of everyone, source intact.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>ANCHOR</b><span class="msub">&#8212; stabilizes a structure against pressure</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy before anything else is built. Anchor-01 sets the one fixed point everything downstream will be measured against.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a stable structure is about to face pressure it wasn't originally built for. Anchor-02 reinforces the foundation before the stress test, not during it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the current foundation is sound but poorly placed. Anchor-03 relocates the grounding point to where it can actually hold weight.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when collapse is imminent and half-measures won't hold. Anchor-04 throws maximum resistance at the failure point, whatever the cost to flexibility.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy in the middle of active volatility. Anchor-05 is the structure staying upright while everything around it is still moving.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a structure has outlived its foundation and needs to be freed to reset. Anchor-06 releases support on purpose, not through failure.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across a system with more than one point of stability. Anchor-07 synchronizes every stabilizing force so none of them is fighting the others.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once stability is no longer the ceiling but the floor. Anchor-08 uses a secure foundation to support more weight than the structure was originally rated for.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when visible support would invite a challenge to it. Anchor-09 keeps a structure grounded without advertising what's holding it up.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">ANCHOR-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Anchor <i>(Stabilizes a structure against pressure)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy after a period of doubt about whether something would hold. Anchor-10 makes the stabilizing force visible again, on purpose, to rebuild confidence.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>QUIET</b><span class="msub">&#8212; exerts subtle, decisive influence</span></span>
+            <span class="msum-right"><span class="tag-in-set">also a Ledger Set mark</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy the first nudge no one will remember as the start of anything. Quiet-01 shifts direction before the room even knows a decision was being made.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to keep a quiet influence from being noticed and corrected. Quiet-02 reapplies just enough pressure to hold the course without drawing attention to it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when an outcome needs to change without anyone pointing to the moment it changed. Quiet-03 redirects the result while leaving the process looking untouched.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when subtlety alone won't move an entrenched resistance. Quiet-04 raises the quiet pressure until it overrides opposition without ever becoming visible as pressure.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy in a volatile room that needs calming from a source no one can point to. Quiet-05 stabilizes the environment through guidance that never announces itself.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to withdraw influence completely, with nothing left to discover later. Quiet-06 dissolves the involvement so thoroughly there's no trace it was ever there.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across several quiet actors who all need to move together without any visible coordination. Quiet-07 is the unspoken cue that puts them all in motion on the same beat.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make a hidden influence do more work than its size should allow. Quiet-08 is the whisper that reshapes outcomes far past where it was spoken.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy for the action that has to happen and also has to never be attributed. Quiet-09 conceals decisive intervention behind a posture of complete neutrality.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">QUIET-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Quiet <i>(Exerts subtle, decisive influence)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy at the single moment when staying hidden costs more than being seen. Quiet-10 reveals the subtle hand only when it will land hardest.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>VECTOR</b><span class="msub">&#8212; pushes momentum forward</span></span>
+            <span class="msum-right"><span class="tag-index-only">index-only, no glyph</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition — the first push before there's any momentum to build on.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when early momentum is real but fragile. Vector-02 protects the forward motion from the friction trying to slow it back down.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when momentum is strong but pointed at the wrong target. Vector-03 redirects existing drive without losing the speed already built up.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy against resistance a normal push won't clear. Vector-04 forces a breakthrough by adding more force than the obstacle was built to survive.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once momentum is established and needs to be maintained, not increased. Vector-05 keeps the pace sustainable over distance instead of burning out early.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to bring motion to a controlled stop instead of an abrupt one. Vector-06 lets momentum wind down on schedule, without a collision.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across multiple moving parts that need to arrive together. Vector-07 synchronizes independent momentum into one coordinated advance.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when good momentum needs to become decisive momentum. Vector-08 accelerates an existing push until the outcome is no longer in question.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when forward pressure needs to be applied without anyone identifying where it's coming from. Vector-09 keeps the push behind a neutral, uninvolved front.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">VECTOR-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Vector <i>(Pushes momentum forward)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make momentum impossible to ignore or downplay. Vector-10 puts visible speed on display as a signal that the decision has already been made.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>PIVOT</b><span class="msub">&#8212; changes the direction of an outcome</span></span>
+            <span class="msum-right"><span class="tag-index-only">index-only, no glyph</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy at the first sign that the current direction won't hold. Pivot-01 is the earliest possible turn, before the cost of changing course goes up.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy right after a turn, while the new direction is still vulnerable to being walked back. Pivot-02 locks in the angle before old momentum can reclaim it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the first pivot wasn't quite right. Pivot-03 is the correction that gets the turn onto its actual best line.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a partial pivot won't force the adaptation the moment requires. Pivot-04 makes the turn sharp enough that no one can pretend nothing changed.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once the new direction is set and needs to become the default, not a detour. Pivot-05 stabilizes the turn until it's just the direction things go now.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to fully retire the old direction so it can't quietly resurface. Pivot-06 dissolves the previous course completely rather than leaving it as a fallback.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across a group that all needs to turn at once or risk scattering. Pivot-07 synchronizes the change of direction so no one turns early or late.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make a turn happen faster than the situation would normally allow. Pivot-08 accelerates the transition once the direction is already decided.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a shift needs to be prepared quietly before it's executed. Pivot-09 conceals the coming turn until the timing is exactly right.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">PIVOT-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Pivot <i>(Changes the direction of an outcome)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to make a change of direction unmistakable to everyone downstream. Pivot-10 reveals the shift as the new definition of the situation, not a temporary detour.</p></div>
+            </div></div>
+        </details>
+        <details class="mgroup">
+          <summary>
+            <span class="msum-left"><span class="mchevron"></span><b>DRAFT</b><span class="msub">&#8212; pulls others along in its wake</span></span>
+            <span class="msum-right"><span class="tag-index-only">index-only, no glyph</span><span class="mcount">10/10</span></span>
+          </summary>
+          <div class="mrows">
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-01</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">01 <i>(Opening Gambit &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to get a group moving that hasn't committed to moving yet. Draft-01 is the first pull that turns bystanders into followers before they've decided to be either.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-02</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">02 <i>(Fortification &#183; Prime / Initiation)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a group is following but might peel off under strain. Draft-02 reinforces the pull so momentum doesn't scatter the moment it gets difficult.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-03</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">03 <i>(Hard Reroute &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when the group is moving, but toward the wrong outcome. Draft-03 redirects collective momentum without breaking the formation carrying it.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-04</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">04 <i>(Aggressive Escalation &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy against real resistance to being led. Draft-04 pulls hard enough that reluctance stops being a viable option for the group.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-05</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">05 <i>(Hold The Line &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to keep a group moving as one body instead of drifting apart mid-effort. Draft-05 stabilizes formation behind the lead when the group's own cohesion starts to slip.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-06</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">06 <i>(Clean Release &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy once a group is ready to operate without being pulled anymore. Draft-06 releases them to move independently, on purpose, rather than staying dependent.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-07</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">07 <i>(Lockstep Timing &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy across a group that needs to move as a single unit, not a loose crowd. Draft-07 synchronizes everyone's motion into one unified flow behind the lead.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-08</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">08 <i>(Signal Surge &#183; Core / Stabilization)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy to convert steady following into accelerated collective progress. Draft-08 amplifies the pull so the whole group moves faster than any one of them would alone.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-09</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">09 <i>(Ghost Protocol &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when a group needs to be led without feeling led. Draft-09 conceals the pull so completely that the group believes the direction was their own idea.</p></div>
+            </div>
+            <div class="acard">
+              <div class="acard-row"><span class="alabel">Indexed Asset</span><span class="aval a-asset">DRAFT-10</span></div>
+              <div class="acard-row"><span class="alabel">Function</span><span class="aval">Draft <i>(Pulls others along in its wake)</i></span></div>
+              <div class="acard-row"><span class="alabel">Outcome</span><span class="aval">10 <i>(Full Disclosure &#183; Echo / Resolution)</i></span></div>
+              <div class="acard-statement"><span class="alabel">Actionable Statement</span><p>Deploy when it's time for the group to know who's actually been guiding them. Draft-10 reveals the pull openly, establishing leadership on the record instead of behind it.</p></div>
+            </div></div>
+        </details>
+  </section>
+
+  <section id="ledger-set">
+    
+    <div class="shead">
+      <div class="shead-left"><span class="eyebrow">03</span><h2>The Ledger Set</h2></div>
+      <div class="scount">6 functions</div>
+    </div>
+    <p class="lede">Every mark Typhen keeps belongs to one registry. Each individual symbol is a Ledger Entry &#8212; not a rank, a record of how a force acts.</p>
+
+    <div class="bookend panel">
+      <div class="bicon"><svg class="ic" width="50" height="50" viewBox="0 0 100 100"><use href="#tri-span"/></svg></div>
+      <div>
+        <div class="bname">Tri-Span &#8212; master symbol</div>
+        <div class="bdesc">Three lines for shared access, one stroke for Typhen&#8217;s own alignment, one circle for the outcome recorded. Sits at the top of the Index.</div>
+      </div>
+    </div>
+
+    
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#span-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">SPAN</span>
+              <span class="fcode">SPAN-03</span>
+            </div>
+            <p class="fmeaning">Coordination, alignment</p>
+            <p class="fobj">Object &#8212; Tri-key clasp</p>
+            <p class="fmark">Field mark &#8212; &#8220;Bridge Key&#8221; <span class="ftag">S-03</span></p>
+          </div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#break-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">BREAK</span>
+              <span class="fcode">BREAK-04</span>
+            </div>
+            <p class="fmeaning">Disruption, escalation</p>
+            <p class="fobj">Object &#8212; Signal baton</p>
+            <p class="fmark">Field mark &#8212; &#8220;Fracture Vector&#8221; <span class="ftag">B-04</span></p>
+          </div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#fuse-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">FUSE</span>
+              <span class="fcode">FUSE-07</span>
+            </div>
+            <p class="fmeaning">Binding, synthesis</p>
+            <p class="fobj">Object &#8212; Industrial cloth</p>
+            <p class="fmark">Field mark &#8212; &#8220;Bond Ring&#8221; <span class="ftag">F-07</span></p>
+          </div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#relay-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">RELAY</span>
+              <span class="fcode">RELAY-08</span>
+            </div>
+            <p class="fmeaning">Transmission, amplification</p>
+            <p class="fobj">Object &#8212; Relay node</p>
+            <p class="fmark">Field mark &#8212; &#8220;Node Array&#8221; <span class="ftag">R-08</span></p>
+          </div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#anchor-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">ANCHOR</span>
+              <span class="fcode">ANCHOR-05</span>
+            </div>
+            <p class="fmeaning">Stability, resistance</p>
+            <p class="fobj">Object &#8212; Graphite ledger</p>
+            <p class="fmark">Field mark &#8212; &#8220;Stability Crest&#8221; <span class="ftag">A-05</span></p>
+          </div>
+        </div>
+        <div class="fcard">
+          <div class="fcard-icon"><svg class="ic emblem" width="50" height="120" viewBox="0 0 100 240"><use href="#quiet-emblem"/></svg></div>
+          <div class="fcard-body">
+            <div class="fcard-head">
+              <span class="fname">QUIET</span>
+              <span class="fcode">QUIET-09</span>
+            </div>
+            <p class="fmeaning">Subtle influence</p>
+            <p class="fobj">Object &#8212; Matte coin</p>
+            <p class="fmark">Field mark &#8212; &#8220;Silent Eye&#8221; <span class="ftag">Q-09</span></p>
+          </div>
+        </div>
+
+    <div class="bookend panel" style="margin-top:18px;">
+      <div class="bicon"><svg class="ic" width="50" height="50" viewBox="0 0 100 100"><use href="#blank-coin"/></svg></div>
+      <div>
+        <div class="bname">Blank Coin &#8212; null state</div>
+        <div class="bdesc">A plain, unmarked circle. Sits at the bottom of the Index &#8212; no outcome recorded yet.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rank">
+    
+    <div class="shead">
+      <div class="shead-left"><span class="eyebrow">04</span><h2>Rank &amp; Phase</h2></div>
+      <div class="scount">3 phases</div>
+    </div>
+    <p class="lede">Every function operates across three phases, and each phase gets its own mark. Shown here on Fuse: the three phase marks are the index (Section 02 of the sheet) &#8212; fuse them and you get the single glyph actually cut in the field (Section 03).</p>
+
+    <div class="example-flow">
+      <div class="panel phases">
+        <div class="phase-cell">
+          <svg class="ic" width="50" height="50" viewBox="0 0 100 100"><use href="#fuse-initiation"/></svg>
+          <div class="phase-name">Initiation<span class="rank">&#183; Prime</span></div>
+        </div>
+        <div class="phase-cell">
+          <svg class="ic" width="50" height="50" viewBox="0 0 100 100"><use href="#fuse-stabilization"/></svg>
+          <div class="phase-name">Stabilization<span class="rank">&#183; Core</span></div>
+        </div>
+        <div class="phase-cell">
+          <svg class="ic" width="50" height="50" viewBox="0 0 100 100"><use href="#fuse-resolution"/></svg>
+          <div class="phase-name">Resolution<span class="rank">&#183; Echo</span></div>
+        </div></div>
+      <span class="flow-arrow">&#8594;</span>
+      <div class="panel fused-result">
+        <svg class="ic emblem" width="46" height="110" viewBox="0 0 100 240"><use href="#fuse-emblem"/></svg>
+        <div class="flabel">Fuse-07 &#8212; Bond Ring</div>
+      </div>
+    </div>
+
+    <table class="rank-table">
+      <tr><th>Rank</th><th>Role</th><th>Symbol trait</th><th>Field use</th></tr>
+      <tr><td>Prime</td><td>Initiator &#8212; sets the motion</td><td>Sharp geometry, open circle</td><td>Command or origin mark</td></tr><tr><td>Core</td><td>Operator &#8212; maintains flow</td><td>Balanced geometry, filled circle</td><td>Active field use</td></tr><tr><td>Echo</td><td>Observer &#8212; records outcomes</td><td>Minimal geometry, hollow circle</td><td>Documentation or passive mark</td></tr>
+    </table>
+
+    <p class="why-ranks"><b>Why ranks exist:</b> Typhen&#8217;s ledger doesn&#8217;t measure hierarchy &#8212; it measures proximity to consequence. Prime marks appear where change begins. Core marks appear where change is sustained. Echo marks appear where change is recorded or observed. A Break-04 Prime marks the moment of disruption; a Break-04 Echo marks the aftermath.</p>
+  </section>
+
+  <section id="field">
+    
+    <div class="shead">
+      <div class="shead-left"><span class="eyebrow">05</span><h2>Field Deployment</h2></div>
+      <div class="scount">6 plates</div>
+    </div>
+    <p class="lede">Marks are cut for real use &#8212; sprayed, etched, stamped, or laser-cut.</p>
+    <dl class="specs">
+      <div class="spec"><dt>Material</dt><dd>Matte polymer composite or anodized aluminum</dd></div>
+      <div class="spec"><dt>Finish</dt><dd>Non-reflective, abrasion-resistant</dd></div>
+      <div class="spec"><dt>Cut depth</dt><dd>1.5&#8201;mm, &#177;0.2&#8201;mm tolerance</dd></div>
+      <div class="spec"><dt>Plate</dt><dd>120&#8201;mm &#215; 120&#8201;mm, mark centered in an 80&#8201;mm circle</dd></div>
+      <div class="spec"><dt>Orientation</dt><dd>Notch at top-left corner for consistent alignment</dd></div>
+      <div class="spec"><dt>Ledger circle</dt><dd>Always cut clean through, so ink bleed forms the halo</dd></div>
+    </dl>
+    <div class="kit">
+      <div class="glabel">Deployment kit</div>
+      <ul>
+        <li>Six stencil plates, one per function</li>
+        <li>One Blank Coin plate</li>
+        <li>One alignment grid, for multi-mark compositions</li>
+        <li>One carry sleeve, industrial cloth</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>The Ledger Set</span>
+    <span>Typhen</span>
+  </footer>
+
+</div>
+</body>
+</html>
