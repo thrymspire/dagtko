@@ -1,0 +1,946 @@
+{
+  "schema": "dagtko.ledger-set.candidate-dag.v3",
+  "generator": {
+    "name": "ledger-set-reconciliation",
+    "version": "3.1.0"
+  },
+  "candidate": true,
+  "canonical_source_modified": false,
+  "graph": {
+    "id": "a815e09ac4179ef1c60e",
+    "name": "ledger_set_phase_reconciliation",
+    "strategy": "source_phase_glyph_emblem",
+    "directed": true
+  },
+  "source": {
+    "master_sha256": "340c422ab422868f9aebb597a1c42ba341f0489b9c4c30307e606305fa31ae16"
+  },
+  "validation": {
+    "valid": true,
+    "node_count": 54,
+    "edge_count": 66,
+    "unique_node_count": 54,
+    "duplicate_node_ids": [],
+    "dangling_edges": [],
+    "invalid_edges": [],
+    "acyclic": true,
+    "cycle_nodes": [],
+    "topological_nodes_visited": 54
+  },
+  "nodes": [
+    {
+      "id": "phase_initiation",
+      "type": "phase",
+      "label": "Initiation",
+      "layer": 2,
+      "rank": "Prime",
+      "role": "Initiator — sets the motion",
+      "symbol_trait": "Sharp geometry, open circle",
+      "field_use": "Command or origin mark"
+    },
+    {
+      "id": "phase_stabilization",
+      "type": "phase",
+      "label": "Stabilization",
+      "layer": 2,
+      "rank": "Core",
+      "role": "Operator — maintains flow",
+      "symbol_trait": "Balanced geometry, filled circle",
+      "field_use": "Active field use"
+    },
+    {
+      "id": "phase_resolution",
+      "type": "phase",
+      "label": "Resolution",
+      "layer": 2,
+      "rank": "Echo",
+      "role": "Observer — records outcomes",
+      "symbol_trait": "Minimal geometry, hollow circle",
+      "field_use": "Documentation or passive mark"
+    },
+    {
+      "id": "glyph_anchor_initiation",
+      "type": "phase_glyph",
+      "label": "Anchor Initiation mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "anchor-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-initiation\" viewBox=\"0 0 100 100\">\n<rect class=\"ln\" height=\"60\" width=\"40\" x=\"30\" y=\"18\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"18\" y2=\"78\"/>\n<polyline class=\"ln-thin\" points=\"24.00,22.00 24.00,14.00 32.00,14.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"37\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_anchor_stabilization",
+      "type": "phase_glyph",
+      "label": "Anchor Stabilization mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "anchor-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-stabilization\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M30,24 L70,24 L70,52 Q70,74 50,86 Q30,74 30,52 Z\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"48\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_anchor_resolution",
+      "type": "phase_glyph",
+      "label": "Anchor Resolution mark",
+      "layer": 3,
+      "function_tag": "Anchor",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "anchor-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M50,80 Q20,71 14,32\"/>\n<path class=\"ln\" d=\"M50,80 Q80,71 86,32\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"75\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_initiation",
+      "type": "phase_glyph",
+      "label": "Break Initiation mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "break-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,14.00 61.00,29.00 57.00,36.00 82.00,50.00 61.00,59.00 67.00,68.00 50.00,86.00 37.00,68.00 43.00,59.00 18.00,50.00 43.00,36.00 39.00,29.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_stabilization",
+      "type": "phase_glyph",
+      "label": "Break Stabilization mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "break-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-stabilization\" viewBox=\"0 0 100 100\">\n<line class=\"ln\" x1=\"27\" x2=\"73\" y1=\"27\" y2=\"73\"/>\n<line class=\"ln\" x1=\"73\" x2=\"27\" y1=\"27\" y2=\"73\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_break_resolution",
+      "type": "phase_glyph",
+      "label": "Break Resolution mark",
+      "layer": 3,
+      "function_tag": "Break",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "break-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M40.42,76.31 A28,28 0 0,1 40.42,23.69\"/>\n<path class=\"ln\" d=\"M59.58,23.69 A28,28 0 0,1 59.58,76.31\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_initiation",
+      "type": "phase_glyph",
+      "label": "Fuse Initiation mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "fuse-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,18.00 77.71,34.00 77.71,66.00 50.00,82.00 22.29,66.00 22.29,34.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"8\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_stabilization",
+      "type": "phase_glyph",
+      "label": "Fuse Stabilization mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "fuse-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-stabilization\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"27\"/>\n<line class=\"ln-thin\" x1=\"73.00\" x2=\"80.00\" y1=\"50.00\" y2=\"50.00\"/>\n<line class=\"ln-thin\" x1=\"66.26\" x2=\"71.21\" y1=\"66.26\" y2=\"71.21\"/>\n<line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"73.00\" y2=\"80.00\"/>\n<line class=\"ln-thin\" x1=\"33.74\" x2=\"28.79\" y1=\"66.26\" y2=\"71.21\"/>\n<line class=\"ln-thin\" x1=\"27.00\" x2=\"20.00\" y1=\"50.00\" y2=\"50.00\"/>\n<line class=\"ln-thin\" x1=\"33.74\" x2=\"28.79\" y1=\"33.74\" y2=\"28.79\"/>\n<line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"27.00\" y2=\"20.00\"/>\n<line class=\"ln-thin\" x1=\"66.26\" x2=\"71.21\" y1=\"33.74\" y2=\"28.79\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_fuse_resolution",
+      "type": "phase_glyph",
+      "label": "Fuse Resolution mark",
+      "layer": 3,
+      "function_tag": "Fuse",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "fuse-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-resolution\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50.00\" cy=\"39.00\" r=\"15\"/>\n<circle class=\"ln\" cx=\"59.53\" cy=\"55.50\" r=\"15\"/>\n<circle class=\"ln\" cx=\"40.47\" cy=\"55.50\" r=\"15\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_initiation",
+      "type": "phase_glyph",
+      "label": "Quiet Initiation mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "quiet-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-initiation\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M14,50 Q50,25 86,50 Q50,75 14,50 Z\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"50\" r=\"9\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_stabilization",
+      "type": "phase_glyph",
+      "label": "Quiet Stabilization mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "quiet-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-stabilization\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M63.77,69.66 A24,24 0 1,1 63.77,30.34\"/>\n<circle class=\"dot-fill\" cx=\"72\" cy=\"50\" r=\"7\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_quiet_resolution",
+      "type": "phase_glyph",
+      "label": "Quiet Resolution mark",
+      "layer": 3,
+      "function_tag": "Quiet",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "quiet-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-resolution\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"20.00,26.00 80.00,26.00 50.00,84.00\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"42\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_initiation",
+      "type": "phase_glyph",
+      "label": "Relay Initiation mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "relay-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-initiation\" viewBox=\"0 0 100 100\">\n<polyline class=\"ln\" points=\"16.00,39.00 26.00,50.00 16.00,61.00\"/>\n<polyline class=\"ln\" points=\"32.00,39.00 42.00,50.00 32.00,61.00\"/>\n<polyline class=\"ln\" points=\"48.00,39.00 58.00,50.00 48.00,61.00\"/>\n<circle class=\"dot-open\" cx=\"79\" cy=\"50\" r=\"8.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_stabilization",
+      "type": "phase_glyph",
+      "label": "Relay Stabilization mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "relay-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-stabilization\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"32.00,32.00 68.00,32.00 68.00,68.00 32.00,68.00\"/>\n<line class=\"ln-thin\" x1=\"32\" x2=\"68\" y1=\"32\" y2=\"68\"/>\n<line class=\"ln-thin\" x1=\"68\" x2=\"32\" y1=\"32\" y2=\"68\"/>\n<circle class=\"ln-thin\" cx=\"32\" cy=\"32\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"68\" cy=\"32\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"68\" cy=\"68\" r=\"3\"/>\n<circle class=\"ln-thin\" cx=\"32\" cy=\"68\" r=\"3\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"8\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_relay_resolution",
+      "type": "phase_glyph",
+      "label": "Relay Resolution mark",
+      "layer": 3,
+      "function_tag": "Relay",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "relay-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-resolution\" viewBox=\"0 0 100 100\">\n<line class=\"ln-thin\" x1=\"21\" x2=\"79\" y1=\"50\" y2=\"50\"/>\n<circle class=\"dot-fill\" cx=\"21\" cy=\"50\" r=\"4.5\"/>\n<circle class=\"dot-fill\" cx=\"79\" cy=\"50\" r=\"4.5\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"50\" r=\"7\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_initiation",
+      "type": "phase_glyph",
+      "label": "Span Initiation mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Initiation",
+      "rank": "Prime",
+      "svg_symbol_id": "span-initiation",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-initiation\" viewBox=\"0 0 100 100\">\n<polygon class=\"ln\" points=\"50.00,16.00 19.00,82.00 81.00,82.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"60\" r=\"8.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_stabilization",
+      "type": "phase_glyph",
+      "label": "Span Stabilization mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Stabilization",
+      "rank": "Core",
+      "svg_symbol_id": "span-stabilization",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-stabilization\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"26\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"19\" y2=\"30\"/>\n<line class=\"ln-thin\" x1=\"50\" x2=\"50\" y1=\"70\" y2=\"81\"/>\n<line class=\"ln-thin\" x1=\"19\" x2=\"30\" y1=\"50\" y2=\"50\"/>\n<line class=\"ln-thin\" x1=\"70\" x2=\"81\" y1=\"50\" y2=\"50\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"7.5\"/>\n</symbol>"
+    },
+    {
+      "id": "glyph_span_resolution",
+      "type": "phase_glyph",
+      "label": "Span Resolution mark",
+      "layer": 3,
+      "function_tag": "Span",
+      "phase": "Resolution",
+      "rank": "Echo",
+      "svg_symbol_id": "span-resolution",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-resolution\" viewBox=\"0 0 100 100\">\n<path class=\"ln\" d=\"M26,84 L26,50 A24,24 0 0,1 74,50 L74,84\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"68\" r=\"6.5\"/>\n</symbol>"
+    },
+    {
+      "id": "emblem_anchor",
+      "type": "object_symbol",
+      "label": "Anchor emblem",
+      "layer": 4,
+      "function_tag": "Anchor",
+      "object_id": "graphite_ledger",
+      "svg_symbol_id": "anchor-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"anchor-emblem\" viewBox=\"0 0 100 240\">\n<rect class=\"ln\" height=\"76\" width=\"40\" x=\"30\" y=\"14\"/>\n<polyline class=\"ln-thin\" points=\"24.00,18.00 24.00,10.00 32.00,10.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"34\" r=\"7\"/>\n<path class=\"ln\" d=\"M30,90 L70,90 L70,130 Q70,160 50,170 Q30,160 30,130 Z\"/>\n<line class=\"spine-reinforced\" x1=\"50\" x2=\"50\" y1=\"14\" y2=\"170\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"120\" r=\"8\"/>\n<path class=\"ln\" d=\"M50,170 Q22,198 15,232\"/>\n<path class=\"ln\" d=\"M50,170 Q78,198 85,232\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"179\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_break",
+      "type": "object_symbol",
+      "label": "Break emblem",
+      "layer": 4,
+      "function_tag": "Break",
+      "object_id": "signal_baton",
+      "svg_symbol_id": "break-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"break-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 60.00,28.00 56.00,35.00 80.00,50.00 60.00,60.00 66.00,70.00 50.00,90.00 37.00,70.00 43.00,60.00 20.00,50.00 43.00,35.00 39.00,28.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"7\"/>\n<line class=\"spine-crack\" x1=\"50\" x2=\"50\" y1=\"90\" y2=\"170\"/>\n<line class=\"ln\" x1=\"27\" x2=\"73\" y1=\"107\" y2=\"153\"/>\n<line class=\"ln\" x1=\"73\" x2=\"27\" y1=\"107\" y2=\"153\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<path class=\"ln\" d=\"M38.03,237.89 A35,35 0 0,1 38.03,172.11\"/>\n<path class=\"ln\" d=\"M61.97,172.11 A35,35 0 0,1 61.97,237.89\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"205\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_fuse",
+      "type": "object_symbol",
+      "label": "Fuse emblem",
+      "layer": 4,
+      "function_tag": "Fuse",
+      "object_id": "industrial_cloth",
+      "svg_symbol_id": "fuse-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"fuse-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 82.91,33.00 82.91,71.00 50.00,90.00 17.09,71.00 17.09,33.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"8\"/>\n<line class=\"ln-thin\" x1=\"41\" x2=\"59\" y1=\"84\" y2=\"96\"/><line class=\"ln-thin\" x1=\"59\" x2=\"41\" y1=\"84\" y2=\"96\"/>\n<circle class=\"ln\" cx=\"50\" cy=\"130\" r=\"40\"/>\n<line class=\"ln-thin\" x1=\"83.00\" x2=\"90.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"73.33\" x2=\"78.28\" y1=\"153.33\" y2=\"158.28\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"163.00\" y2=\"170.00\"/><line class=\"ln-thin\" x1=\"26.67\" x2=\"21.72\" y1=\"153.33\" y2=\"158.28\"/><line class=\"ln-thin\" x1=\"17.00\" x2=\"10.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"26.67\" x2=\"21.72\" y1=\"106.67\" y2=\"101.72\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"97.00\" y2=\"90.00\"/><line class=\"ln-thin\" x1=\"73.33\" x2=\"78.28\" y1=\"106.67\" y2=\"101.72\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<line class=\"ln-thin\" x1=\"41\" x2=\"59\" y1=\"164\" y2=\"176\"/><line class=\"ln-thin\" x1=\"59\" x2=\"41\" y1=\"164\" y2=\"176\"/>\n<circle class=\"ln\" cx=\"50.00\" cy=\"190.00\" r=\"20\"/>\n<circle class=\"ln\" cx=\"62.99\" cy=\"212.50\" r=\"20\"/>\n<circle class=\"ln\" cx=\"37.01\" cy=\"212.50\" r=\"20\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"205\" r=\"5.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_quiet",
+      "type": "object_symbol",
+      "label": "Quiet emblem",
+      "layer": 4,
+      "function_tag": "Quiet",
+      "object_id": "matte_coin",
+      "svg_symbol_id": "quiet-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"quiet-emblem\" viewBox=\"0 0 100 240\">\n<path class=\"ln\" d=\"M14,52 Q50,30 86,52 Q50,74 14,52 Z\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"52\" r=\"8\"/>\n<line class=\"spine-faint\" x1=\"50\" x2=\"50\" y1=\"64\" y2=\"90\"/>\n<path class=\"ln\" d=\"M72.94,162.77 A40,40 0 1,1 72.94,97.23\"/>\n<circle class=\"dot-fill\" cx=\"80\" cy=\"130\" r=\"7\"/>\n<line class=\"spine-faint\" x1=\"50\" x2=\"50\" y1=\"170\" y2=\"192\"/>\n<polygon class=\"ln\" points=\"20.00,170.00 80.00,170.00 50.00,236.00\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"192\" r=\"7\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_relay",
+      "type": "object_symbol",
+      "label": "Relay emblem",
+      "layer": 4,
+      "function_tag": "Relay",
+      "object_id": "relay_node",
+      "svg_symbol_id": "relay-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"relay-emblem\" viewBox=\"0 0 100 240\">\n<polyline class=\"ln\" points=\"42.00,27.20 50.00,36.80 58.00,27.20\"/><polyline class=\"ln\" points=\"42.00,45.20 50.00,54.80 58.00,45.20\"/><polyline class=\"ln\" points=\"42.00,63.20 50.00,72.80 58.00,63.20\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"86\" r=\"7.5\"/>\n<polyline class=\"ln\" points=\"44.00,95.40 50.00,102.60 56.00,95.40\"/>\n<polygon class=\"ln\" points=\"26.00,110.00 74.00,110.00 74.00,158.00 26.00,158.00\"/>\n<line class=\"ln-thin\" x1=\"26\" x2=\"74\" y1=\"110\" y2=\"158\"/>\n<line class=\"ln-thin\" x1=\"74\" x2=\"26\" y1=\"110\" y2=\"158\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"134\" r=\"9\"/>\n<polyline class=\"ln\" points=\"44.00,167.40 50.00,174.60 56.00,167.40\"/>\n<line class=\"ln-thin\" x1=\"26\" x2=\"74\" y1=\"207\" y2=\"207\"/>\n<circle class=\"dot-fill\" cx=\"26\" cy=\"207\" r=\"5\"/>\n<circle class=\"dot-fill\" cx=\"74\" cy=\"207\" r=\"5\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"207\" r=\"7.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "emblem_span",
+      "type": "object_symbol",
+      "label": "Span emblem",
+      "layer": 4,
+      "function_tag": "Span",
+      "object_id": "tri_key_clasp",
+      "svg_symbol_id": "span-emblem",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"span-emblem\" viewBox=\"0 0 100 240\">\n<polygon class=\"ln\" points=\"50.00,14.00 26.00,90.00 74.00,90.00\"/>\n<circle class=\"dot-open\" cx=\"50\" cy=\"66\" r=\"8\"/>\n<circle class=\"ln\" cx=\"50\" cy=\"130\" r=\"40\"/>\n<line class=\"ln-thin\" x1=\"83.00\" x2=\"90.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"163.00\" y2=\"170.00\"/><line class=\"ln-thin\" x1=\"17.00\" x2=\"10.00\" y1=\"130.00\" y2=\"130.00\"/><line class=\"ln-thin\" x1=\"50.00\" x2=\"50.00\" y1=\"97.00\" y2=\"90.00\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"130\" r=\"9\"/>\n<path class=\"ln\" d=\"M26,240 L26,194 A24,24 0 0,1 74,194 L74,240\"/>\n<circle class=\"dot-echo\" cx=\"50\" cy=\"217\" r=\"6.5\"/>\n</symbol>",
+      "composition": "Composite field symbol combining the three phase marks for this function."
+    },
+    {
+      "id": "fn_vector",
+      "type": "function_tag",
+      "label": "Vector",
+      "layer": 2,
+      "definition": "Pushes momentum forward",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_anchor",
+      "type": "function_tag",
+      "label": "Anchor",
+      "layer": 2,
+      "definition": "Stabilizes, prevents drift",
+      "physical_symbol": true,
+      "object_id": "graphite_ledger",
+      "svg_emblem_id": "anchor-emblem"
+    },
+    {
+      "id": "fn_relay",
+      "type": "function_tag",
+      "label": "Relay",
+      "layer": 2,
+      "definition": "Carries information between groups",
+      "physical_symbol": true,
+      "object_id": "relay_node",
+      "svg_emblem_id": "relay-emblem"
+    },
+    {
+      "id": "fn_pivot",
+      "type": "function_tag",
+      "label": "Pivot",
+      "layer": 2,
+      "definition": "Changes direction, reframes",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_fuse",
+      "type": "function_tag",
+      "label": "Fuse",
+      "layer": 2,
+      "definition": "Binds elements together",
+      "physical_symbol": true,
+      "object_id": "industrial_cloth",
+      "svg_emblem_id": "fuse-emblem"
+    },
+    {
+      "id": "fn_break",
+      "type": "function_tag",
+      "label": "Break",
+      "layer": 2,
+      "definition": "Disrupts or ends a pattern",
+      "physical_symbol": true,
+      "object_id": "signal_baton",
+      "svg_emblem_id": "break-emblem"
+    },
+    {
+      "id": "fn_span",
+      "type": "function_tag",
+      "label": "Span",
+      "layer": 2,
+      "definition": "Bridges gaps",
+      "physical_symbol": true,
+      "object_id": "tri_key_clasp",
+      "svg_emblem_id": "span-emblem"
+    },
+    {
+      "id": "fn_draft",
+      "type": "function_tag",
+      "label": "Draft",
+      "layer": 2,
+      "definition": "Pulls others along",
+      "physical_symbol": false,
+      "object_id": null,
+      "svg_emblem_id": null
+    },
+    {
+      "id": "fn_quiet",
+      "type": "function_tag",
+      "label": "Quiet",
+      "layer": 2,
+      "definition": "Subtle, decisive influence",
+      "physical_symbol": true,
+      "object_id": "matte_coin",
+      "svg_emblem_id": "quiet-emblem"
+    },
+    {
+      "id": "graphite_ledger",
+      "type": "object",
+      "label": "Graphite ledger",
+      "layer": 2,
+      "description": "Tracks outcomes, not people. Every page maps what happens when he steps into a situation.",
+      "function_tag": "Anchor",
+      "physical": true
+    },
+    {
+      "id": "tri_key_clasp",
+      "type": "object",
+      "label": "Tri-key clasp",
+      "layer": 2,
+      "description": "Opens nothing alone. Built to combine with keys held by others — he makes people choose to open doors.",
+      "function_tag": "Span",
+      "physical": true
+    },
+    {
+      "id": "signal_baton",
+      "type": "object",
+      "label": "Signal baton",
+      "layer": 2,
+      "description": "Carries no markings. Doesn’t command — synchronizes chaos into coordinated motion.",
+      "function_tag": "Break",
+      "physical": true
+    },
+    {
+      "id": "relay_node",
+      "type": "object",
+      "label": "Relay node",
+      "layer": 2,
+      "description": "Amplifies whoever stands near him. His power is never centered on himself.",
+      "function_tag": "Relay",
+      "physical": true
+    },
+    {
+      "id": "matte_coin",
+      "type": "object",
+      "label": "Matte coin",
+      "layer": 2,
+      "description": "No face, no value. Not currency — a reminder that he trades in commitments.",
+      "function_tag": "Quiet",
+      "physical": true
+    },
+    {
+      "id": "industrial_cloth",
+      "type": "object",
+      "label": "Industrial cloth",
+      "layer": 2,
+      "description": "Binds, reinforces, or repairs — whatever the moment demands.",
+      "function_tag": "Fuse",
+      "physical": true
+    },
+    {
+      "id": "out_01",
+      "type": "outcome_number",
+      "label": "01",
+      "layer": 2,
+      "title": "Opening Gambit",
+      "behavior": "initiates",
+      "rank": "Prime",
+      "phase": "Initiation"
+    },
+    {
+      "id": "out_02",
+      "type": "outcome_number",
+      "label": "02",
+      "layer": 2,
+      "title": "Fortification",
+      "behavior": "reinforces",
+      "rank": "Prime",
+      "phase": "Initiation"
+    },
+    {
+      "id": "out_03",
+      "type": "outcome_number",
+      "label": "03",
+      "layer": 2,
+      "title": "Hard Reroute",
+      "behavior": "redirects",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_04",
+      "type": "outcome_number",
+      "label": "04",
+      "layer": 2,
+      "title": "Aggressive Escalation",
+      "behavior": "escalates",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_05",
+      "type": "outcome_number",
+      "label": "05",
+      "layer": 2,
+      "title": "Hold The Line",
+      "behavior": "stabilizes",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_06",
+      "type": "outcome_number",
+      "label": "06",
+      "layer": 2,
+      "title": "Clean Release",
+      "behavior": "dissolves",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_07",
+      "type": "outcome_number",
+      "label": "07",
+      "layer": 2,
+      "title": "Lockstep Timing",
+      "behavior": "synchronizes",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_08",
+      "type": "outcome_number",
+      "label": "08",
+      "layer": 2,
+      "title": "Signal Surge",
+      "behavior": "amplifies",
+      "rank": "Core",
+      "phase": "Stabilization"
+    },
+    {
+      "id": "out_09",
+      "type": "outcome_number",
+      "label": "09",
+      "layer": 2,
+      "title": "Ghost Protocol",
+      "behavior": "conceals",
+      "rank": "Echo",
+      "phase": "Resolution"
+    },
+    {
+      "id": "out_10",
+      "type": "outcome_number",
+      "label": "10",
+      "layer": 2,
+      "title": "Full Disclosure",
+      "behavior": "reveals",
+      "rank": "Echo",
+      "phase": "Resolution"
+    },
+    {
+      "id": "symbol_tri_span",
+      "type": "master_symbol",
+      "label": "Tri-Span master symbol",
+      "layer": 2,
+      "svg_symbol_id": "tri-span",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"tri-span\" viewBox=\"0 0 100 100\">\n<line class=\"ln\" x1=\"32\" x2=\"32\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"50\" x2=\"50\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"68\" x2=\"68\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"21\" x2=\"79\" y1=\"79\" y2=\"21\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"5.5\"/>\n</symbol>",
+      "description": "Three lines for shared access, one stroke for Typhen’s own alignment, one circle for the outcome recorded."
+    },
+    {
+      "id": "symbol_blank_coin",
+      "type": "null_symbol",
+      "label": "Blank Coin / null state",
+      "layer": 2,
+      "svg_symbol_id": "blank-coin",
+      "svg_source": "ledger-set-system.svg",
+      "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"blank-coin\" viewBox=\"0 0 100 100\">\n<circle class=\"ln\" cx=\"50\" cy=\"50\" r=\"30\"/>\n</symbol>",
+      "description": "Plain, unmarked circle; no outcome recorded yet."
+    }
+  ],
+  "edges": [
+    {
+      "source": "graphite_ledger",
+      "target": "fn_anchor",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "relay_node",
+      "target": "fn_relay",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "industrial_cloth",
+      "target": "fn_fuse",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "signal_baton",
+      "target": "fn_break",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "tri_key_clasp",
+      "target": "fn_span",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "matte_coin",
+      "target": "fn_quiet",
+      "relation": "embodies_function"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_anchor_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_anchor_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "glyph_anchor_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_anchor_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_break_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_break_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_break",
+      "target": "glyph_break_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_break_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_fuse_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_fuse_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "glyph_fuse_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_fuse_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_quiet_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_quiet_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "glyph_quiet_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_quiet_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_relay_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_relay_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_relay",
+      "target": "glyph_relay_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_relay_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_initiation",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_initiation",
+      "target": "glyph_span_initiation",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_stabilization",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_stabilization",
+      "target": "glyph_span_stabilization",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_span",
+      "target": "glyph_span_resolution",
+      "relation": "has_phase_mark"
+    },
+    {
+      "source": "phase_resolution",
+      "target": "glyph_span_resolution",
+      "relation": "instantiates_phase"
+    },
+    {
+      "source": "fn_anchor",
+      "target": "emblem_anchor",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_anchor_initiation",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_anchor_stabilization",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_anchor_resolution",
+      "target": "emblem_anchor",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_break",
+      "target": "emblem_break",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_break_initiation",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_break_stabilization",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_break_resolution",
+      "target": "emblem_break",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_fuse",
+      "target": "emblem_fuse",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_fuse_initiation",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_fuse_stabilization",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_fuse_resolution",
+      "target": "emblem_fuse",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_quiet",
+      "target": "emblem_quiet",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_quiet_initiation",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_quiet_stabilization",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_quiet_resolution",
+      "target": "emblem_quiet",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_relay",
+      "target": "emblem_relay",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_relay_initiation",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_relay_stabilization",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_relay_resolution",
+      "target": "emblem_relay",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "fn_span",
+      "target": "emblem_span",
+      "relation": "has_object_symbol"
+    },
+    {
+      "source": "glyph_span_initiation",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_span_stabilization",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    },
+    {
+      "source": "glyph_span_resolution",
+      "target": "emblem_span",
+      "relation": "composes_emblem"
+    }
+  ]
+}

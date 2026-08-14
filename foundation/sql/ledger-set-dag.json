@@ -10,7 +10,7 @@
       "2": "canonical entities (objects, function tags, outcome numbers, phases, field specs, special symbols)",
       "3": "phase-specific physical glyphs",
       "4": "composite physical object symbols/emblems",
-      "5": "complete 9×10 matrix entries",
+      "5": "complete 9\u00d710 matrix entries",
       "6": "actionable statements"
     }
   },
@@ -28,7 +28,7 @@
     "field_spec_count": 6,
     "deployment_kit_item_count": 4,
     "node_count": 250,
-    "edge_count": 501
+    "edge_count": 495
   },
   "semantics": {
     "function_tags": {
@@ -138,19 +138,19 @@
     "rank_logic": {
       "Initiation": [
         "Prime",
-        "Initiator — sets the motion",
+        "Initiator \u2014 sets the motion",
         "Sharp geometry, open circle",
         "Command or origin mark"
       ],
       "Stabilization": [
         "Core",
-        "Operator — maintains flow",
+        "Operator \u2014 maintains flow",
         "Balanced geometry, filled circle",
         "Active field use"
       ],
       "Resolution": [
         "Echo",
-        "Observer — records outcomes",
+        "Observer \u2014 records outcomes",
         "Minimal geometry, hollow circle",
         "Documentation or passive mark"
       ]
@@ -203,7 +203,7 @@
       "type": "root",
       "label": "The Ledger Set / Typhen",
       "layer": 0,
-      "description": "everything Typhen carries, indexes, and marks — one system, fully cross-referenced"
+      "description": "everything Typhen carries, indexes, and marks \u2014 one system, fully cross-referenced"
     },
     {
       "id": "sec_typhen",
@@ -249,7 +249,7 @@
       "type": "object",
       "label": "Tri-key clasp",
       "layer": 2,
-      "description": "Opens nothing alone. Built to combine with keys held by others — he makes people choose to open doors.",
+      "description": "Opens nothing alone. Built to combine with keys held by others \u2014 he makes people choose to open doors.",
       "function_tag": "Span",
       "physical": true
     },
@@ -258,7 +258,7 @@
       "type": "object",
       "label": "Signal baton",
       "layer": 2,
-      "description": "Carries no markings. Doesn’t command — synchronizes chaos into coordinated motion.",
+      "description": "Carries no markings. Doesn\u2019t command \u2014 synchronizes chaos into coordinated motion.",
       "function_tag": "Break",
       "physical": true
     },
@@ -276,7 +276,7 @@
       "type": "object",
       "label": "Matte coin",
       "layer": 2,
-      "description": "No face, no value. Not currency — a reminder that he trades in commitments.",
+      "description": "No face, no value. Not currency \u2014 a reminder that he trades in commitments.",
       "function_tag": "Quiet",
       "physical": true
     },
@@ -285,7 +285,7 @@
       "type": "object",
       "label": "Industrial cloth",
       "layer": 2,
-      "description": "Binds, reinforces, or repairs — whatever the moment demands.",
+      "description": "Binds, reinforces, or repairs \u2014 whatever the moment demands.",
       "function_tag": "Fuse",
       "physical": true
     },
@@ -485,7 +485,7 @@
       "label": "Initiation",
       "layer": 2,
       "rank": "Prime",
-      "role": "Initiator — sets the motion",
+      "role": "Initiator \u2014 sets the motion",
       "symbol_trait": "Sharp geometry, open circle",
       "field_use": "Command or origin mark"
     },
@@ -495,7 +495,7 @@
       "label": "Stabilization",
       "layer": 2,
       "rank": "Core",
-      "role": "Operator — maintains flow",
+      "role": "Operator \u2014 maintains flow",
       "symbol_trait": "Balanced geometry, filled circle",
       "field_use": "Active field use"
     },
@@ -505,7 +505,7 @@
       "label": "Resolution",
       "layer": 2,
       "rank": "Echo",
-      "role": "Observer — records outcomes",
+      "role": "Observer \u2014 records outcomes",
       "symbol_trait": "Minimal geometry, hollow circle",
       "field_use": "Documentation or passive mark"
     },
@@ -805,7 +805,7 @@
       "svg_symbol_id": "tri-span",
       "svg_source": "ledger-set-system.svg",
       "svg_geometry": "<symbol color=\"#ECEAE3\" id=\"tri-span\" viewBox=\"0 0 100 100\">\n<line class=\"ln\" x1=\"32\" x2=\"32\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"50\" x2=\"50\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"68\" x2=\"68\" y1=\"16\" y2=\"86\"/>\n<line class=\"ln\" x1=\"21\" x2=\"79\" y1=\"79\" y2=\"21\"/>\n<circle class=\"dot-fill\" cx=\"50\" cy=\"50\" r=\"5.5\"/>\n</symbol>",
-      "description": "Three lines for shared access, one stroke for Typhen’s own alignment, one circle for the outcome recorded."
+      "description": "Three lines for shared access, one stroke for Typhen\u2019s own alignment, one circle for the outcome recorded."
     },
     {
       "id": "symbol_blank_coin",
@@ -1100,7 +1100,7 @@
       "outcome_behavior": "initiates",
       "rank": "Prime",
       "phase": "Initiation",
-      "actionable_statement": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force — it needs the one flaw that makes everyone else start looking for more.",
+      "actionable_statement": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force \u2014 it needs the one flaw that makes everyone else start looking for more.",
       "symbol_status": "physical",
       "svg_phase_symbol_id": "break-initiation",
       "svg_object_symbol_id": "break-emblem",
@@ -1111,7 +1111,7 @@
       "type": "actionable_statement",
       "label": "BREAK-01 action",
       "layer": 6,
-      "text": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force — it needs the one flaw that makes everyone else start looking for more.",
+      "text": "Deploy the first crack in a system that looks unbreakable. Break-01 doesn't need force \u2014 it needs the one flaw that makes everyone else start looking for more.",
       "entry_id": "entry_break_01"
     },
     {
@@ -1127,7 +1127,7 @@
       "outcome_behavior": "reinforces",
       "rank": "Prime",
       "phase": "Initiation",
-      "actionable_statement": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself — it's making sure the disruption holds and doesn't get walked back.",
+      "actionable_statement": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself \u2014 it's making sure the disruption holds and doesn't get walked back.",
       "symbol_status": "physical",
       "svg_phase_symbol_id": "break-initiation",
       "svg_object_symbol_id": "break-emblem",
@@ -1138,7 +1138,7 @@
       "type": "actionable_statement",
       "label": "BREAK-02 action",
       "layer": 6,
-      "text": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself — it's making sure the disruption holds and doesn't get walked back.",
+      "text": "Deploy to harden the line that's already stopping a runaway pattern. Break-02 isn't the disruption itself \u2014 it's making sure the disruption holds and doesn't get walked back.",
       "entry_id": "entry_break_02"
     },
     {
@@ -1370,7 +1370,7 @@
       "outcome_behavior": "initiates",
       "rank": "Prime",
       "phase": "Initiation",
-      "actionable_statement": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld — small, but it's what everything else gets built on.",
+      "actionable_statement": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld \u2014 small, but it's what everything else gets built on.",
       "symbol_status": "physical",
       "svg_phase_symbol_id": "fuse-initiation",
       "svg_object_symbol_id": "fuse-emblem",
@@ -1381,7 +1381,7 @@
       "type": "actionable_statement",
       "label": "FUSE-01 action",
       "layer": 6,
-      "text": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld — small, but it's what everything else gets built on.",
+      "text": "Deploy to make the first connection between components that have never had to rely on each other. Fuse-01 is the tack weld \u2014 small, but it's what everything else gets built on.",
       "entry_id": "entry_fuse_01"
     },
     {
@@ -1424,7 +1424,7 @@
       "outcome_behavior": "redirects",
       "rank": "Core",
       "phase": "Stabilization",
-      "actionable_statement": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it — it reconfigures what's on each end until the connection actually works.",
+      "actionable_statement": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it \u2014 it reconfigures what's on each end until the connection actually works.",
       "symbol_status": "physical",
       "svg_phase_symbol_id": "fuse-stabilization",
       "svg_object_symbol_id": "fuse-emblem",
@@ -1435,7 +1435,7 @@
       "type": "actionable_statement",
       "label": "FUSE-03 action",
       "layer": 6,
-      "text": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it — it reconfigures what's on each end until the connection actually works.",
+      "text": "Deploy when a bond is holding the wrong two things together. Fuse-03 doesn't break it \u2014 it reconfigures what's on each end until the connection actually works.",
       "entry_id": "entry_fuse_03"
     },
     {
@@ -1829,7 +1829,7 @@
       "outcome_behavior": "amplifies",
       "rank": "Core",
       "phase": "Stabilization",
-      "actionable_statement": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach — the same signal, carried past the range it started with.",
+      "actionable_statement": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach \u2014 the same signal, carried past the range it started with.",
       "symbol_status": "physical",
       "svg_phase_symbol_id": "relay-stabilization",
       "svg_object_symbol_id": "relay-emblem",
@@ -1840,7 +1840,7 @@
       "type": "actionable_statement",
       "label": "RELAY-08 action",
       "layer": 6,
-      "text": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach — the same signal, carried past the range it started with.",
+      "text": "Deploy when a message needs to reach further than its original audience. Relay-08 is raw reach \u2014 the same signal, carried past the range it started with.",
       "entry_id": "entry_relay_08"
     },
     {
@@ -2450,7 +2450,7 @@
       "outcome_behavior": "initiates",
       "rank": "Prime",
       "phase": "Initiation",
-      "actionable_statement": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition — the first push before there's any momentum to build on.",
+      "actionable_statement": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition \u2014 the first push before there's any momentum to build on.",
       "symbol_status": "index-only",
       "svg_phase_symbol_id": null,
       "svg_object_symbol_id": null,
@@ -2461,7 +2461,7 @@
       "type": "actionable_statement",
       "label": "VECTOR-01 action",
       "layer": 6,
-      "text": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition — the first push before there's any momentum to build on.",
+      "text": "Deploy to get a stalled effort moving from a dead stop. Vector-01 is pure ignition \u2014 the first push before there's any momentum to build on.",
       "entry_id": "entry_vector_01"
     },
     {
@@ -3266,14 +3266,14 @@
       "type": "field_spec",
       "label": "Cut Depth",
       "layer": 2,
-      "value": "1.5 mm, ±0.2 mm tolerance"
+      "value": "1.5 mm, \u00b10.2 mm tolerance"
     },
     {
       "id": "field_plate",
       "type": "field_spec",
       "label": "Plate",
       "layer": 2,
-      "value": "120 mm × 120 mm, mark centered in an 80 mm circle"
+      "value": "120 mm \u00d7 120 mm, mark centered in an 80 mm circle"
     },
     {
       "id": "field_orientation",
@@ -3385,19 +3385,9 @@
       "relation": "defines"
     },
     {
-      "source": "graphite_ledger",
-      "target": "fn_anchor",
-      "relation": "embodies_function"
-    },
-    {
       "source": "sec_index",
       "target": "fn_relay",
       "relation": "defines"
-    },
-    {
-      "source": "relay_node",
-      "target": "fn_relay",
-      "relation": "embodies_function"
     },
     {
       "source": "sec_index",
@@ -3410,29 +3400,14 @@
       "relation": "defines"
     },
     {
-      "source": "industrial_cloth",
-      "target": "fn_fuse",
-      "relation": "embodies_function"
-    },
-    {
       "source": "sec_index",
       "target": "fn_break",
       "relation": "defines"
     },
     {
-      "source": "signal_baton",
-      "target": "fn_break",
-      "relation": "embodies_function"
-    },
-    {
       "source": "sec_index",
       "target": "fn_span",
       "relation": "defines"
-    },
-    {
-      "source": "tri_key_clasp",
-      "target": "fn_span",
-      "relation": "embodies_function"
     },
     {
       "source": "sec_index",
@@ -3443,11 +3418,6 @@
       "source": "sec_index",
       "target": "fn_quiet",
       "relation": "defines"
-    },
-    {
-      "source": "matte_coin",
-      "target": "fn_quiet",
-      "relation": "embodies_function"
     },
     {
       "source": "sec_index",

@@ -1,0 +1,1802 @@
+[
+  {
+    "source": "fn_anchor",
+    "target": "glyph_anchor_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_anchor_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "glyph_anchor_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_anchor_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "glyph_anchor_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_anchor_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_break",
+    "target": "glyph_break_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_break_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_break",
+    "target": "glyph_break_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_break_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_break",
+    "target": "glyph_break_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_break_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "glyph_fuse_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_fuse_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "glyph_fuse_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_fuse_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "glyph_fuse_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_fuse_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "glyph_quiet_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_quiet_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "glyph_quiet_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_quiet_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "glyph_quiet_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_quiet_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_relay",
+    "target": "glyph_relay_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_relay_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_relay",
+    "target": "glyph_relay_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_relay_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_relay",
+    "target": "glyph_relay_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_relay_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_span",
+    "target": "glyph_span_initiation",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_initiation",
+    "target": "glyph_span_initiation",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_span",
+    "target": "glyph_span_stabilization",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_stabilization",
+    "target": "glyph_span_stabilization",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_span",
+    "target": "glyph_span_resolution",
+    "relation": "has_phase_mark"
+  },
+  {
+    "source": "phase_resolution",
+    "target": "glyph_span_resolution",
+    "relation": "instantiates_phase"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "emblem_anchor",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_initiation",
+    "target": "emblem_anchor",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "emblem_anchor",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_anchor_resolution",
+    "target": "emblem_anchor",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_break",
+    "target": "emblem_break",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_break_initiation",
+    "target": "emblem_break",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "emblem_break",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_break_resolution",
+    "target": "emblem_break",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "emblem_fuse",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_initiation",
+    "target": "emblem_fuse",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "emblem_fuse",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_fuse_resolution",
+    "target": "emblem_fuse",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "emblem_quiet",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_initiation",
+    "target": "emblem_quiet",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "emblem_quiet",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_quiet_resolution",
+    "target": "emblem_quiet",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_relay",
+    "target": "emblem_relay",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_relay_initiation",
+    "target": "emblem_relay",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "emblem_relay",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_relay_resolution",
+    "target": "emblem_relay",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_span",
+    "target": "emblem_span",
+    "relation": "has_object_symbol"
+  },
+  {
+    "source": "glyph_span_initiation",
+    "target": "emblem_span",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "emblem_span",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "glyph_span_resolution",
+    "target": "emblem_span",
+    "relation": "composes_emblem"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_span_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_initiation",
+    "target": "entry_span_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_span_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_initiation",
+    "target": "entry_span_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_span_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_span_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_span_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_span_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_span_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_span_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_stabilization",
+    "target": "entry_span_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_span_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_resolution",
+    "target": "entry_span_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_span",
+    "target": "entry_span_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_span_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_span",
+    "target": "entry_span_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_span_resolution",
+    "target": "entry_span_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_break_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_initiation",
+    "target": "entry_break_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_break_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_initiation",
+    "target": "entry_break_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_break_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_break_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_break_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_break_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_break_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_break_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_stabilization",
+    "target": "entry_break_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_break_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_resolution",
+    "target": "entry_break_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_break",
+    "target": "entry_break_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_break_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_break",
+    "target": "entry_break_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_break_resolution",
+    "target": "entry_break_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_fuse_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_initiation",
+    "target": "entry_fuse_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_fuse_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_initiation",
+    "target": "entry_fuse_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_fuse_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_fuse_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_fuse_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_fuse_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_fuse_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_fuse_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_stabilization",
+    "target": "entry_fuse_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_fuse_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_resolution",
+    "target": "entry_fuse_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_fuse",
+    "target": "entry_fuse_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_fuse_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_fuse",
+    "target": "entry_fuse_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_fuse_resolution",
+    "target": "entry_fuse_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_relay_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_initiation",
+    "target": "entry_relay_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_relay_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_initiation",
+    "target": "entry_relay_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_relay_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_relay_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_relay_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_relay_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_relay_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_relay_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_stabilization",
+    "target": "entry_relay_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_relay_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_resolution",
+    "target": "entry_relay_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_relay",
+    "target": "entry_relay_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_relay_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_relay",
+    "target": "entry_relay_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_relay_resolution",
+    "target": "entry_relay_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_anchor_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_initiation",
+    "target": "entry_anchor_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_anchor_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_initiation",
+    "target": "entry_anchor_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_anchor_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_anchor_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_anchor_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_anchor_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_anchor_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_anchor_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_stabilization",
+    "target": "entry_anchor_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_anchor_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_resolution",
+    "target": "entry_anchor_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_anchor",
+    "target": "entry_anchor_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_anchor_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_anchor",
+    "target": "entry_anchor_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_anchor_resolution",
+    "target": "entry_anchor_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_quiet_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_01",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_initiation",
+    "target": "entry_quiet_01",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_quiet_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_02",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_initiation",
+    "target": "entry_quiet_02",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_quiet_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_03",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_03",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_quiet_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_04",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_04",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_quiet_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_05",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_05",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_quiet_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_06",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_06",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_quiet_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_07",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_07",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_quiet_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_08",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_stabilization",
+    "target": "entry_quiet_08",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_quiet_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_09",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_resolution",
+    "target": "entry_quiet_09",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_quiet",
+    "target": "entry_quiet_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_quiet_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "emblem_quiet",
+    "target": "entry_quiet_10",
+    "relation": "binds_to_object_symbol"
+  },
+  {
+    "source": "glyph_quiet_resolution",
+    "target": "entry_quiet_10",
+    "relation": "uses_phase_mark"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_vector_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_vector_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_vector_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_vector_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_vector_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_vector_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_vector_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_vector_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_vector_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_vector",
+    "target": "entry_vector_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_vector_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_pivot_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_pivot_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_pivot_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_pivot_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_pivot_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_pivot_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_pivot_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_pivot_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_pivot_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_pivot",
+    "target": "entry_pivot_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_pivot_10",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_01",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_01",
+    "target": "entry_draft_01",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_02",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_02",
+    "target": "entry_draft_02",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_03",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_03",
+    "target": "entry_draft_03",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_04",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_04",
+    "target": "entry_draft_04",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_05",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_05",
+    "target": "entry_draft_05",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_06",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_06",
+    "target": "entry_draft_06",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_07",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_07",
+    "target": "entry_draft_07",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_08",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_08",
+    "target": "entry_draft_08",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_09",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_09",
+    "target": "entry_draft_09",
+    "relation": "instantiates_outcome"
+  },
+  {
+    "source": "fn_draft",
+    "target": "entry_draft_10",
+    "relation": "classifies"
+  },
+  {
+    "source": "out_10",
+    "target": "entry_draft_10",
+    "relation": "instantiates_outcome"
+  }
+]

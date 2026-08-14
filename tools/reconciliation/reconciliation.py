@@ -561,6 +561,7 @@ def classify_nodes(
 
         elif (
             "emblem" in kind
+            or kind == "object_symbol"
             or "composite" in kind
         ):
             groups["emblems"].append(node)

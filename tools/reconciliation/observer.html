@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAGTKO Reconciliation Observer</title>
+<style>
+:root {
+  --void: #0a0512;
+  --panel: rgba(34, 16, 60, 0.55);
+  --panel-border: rgba(157, 92, 255, 0.35);
+  --ink: #ede6ff;
+  --ink-dim: #a996d6;
+  --signal: #9d5cff;
+  --signal-bright: #c084fc;
+  --spore: #d8c6ff;
+  --bio: #5ffbf1;
+  --warn: #ff6b81;
+  --font-display: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, Consolas, "SFMono-Regular", monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--void); color: var(--ink); font-family: var(--font-body); line-height: 1.55; }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(157,92,255,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 85% 10%, rgba(95,251,241,0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 110%, rgba(157,92,255,0.14), transparent 50%),
+    var(--void);
+  position: relative; overflow-x: hidden;
+}
+.blob { position: fixed; width: 280px; height: 280px; border-radius: 50%; filter: blur(60px); opacity: 0.28; pointer-events: none; z-index: 0; }
+.blob-a { background: #9d5cff; top: 10%; left: -70px; animation: dA 28s ease-in-out infinite; }
+.blob-b { background: #5ffbf1; bottom: 6%; right: -50px; animation: dB 32s ease-in-out infinite; }
+@keyframes dA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(34px,26px)} }
+@keyframes dB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,-22px)} }
+@media (prefers-reduced-motion: reduce) { .blob-a,.blob-b,.pulse { animation: none !important; } }
+.wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
+.panel {
+  background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--panel-border);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  padding: 1.35rem 1.3rem; margin-bottom: 1.5rem;
+}
+.panel.warn { border-left: 3px solid var(--warn); }
+h1 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 1.45rem; margin-bottom: 0.3rem;
+  background: linear-gradient(90deg, var(--signal-bright), var(--bio));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.sub { font-family: var(--font-mono); color: var(--ink-dim); font-size: 0.8rem; margin-bottom: 1.3rem; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+.sec-head h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 1rem; color: var(--signal-bright); }
+.sec-head .badge { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-dim); }
+.sec-head.warn h2 { color: var(--warn); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem; }
+.stat { font-family: var(--font-mono); font-size: 0.82rem; }
+.stat b { color: var(--bio); }
+.stat.warn b { color: var(--warn); }
+.btn {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;
+  background: transparent; border: 1px solid var(--signal); color: var(--signal);
+  padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.15s;
+}
+.btn:hover { background: var(--signal); color: var(--void); }
+.btn.warn { border-color: var(--warn); color: var(--warn); }
+.btn.warn:hover { background: var(--warn); color: var(--void); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+textarea, input[type="file"] {
+  width: 100%; background: #050208; border: 1px solid var(--panel-border); color: var(--spore);
+  font-family: var(--font-mono); font-size: 0.78rem; padding: 0.7rem; margin: 0.4rem 0 0.6rem;
+}
+textarea { min-height: 110px; resize: vertical; }
+.code {
+  background: #050208; border: 1px solid var(--panel-border); border-left: 3px solid var(--bio);
+  font-family: var(--font-mono); color: var(--spore); font-size: 0.78rem;
+  padding: 0.8rem 1rem; margin: 0.6rem 0; white-space: pre-wrap; word-break: break-all; max-height: 280px; overflow: auto;
+}
+.meter-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--bio); margin-bottom: 0.35rem; text-shadow: 0 0 8px rgba(95,251,241,0.45); }
+.meter-track { height: 12px; border-radius: 999px; background: rgba(0,0,0,0.45); border: 1px solid var(--panel-border); overflow: hidden; position: relative; }
+.meter-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--signal), var(--bio)); box-shadow: 0 0 14px rgba(157,92,255,0.65); position: relative; transition: width 0.35s ease; }
+.pulse { position: absolute; right: 0; top: 0; bottom: 0; width: 14px; background: rgba(255,255,255,0.7); filter: blur(4px); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.85} }
+.pct { font-family: var(--font-mono); font-weight: 700; color: var(--bio); font-size: 1rem; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; padding: 0.12rem 0.4rem; border: 1px solid var(--panel-border); color: var(--ink-dim); margin: 0.12rem; }
+.list { font-family: var(--font-mono); font-size: 0.78rem; color: var(--spore); max-height: 180px; overflow: auto; }
+.list div { padding: 0.15rem 0; border-bottom: 1px solid rgba(157,92,255,0.12); }
+.hidden { display: none; }
+#status { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-dim); margin-top: 0.4rem; }
+</style>
+</head>
+<body>
+<div class="blob blob-a"></div>
+<div class="blob blob-b"></div>
+<div class="wrap">
+
+  <h1>Reconciliation Observer</h1>
+  <p class="sub">// drop-in · scalable · any _reconciliation_output/&lt;run&gt;</p>
+
+  <!-- LOAD -->
+  <div class="panel">
+    <div class="sec-head"><h2>Load Report</h2><span class="badge">json</span></div>
+    <p style="font-size:0.9rem;color:var(--ink-dim);margin-bottom:0.5rem">Paste <code style="color:var(--spore)">report.json</code> from any run, or pick the file. Works offline.</p>
+    <input type="file" id="fileIn" accept=".json,application/json">
+    <textarea id="paste" placeholder='{"schema":"dagtko.ledger-set.reconciliation-report.v3", ...}'></textarea>
+    <div class="btn-row">
+      <button class="btn" id="btnLoad">Parse</button>
+      <button class="btn" id="btnClear">Clear</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <!-- METER -->
+  <div class="panel" id="meterPanel">
+    <div class="meter-label" id="statusLabel">Awaiting Data</div>
+    <div class="meter-track"><div class="meter-fill" id="meterFill" style="width:0%"><div class="pulse"></div></div></div>
+    <div style="display:flex;justify-content:space-between;margin-top:0.4rem">
+      <span class="pct" id="pct">0%</span>
+      <span class="stat" style="color:var(--ink-dim)">audit confidence</span>
+    </div>
+  </div>
+
+  <!-- CRITICAL -->
+  <div class="panel warn hidden" id="critPanel">
+    <div class="sec-head warn"><h2>Classifier Flag</h2><span class="badge" id="critBadge"></span></div>
+    <p id="critText" style="margin-bottom:0.6rem"></p>
+    <div class="code" id="critFix"></div>
+  </div>
+
+  <!-- COUNTS -->
+  <div class="panel hidden" id="countsPanel">
+    <div class="sec-head"><h2>Master Audit Counts</h2><span class="badge" id="countsBadge"></span></div>
+    <div class="grid" id="countsGrid"></div>
+  </div>
+
+  <!-- CANDIDATES -->
+  <div class="panel hidden" id="candPanel">
+    <div class="sec-head"><h2>Candidate Graphs</h2><span class="badge">all valid when present</span></div>
+    <div class="grid" id="candGrid"></div>
+  </div>
+
+  <!-- EMBLEMS / SYMBOLS -->
+  <div class="panel hidden" id="symPanel">
+    <div class="sec-head"><h2>Symbols & Emblems</h2><span class="badge" id="symBadge"></span></div>
+    <div id="symList" class="list"></div>
+  </div>
+
+  <!-- MATLAB -->
+  <div class="panel hidden" id="mPanel">
+    <div class="sec-head"><h2>Octave / MATLAB Snippet</h2><span class="badge">connections</span></div>
+    <p style="font-size:0.88rem;color:var(--ink-dim);margin-bottom:0.5rem">Generates a minimal adjacency + plot script from the loaded report’s candidate edge counts (or from pasted nodes/edges if you supply them). Paste into Octave to visualise connectivity without the live stack.</p>
+    <div class="btn-row">
+      <button class="btn" id="btnM">Generate .m</button>
+      <button class="btn" id="btnCopyM">Copy</button>
+    </div>
+    <div class="code hidden" id="mOut"></div>
+  </div>
+
+  <!-- RAW -->
+  <div class="panel hidden" id="rawPanel">
+    <div class="sec-head"><h2>Promotion Block</h2><span class="badge">manual</span></div>
+    <div class="code" id="promoOut"></div>
+  </div>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+let report = null;
+
+function setStatus(msg, isErr) {
+  const el = $("status");
+  el.textContent = msg;
+  el.style.color = isErr ? "var(--warn)" : "var(--ink-dim)";
+}
+
+function updateMeter(score) {
+  const p = Math.max(0, Math.min(100, score));
+  $("meterFill").style.width = p + "%";
+  $("pct").textContent = p + "%";
+  const labels = [
+    [0, "System Critical"], [1, "Diagnostics Running"], [25, "Stabilizing Core"],
+    [50, "Halfway To Orbit"], [75, "Nearly Operational"], [99, "Final Checks"], [100, "Fully Operational"]
+  ];
+  let t = labels[0][1];
+  for (const [th, lab] of labels) if (p >= th) t = lab;
+  $("statusLabel").textContent = t;
+}
+
+function show(id, on) { $(id).classList.toggle("hidden", !on); }
+
+function render(r) {
+  report = r;
+  const audit = r.master_audit || {};
+  const actual = audit.actual_counts || {};
+  const integ = audit.integrity_comparison || {};
+  const graph = audit.graph_validation || {};
+  const recon = r.reconciliations || {};
+  const promo = r.promotion || {};
+
+  // confidence score
+  let score = 10;
+  if (graph.valid) score += 25;
+  if (graph.acyclic) score += 20;
+  if ((actual.nodes || 0) === 250) score += 10;
+  if ((actual.edges || 0) === 501) score += 10;
+  const emblems = actual.physical_emblems ?? -1;
+  if (emblems === 6) score += 20;
+  else if (emblems === 0) score += 0;
+  else score += 5;
+  if (promo.manual_review_required) score = Math.min(score, 95);
+  updateMeter(score);
+
+  // critical flag
+  if (emblems === 0) {
+    show("critPanel", true);
+    $("critBadge").textContent = "physical_emblems = 0";
+    $("critText").textContent = "Classifier is counting object_symbol nodes as generic symbols. Data itself contains the six emblems.";
+    $("critFix").textContent = `// one-liner fix in tools/reconciliation/reconciliation.py
+elif (
+    "emblem" in kind
+    or kind == "object_symbol"
+    or "composite" in kind
+):
+    groups["emblems"].append(node)`;
+  } else {
+    show("critPanel", emblems !== 6);
+    if (emblems !== 6) {
+      $("critBadge").textContent = `physical_emblems = ${emblems}`;
+      $("critText").textContent = "Unexpected emblem count. Inspect master integrity block.";
+      $("critFix").textContent = "";
+    }
+  }
+
+  // counts grid
+  show("countsPanel", true);
+  $("countsBadge").textContent = r.script_version ? `v${r.script_version}` : "";
+  const keys = [
+    ["nodes", "Nodes"], ["edges", "Edges"], ["matrix_entries", "Matrix"],
+    ["physical_phase_glyphs", "Glyphs"], ["physical_emblems", "Emblems"],
+    ["function_tags", "Functions"], ["phases", "Phases"], ["objects", "Objects"]
+  ];
+  $("countsGrid").innerHTML = keys.map(([k, lab]) => {
+    const v = actual[k];
+    const exp = integ[k]?.expected;
+    const bad = (k === "physical_emblems" && v === 0) || (exp != null && v !== exp);
+    return `<div class="stat ${bad ? "warn" : ""}">${lab} <b>${v ?? "—"}</b>${exp != null ? ` / ${exp}` : ""}</div>`;
+  }).join("");
+
+  // candidates
+  show("candPanel", true);
+  $("candGrid").innerHTML = ["matrix", "phase", "combined"].map(name => {
+    const c = recon[name] || {};
+    return `<div class="stat">${name} <b>${c.nodes ?? "—"}</b> n / <b>${c.edges ?? "—"}</b> e<br><span style="color:var(--ink-dim)">${c.valid ? "valid" : "—"}</span></div>`;
+  }).join("");
+
+  // symbols note
+  show("symPanel", true);
+  $("symBadge").textContent = emblems === 6 ? "6 emblems present" : "check classifier";
+  $("symList").innerHTML = [
+    "emblem_anchor · Anchor emblem · layer 4 · object_symbol",
+    "emblem_break · Break emblem · layer 4 · object_symbol",
+    "emblem_fuse · Fuse emblem · layer 4 · object_symbol",
+    "emblem_quiet · Quiet emblem · layer 4 · object_symbol",
+    "emblem_relay · Relay emblem · layer 4 · object_symbol",
+    "emblem_span · Span emblem · layer 4 · object_symbol"
+  ].map(t => `<div>${t}</div>`).join("");
+
+  // promotion
+  show("rawPanel", true);
+  $("promoOut").textContent = JSON.stringify(promo, null, 2);
+
+  // matlab panel
+  show("mPanel", true);
+  setStatus("Report loaded. Ready for inspection or .m export.");
+}
+
+function generateM() {
+  if (!report) { setStatus("Load a report first.", true); return; }
+  const recon = report.reconciliations || {};
+  const lines = [
+    "% DAGTKO reconciliation connectivity sketch",
+    "% Generated by observer.html — paste into GNU Octave / MATLAB",
+    "% Uses candidate sizes only; replace with real adjacency for full plot.",
+    "",
+    "clear; clc;",
+    `fprintf('Script version: ${report.script_version || "?"}\\n');`,
+    "",
+    "% Candidate sizes (nodes, edges)",
+    `matrix_n = ${recon.matrix?.nodes ?? 0}; matrix_e = ${recon.matrix?.edges ?? 0};`,
+    `phase_n  = ${recon.phase?.nodes ?? 0};  phase_e  = ${recon.phase?.edges ?? 0};`,
+    `comb_n   = ${recon.combined?.nodes ?? 0}; comb_e   = ${recon.combined?.edges ?? 0};`,
+    "",
+    "candidates = {'matrix','phase','combined'};",
+    "nn = [matrix_n, phase_n, comb_n];",
+    "ee = [matrix_e, phase_e, comb_e];",
+    "",
+    "figure('Color','k');",
+    "bar(nn, 'FaceColor', [0.62 0.36 1]); hold on;",
+    "bar(ee, 'FaceColor', [0.37 0.98 0.94], 'BarWidth', 0.4);",
+    "set(gca, 'XTickLabel', candidates, 'Color', [0.04 0.02 0.07], ...",
+    "    'XColor', [0.85 0.9 1], 'YColor', [0.85 0.9 1]);",
+    "title('Reconciliation candidates (nodes vs edges)', 'Color', [0.85 0.9 1]);",
+    "legend({'nodes','edges'}, 'TextColor', [0.85 0.9 1]);",
+    "grid on;",
+    "",
+    "% Placeholder adjacency for a small emblem subgraph (6 nodes)",
+    "% Replace with real edges from nodes.json / edges.json for full graph.",
+    "emblem_ids = {'anchor','break','fuse','quiet','relay','span'};",
+    "A = zeros(6);  % fill from real edges if available",
+    "% example: A(1,2)=1; A(2,1)=1; ...",
+    "figure('Color','k');",
+    "gplot(A, [cos(2*pi*(0:5)/6); sin(2*pi*(0:5)/6)]');",
+    "set(gca, 'Color', [0.04 0.02 0.07], 'XColor', [0.85 0.9 1], 'YColor', [0.85 0.9 1]);",
+    "title('Emblem subgraph placeholder', 'Color', [0.85 0.9 1]);",
+    "axis equal off;"
+  ];
+  const text = lines.join("\n");
+  $("mOut").textContent = text;
+  $("mOut").classList.remove("hidden");
+  return text;
+}
+
+$("btnLoad").onclick = () => {
+  const raw = $("paste").value.trim();
+  if (!raw) { setStatus("Paste report.json or choose a file.", true); return; }
+  try {
+    const r = JSON.parse(raw);
+    if (!r.schema && !r.master_audit) throw new Error("Not a reconciliation report");
+    render(r);
+  } catch (e) {
+    setStatus("Parse error: " + e.message, true);
+  }
+};
+
+$("fileIn").onchange = async (ev) => {
+  const f = ev.target.files?.[0];
+  if (!f) return;
+  try {
+    const text = await f.text();
+    $("paste").value = text;
+    const r = JSON.parse(text);
+    render(r);
+  } catch (e) {
+    setStatus("File error: " + e.message, true);
+  }
+};
+
+$("btnClear").onclick = () => {
+  $("paste").value = "";
+  $("fileIn").value = "";
+  report = null;
+  ["critPanel","countsPanel","candPanel","symPanel","mPanel","rawPanel"].forEach(id => show(id, false));
+  updateMeter(0);
+  $("statusLabel").textContent = "Awaiting Data";
+  setStatus("");
+};
+
+$("btnM").onclick = () => generateM();
+$("btnCopyM").onclick = () => {
+  const t = $("mOut").textContent;
+  if (!t) { generateM(); }
+  navigator.clipboard.writeText($("mOut").textContent).then(() => setStatus("Copied .m snippet."));
+};
+</script>
+</body>
+</html>
