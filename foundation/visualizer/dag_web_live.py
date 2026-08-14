@@ -586,10 +586,10 @@ class VisualizerHandler(BaseHTTPRequestHandler):
 def main():
     print(f"============================================================")
     print(f"  Ledger Set DAG — Symbol-Centric Live Web Visualizer")
-    print(f"  Listening on http://0.0.0.0:{WEB_PORT}")
+    print(f"  Listening on http://127.0.0.1:{WEB_PORT}")
     print(f"  SVG Artwork Rendered as Primary Node Visual Identity")
     print(f"============================================================")
-    server = HTTPServer(("0.0.0.0", WEB_PORT), VisualizerHandler)
+    server = HTTPServer(("127.0.0.1", WEB_PORT), VisualizerHandler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
