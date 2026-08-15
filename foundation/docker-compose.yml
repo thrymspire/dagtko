@@ -47,8 +47,8 @@ services:
 
   api:
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
     container_name: dag-api
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-dag}:${POSTGRES_PASSWORD:-dag_substrate}@postgres:5432/${POSTGRES_DB:-dag_substrate}
@@ -72,8 +72,8 @@ services:
 
   mcp:
     build:
-      context: ./mcp
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: mcp/Dockerfile
     container_name: dag-mcp
     environment:
       INGEST_URL: http://api:8000
@@ -96,18 +96,18 @@ services:
   # Start with: docker compose --profile approval up -d
   approval:
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
     container_name: dag-approval
     profiles: ["approval"]
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-dag}:${POSTGRES_PASSWORD:-dag_substrate}@postgres:5432/${POSTGRES_DB:-dag_substrate}
       REDIS_URL: redis://redis:6379/0
       INGEST_URL: http://api:8000
-    working_dir: /scripts
-    command: ["python", "approval_consumer.py"]
+    working_dir: /app
+    command: ["python", "scripts/approval_consumer.py"]
     volumes:
-      - ./scripts/approval_consumer.py:/scripts/approval_consumer.py:ro
+      - ./scripts/approval_consumer.py:/app/scripts/approval_consumer.py:ro
     depends_on:
       api:
         condition: service_healthy
