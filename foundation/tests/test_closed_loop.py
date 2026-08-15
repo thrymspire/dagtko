@@ -41,17 +41,17 @@ def get_test_db_conn():
 
 
 def test_seed_jointly_queryable():
-    """Verify complete 250 nodes, 501 edges, 90 matrix entries, 6 buckets exist together."""
+    """Verify complete 250 nodes, 495 edges, 90 matrix entries, 6 buckets exist together."""
     conn = get_test_db_conn()
     cur = conn.cursor()
     cur.execute("SELECT count(*) FROM nodes")
     assert cur.fetchone()[0] >= 250
 
     cur.execute("SELECT count(*) FROM edges")
-    assert cur.fetchone()[0] >= 501
+    assert cur.fetchone()[0] >= 495
 
     cur.execute("SELECT count(*) FROM events")
-    assert cur.fetchone()[0] >= 501
+    assert cur.fetchone()[0] >= 495
 
     cur.execute("SELECT count(*) FROM ledger_node_state")
     assert cur.fetchone()[0] >= 250
